@@ -429,7 +429,7 @@
         </li>
 
 
-{{-- 
+
         <li class="nav-item<?php if(Request::is('*/category/*') || Request::is('*/category')): ?> start active open<?php endif; ?>">
 
 
@@ -442,7 +442,7 @@
 
 
 
-                <span class="title">PDF tools category</span>
+                <span class="title">Category</span>
 
 
 
@@ -498,7 +498,7 @@
 
 
 
-        </li> --}}
+        </li>
 
 
 
@@ -669,8 +669,8 @@
         </li>
 
 
-        
-{{-- 
+
+{{--
         <li class="nav-item<?php if(Request::is('*/site-users') || Request::is('*/companies') || Request::is('*/transactions')): ?> start active<?php endif; ?>">
             <a href="{{ url(getCurrentLocale() . '/manager/site-users') }}" class="nav-link nav-toggle filemanager-btn-sidebar">
 
@@ -693,7 +693,7 @@
 
                 <?php if(Request::is('*/job')): ?><span class="selected"></span><?php endif; ?>
 
-            </a> 
+            </a>
 
         </li> --}}
 
@@ -750,7 +750,7 @@
             </a>
 
         </li>
-        
+
         <li class="nav-item<?php if(Request::is('*/subscribers')): ?> start active<?php endif; ?>">
 
             <a href="{{ url(getCurrentLocale() . '/manager/subscribers') }}" class="nav-link nav-toggle filemanager-btn-sidebar">

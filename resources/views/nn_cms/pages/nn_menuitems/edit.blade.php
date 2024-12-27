@@ -111,7 +111,7 @@
 
                     <div class="tab-content">
 
-                    
+
 
                          @for($i = 0; $i < count($langs); $i++)
 
@@ -146,6 +146,7 @@
                                                      <option value="contact" @if($type == 'contact') selected="{{ 'selected' }}" @endif>{{ trans('general.contactPage') }}</option>
 
                                                     <option value="link" @if($type == 'link') selected="{{ 'selected' }}" @endif>{{ trans('general.link') }}</option>
+                                                    <option value="category" @if($type == 'category') selected="{{ 'selected' }}" @endif>category</option>
 
                                                 </select>
 
@@ -158,46 +159,33 @@
                                                     <option selected="selected" class="hide" value="0">{{ trans('general.selectCollectionItem') }}</option>
 
                                                     @if(count($collections))
-
-
-
                                                     <optgroup label="{{ trans('general.collectionsList') }}">
-
-
-
                                                     @else
-
-
-
                                                     <optgroup label="{{ trans('general.collectionsListEmpty') }}">
-
-
-
                                                     @endif
-
-                                                    
-
                                                     @foreach($collections as $collection)
-
-
-
                                                         @if($collection->name != '')
-
-
-
                                                         <option value="{{ $collection->collection_id }}" @if($collection->collection_id == $collection_id) selected="selected" @endif class="cio-collection-item" >{{ $collection->name }}</option>
-
-
-
                                                         @endif
-
-
-
                                                     @endforeach
-
-
-
                                                     </optgroup>
+
+                                                </select>
+                                                <select name="category_id" class="form-control input-lg hide">
+
+                                                    <option selected="selected" class="hide" value="0">select category</option>
+
+                                                    @if(count($categories))
+                                                        <optgroup label="category">
+                                                    @else
+                                                        <optgroup label="category">
+                                                            @endif
+                                                            @foreach($categories as $category)
+                                                                @if($category->name != '')
+                                                                    <option value="{{ $category->category_id }}" @if($category->category_id == $category_id) selected="selected" @endif class="cio-collection-item" >{{ $category->name }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </optgroup>
 
                                                 </select>
 
@@ -337,7 +325,7 @@
 
 
 
-                        @endfor 
+                        @endfor
 
 
 

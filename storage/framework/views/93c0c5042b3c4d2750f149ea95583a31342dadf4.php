@@ -115,4 +115,5 @@
     <!-- END TOP NAVIGATION MENU -->
 
 
-</div><?php /**PATH /Users/nkarashvili/Documents/laravel/newproj/resources/views/nn_cms/partials/header.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH /Users/nkarashvili/Documents/laravel/newproj/resources/views/nn_cms/partials/header.blade.php ENDPATH**/ ?>

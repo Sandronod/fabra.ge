@@ -81,66 +81,50 @@
                                     <option value="contact"{{ (Request::old('type') == 'contact') ? 'selected' : '' }}>{{ trans('general.contactPage') }}</option>
 
                                     <option value="link"{{ (Request::old('type') == 'link') ? 'selected' : '' }}>{{ trans('general.link') }}</option>
+                                    <option value="category"{{ (Request::old('type') == 'category') ? 'selected' : '' }}>category</option>
 
                                 </select>
 
                             </div>
 
                             <div class="col-md-3{{ ($errors->has('collection_id')) ? ' has-error' : ''}}">
-
                                 <select name="collection_id" class="form-control input-lg hide">
-
                                     <option selected="selected" class="hide" value="0">{{ trans('general.selectCollectionItem') }}</option>
-
                                     @if(count($collections))
-
-
-
                                     <optgroup label="{{ trans('general.collectionsList') }}">
-
-
-
                                     @else
-
-
-
                                     <optgroup label="{{ trans('general.collectionsListEmpty') }}">
-
-
-
                                     @endif
-
-                                    
-
                                     @foreach($collections as $item)
-
-
-
                                         @if($item->name != '')
-
-
-
                                         <option value="{{ $item->collection_id }}" {{ (Request::old('collection_id') == $item->id) ? 'selected' : '' }} class="cio-collection-item">{{ $item->name }}</option>
 
-
-
                                         @endif
-
-
-
                                     @endforeach
-
-
-
                                     </optgroup>
 
                                 </select>
+                                <select name="category_id" class="form-control input-lg hide">
+                                    <option selected="selected" class="hide" value="0">select category</option>
+                                    @if(count($category))
+                                        <optgroup label="category">
+                                    @else
+                                        <optgroup label="category">
+                                            @endif
+                                            @foreach($category as $item)
+                                                @if($item->name != '')
+                                                    <option value="{{ $item->category_id }}" {{ (Request::old('category_id') == $item->id) ? 'selected' : '' }} class="cio-collection-item">{{ $item->name }}</option>
 
-                                @if($errors->has('collection_id'))
+                                                @endif
+                                            @endforeach
+                                        </optgroup>
+                                </select>
+
+                                @if($errors->has('category_id'))
 
                                     <div class="error-text text-danger">
 
-                                        {{ $errors->default->get('collection_id')[0] }}
+                                        {{ $errors->default->get('category_id')[0] }}
 
                                     </div>
 

@@ -430,6 +430,75 @@
 
 
 
+        <li class="nav-item<?php if(Request::is('*/category/*') || Request::is('*/category')): ?> start active open<?php endif; ?>">
+
+
+
+            <a href="javascript:;" class="nav-link nav-toggle">
+
+
+
+                <i class="icon-wrench"></i>
+
+
+
+                <span class="title">Category</span>
+
+
+
+                <span class="arrow<?php if(Request::is('*/category/*') || Request::is('*/category')): ?> open<?php endif; ?>"></span>
+
+
+
+                <?php if(Request::is('*/category/*') || Request::is('*/category')): ?><span class="selected"></span><?php endif; ?>
+
+
+
+            </a>
+
+
+
+            <ul class="sub-menu">
+
+
+
+                <li class="nav-item<?php if(Request::is('*/category')): ?> active open<?php endif; ?>">
+
+
+
+                    <a href="<?php echo e(url(getCurrentLocale() . '/manager/category')); ?>" class="nav-link">
+
+
+
+                        <?php echo e(trans('general.list')); ?> </a>
+
+
+
+                </li>
+
+
+
+                <li class="nav-item<?php if(Request::is('*/category/create') || Request::is('*/category/*')): ?> active open<?php endif; ?>">
+
+
+
+                    <a href="<?php echo e(url(getCurrentLocale() . '/manager/category/create')); ?>" class="nav-link">
+
+
+
+                        <?php echo e(trans('general.addNew')); ?> </a>
+
+
+
+                </li>
+
+
+
+            </ul>
+
+
+
+        </li>
 
 
 
@@ -600,7 +669,7 @@
         </li>
 
 
-        
+
 
 
         <li class="nav-item<?php if(Request::is('*/filemanager')): ?> start active<?php endif; ?>">
@@ -656,7 +725,7 @@
             </a>
 
         </li>
-        
+
         <li class="nav-item<?php if(Request::is('*/subscribers')): ?> start active<?php endif; ?>">
 
             <a href="<?php echo e(url(getCurrentLocale() . '/manager/subscribers')); ?>" class="nav-link nav-toggle filemanager-btn-sidebar">
@@ -707,4 +776,5 @@
 
 
 
-</div><?php /**PATH /Users/nkarashvili/Documents/laravel/newproj/resources/views/nn_cms/partials/sidebar.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH /Users/nkarashvili/Documents/laravel/newproj/resources/views/nn_cms/partials/sidebar.blade.php ENDPATH**/ ?>

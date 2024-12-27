@@ -6,6 +6,7 @@ namespace App\Http\Controllers\nn_cms;
 
 
 
+use App\Models\nn_category_lang;
 use DB;
 
 use Illuminate\Routing\Router;
@@ -107,10 +108,10 @@ class ManagerMenuItems extends ManagerSiteController
     {
 
         $collections = nn_collection_lang::where('lang', getCurrentLocale())->get();
+        $category = nn_category_lang::where('lang', getCurrentLocale())->get();
 
 
-
-        return view('nn_cms.pages.nn_menuitems.create', compact('collections', 'id'));
+        return view('nn_cms.pages.nn_menuitems.create', compact('collections', 'id',  'category'));
 
     }
 
@@ -131,7 +132,7 @@ class ManagerMenuItems extends ManagerSiteController
     public function store(Request $request)
 
     {
-		
+
 
         // supported locales string
 
@@ -183,9 +184,11 @@ class ManagerMenuItems extends ManagerSiteController
 
         $item->collection_id = $request->collection_id;
 
+        $item->category_id = $request->category_id;
+
         $item->nn_menu_id = $request->menu_id;
 
-        $item->parent_id = $request->parent_id; 
+        $item->parent_id = $request->parent_id;
 
         $item->save();
 
@@ -292,7 +295,7 @@ class ManagerMenuItems extends ManagerSiteController
 
 
         $data['collections'] = nn_collection_lang::where('lang', getCurrentLocale())->get();
-
+        $data['categories'] = nn_category_lang::where('lang', getCurrentLocale())->get();
 
 
         $mitem = DB::table('nn_menu_item')->where('id', '=', $item_id)->get();
@@ -309,11 +312,12 @@ class ManagerMenuItems extends ManagerSiteController
 
             $data['collection_id'] = $mitems->collection_id;
 
+            $data['category_id'] = $mitems->category_id;
 
 
         }
 
-   
+
 
         foreach($data['menuitems'] as $menuitem){
 
@@ -371,7 +375,7 @@ class ManagerMenuItems extends ManagerSiteController
 
         }
 
-        
+
 
         // update nn_menu_item
 
@@ -380,6 +384,8 @@ class ManagerMenuItems extends ManagerSiteController
         $menuitem->type = $request->type;
 
         $menuitem->collection_id = $request->collection_id;
+
+        $menuitem->category_id = $request->category_id;
 
         $menuitem->save();
 
@@ -417,7 +423,7 @@ class ManagerMenuItems extends ManagerSiteController
 
         $menuitemLang->save();
 
- 
+
 
         return 'ok';
 
