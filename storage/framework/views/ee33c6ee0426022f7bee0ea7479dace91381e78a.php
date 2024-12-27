@@ -1,538 +1,867 @@
 <?php $__env->startSection('content'); ?>
 
     <?php echo $__env->make('nn_site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    
-    <main class="container main-part">
 
-        <div class="converter-parent container">
-            <div class="convert">
-                <header class="flex space-between align-center">
-                    <h2 class="heading-2"><?php echo e($lang->convertCurrency); ?></h2>
-                    <div class="filter-n-calendar-container">
-                        <div class="filter filter-by-date">
-                            <button>
-                                    <img src="<?php echo e(url('')); ?>/assets/images/calendar.svg" alt="calendar" />
-                                    <span id="dateexchangerate-value" class="date-value"><?php echo e($lang->today); ?></span>
-                                    <!-- <img src="<?php echo e(url('')); ?>/assets/images/down-arrow 4.svg" alt="" /> -->
-                                </button>
-                            <div class="date-input-wrap">
-                                <input type="date"  name="" id="dateexchangerate" />
-                            </div>
-                        </div>
-                        <div class="filter-icon-container" onclick="openpopup('.popup-currency-selectors')">
-                            <img src="<?php echo e(url('')); ?>/assets/images/filter.svg" alt="Filter" height="16px" width="16px">
-                        </div>
+    <div class="tagline bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <ul class="list-unstyled mb-0">
+                            <li class="list-inline-item mb-0"><a href="javascript:void(0)" class="text-muted fw-normal"><i data-feather="mail" class="fea icon-sm text-primary"></i> support@starty.com</a></li>
+                            <li class="list-inline-item mb-0 ms-3"><a href="javascript:void(0)" class="text-muted fw-normal"><i data-feather="map-pin" class="fea icon-sm text-primary"></i> 4432 Pick Street Denver, CO 80203</a></li>
+                        </ul>
+
+                        <ul class="list-unstyled social-icon tagline-social mb-0">
+                            <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-facebook-f h6 mb-0"></i></a></li>
+                            <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-instagram h6 mb-0"></i></a></li>
+                            <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-twitter h6 mb-0"></i></a></li>
+                            <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-linkedin h6 mb-0"></i></a></li>
+                        </ul><!--end icon-->
                     </div>
-                </header>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </div><!--end tagline-->
+    <!-- TAGLINE END-->
 
-                <div id="headerConverterLoader" style="display: flex;width: 100%;justify-content: center;">
-                    <img src="<?php echo e(url('')); ?>/assets/images/Loading_icon.gif" width="200" height="100%" alt="Load">
-                </div>  
-                <div class="converter" id="headerConverter">
-                       
-                </div>
-        
-                <div class="flex space-between margin-top">
-                    <p class="text-accent hide-on-md">
-                        <?php echo e($lang->lastUpdated); ?>:&nbsp;
-                        <?php if(getCurrentLocale() == 'ka'): ?>
-                            <?php setlocale(LC_TIME, 'Georgian') ?>
-                        <?php endif; ?>
-                        <?php echo e(\Carbon\Carbon::parse(date('M d, Y'))->formatLocalized('%b %d, %Y')); ?>
-
-                    </p>
-        
-                    <div class="convert__actions">
-                        <a onclick="sharepopup('.share-popup')" id="shareA" href="javascript:void(0);">
-                            <img src="<?php echo e(url('')); ?>/assets/images/share.svg" alt="share"> <?php echo e($lang->share); ?>
-
-                        </a>
-                        <a href="javascript:void(0);" onclick="window.print();">
-                            <img src="<?php echo e(url('')); ?>/assets/images/printer.svg" alt="print"> <?php echo e($lang->print); ?>
-
-                        </a>
-                    </div>
+    <!-- Navbar STart -->
+    <header id="topnav" class="defaultscroll sticky tagline-height">
+        <div class="container">
+            <!-- Logo container-->
+            <a class="logo" href="index.html">
+                <img src="/assets/images/logo-dark.png" class="logo-light-mode" alt="">
+                <img src="/assets/images/logo-light.png" class="logo-dark-mode" alt="">
+            </a>
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
                 </div>
             </div>
-        </div>
 
-        <section class="section main-section-all-content">
-            <!-- exchange rates -->
-            <div class="tab-content">
-                <!-- first div of official exchanges -->
-                <div class="exchange exchange1 active" data-tab-content id="official-exchange-rate">
-                    <header class="exchange__header table-header flex space-between">
-                        <h2 class="heading-2"><?php echo e($lang->officialExchangeRate); ?></h2>
-                        <input type="text" class="search-control" id="searchableRates" placeholder="<?php echo e($lang->search); ?>">
-                    </header>
-                    <div class="exchange-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th><?php echo e($lang->currency); ?></th>
-                                    <th><?php echo e($lang->quantity); ?></th>
-                                    <th><?php echo e($lang->exchangeRate); ?></th>
-                                    <th><?php echo e($lang->difference); ?></th>
-                                    <th><?php echo e($lang->lastSevenDays); ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $__currentLoopData = $currs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $curr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr class="currency-sticky searchablerate"  data-code="<?php echo e(strtolower($curr->code)); ?>">
-                                        <td>
-                                            <div class="flex gap" style="--gap: 0.5rem">
-                                                <div>
-                                                    <img src="<?php echo e(url('')); ?>/assets/images/flags/<?php echo e(strtolower($curr->code)); ?>.svg" width="21" height="21" alt="<?php echo e($curr->code); ?>" />
-                                                </div>
-                                                <?php echo e($curr->code); ?>
+            <ul class="buy-button list-inline mb-0">
+                <li class="list-inline-item search-icon mb-0">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-link text-decoration-none dropdown-toggle mb-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="uil uil-search h5 text-dark mb-0"></i>
+                        </button>
+                        <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-4 py-0" style="width: 300px;">
+                            <form class="p-4">
+                                <input type="text" id="text" name="name" class="form-control border bg-white" placeholder="Search...">
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
 
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu nav-right">
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="index-startup.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/startup.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-briefcase-alt menu-list-icon align-middle me-1"></i> Startups</span>
                                             </div>
-                                        </td>
-                                        <td><?php echo e($curr->quantity); ?> <?php echo e($curr->code); ?></td>
-                                        <td><?php echo e($curr->rate); ?></td>
-                                        <?php
-                                            $currDiffClass = '';
-                                            if ($curr->diff > 0) {
-                                                $currDiffClass = ' currency-green';
-                                            } elseif ($curr->diff < 0) {
-                                                $currDiffClass = ' currency-red';
-                                            }
-                                        ?>
-                                        <td class="flex gap small-height<?php echo e($currDiffClass); ?>">
-                                            <?php if($curr->diff > 0): ?>
-                                                <img src="<?php echo e(url('')); ?>/assets/images/green-arrow-up.svg" alt="Exchange Rate Increased">
-                                                <?php echo e($curr->diff); ?>
-
-                                            <?php elseif($curr->diff < 0): ?>
-                                                <img src="<?php echo e(url('')); ?>/assets/images/red-arrow-down.svg" alt="Exchange Rate Decreased">
-                                                <?php echo e($curr->diff * -1); ?>
-
-                                            <?php elseif($curr->diff == 0): ?>
-                                                0
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <img id="line-image-<?php echo e($curr->code); ?>" src="<?php echo e(url('')); ?>/assets/images/ezgif.com-gif-maker.gif" alt="Rate" />
-                                        </td>
-                                    </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <button class="show-more">
-                        <img src="<?php echo e(url('')); ?>/assets/images/Down_Arrow_3.svg" alt="Exchange Rate Decreased" />
-                    </button>
-                    <p class="text-accent2" style="margin-top: 25px;">
-                        <?php echo e($lang->lastUpdated); ?>:&nbsp;<?php echo e(\Carbon\Carbon::parse(date('M d, Y'))->formatLocalized('%b %d, %Y')); ?>
-
-                    </p>
-                </div>
-            </div>
-            <!-- second bank exchanges rate -->
-            <div class="exchange active exchange-rate-parent" id="exchange-rate-in-banks">
-                <header class="exchange__header flex space-betweenv bank-kiosk-header">
-                    <h2 class="heading-2"><?php echo e($lang->exhangeRateInBanks); ?></h2>
-                </header>
-                <div class="banks-table">
-
-                    <?php $banksChunkLoopIteration = 0 ?>
-
-                    <?php $__currentLoopData = $banks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keyBC => $banksChunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                        <div class="banks-row" id="row-<?php echo e($keyBC); ?>"<?php echo e($keyBC > 1 ? ' style=display:none' : ''); ?>>
-
-                            <?php $banksChunkLoopIteration = $loop->iteration ?>
-                        
-                            <?php $__currentLoopData = $banksChunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keyB => $bank): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="bank">
-                                    <header class="scroll-toggle-btn<?php echo e($banksChunkLoopIteration < 2 ? ' active' : ''); ?>">
-                                        <img class="bank-logo" src="<?php echo e(url('')); ?>/assets/images/banks/<?php echo e($bank['bid']); ?>.webp" alt="banks">
-                                        <?php if(getCurrentLocale() == 'ka'): ?>
-                                            <?php echo e($bank['bank_ka']); ?>
-
-                                        <?php else: ?>
-                                            <?php echo e($bank['bank_en']); ?>
-
-                                        <?php endif; ?>
-                                        <img class="bank-arrow-down1 bank-arrow-down" src="<?php echo e(url('')); ?>/assets/images/Down_Arrow_3.svg" alt="Scroll Down" style="display:<?php echo e($banksChunkLoopIteration >= 2 ? 'block' : 'none'); ?>;">
-                                        <img class="bank-arrow-up1 bank-arrow-up" src="<?php echo e(url('')); ?>/assets/images/up_arrow_3.svg" alt="Scroll up" style="display:<?php echo e($banksChunkLoopIteration < 2 ? 'block' : 'none'); ?>;">
-                                    </header>
-                                    <table class="currenciestable"<?php echo e($banksChunkLoopIteration < 2 ? ' style=display:table' : ''); ?>>
-                                        <thead>
-                                            <tr>
-                                                <th><?php echo e($lang->currency); ?></th>
-                                                <th><?php echo e($lang->buy); ?></th>
-                                                <th><?php echo e($lang->sell); ?></th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <?php $__currentLoopData = json_decode($bank['body']); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flex gap" style="--gap: 0.5rem">
-                                                            <div>
-                                                                <img src="<?php echo e(url('')); ?>/assets/images/flags/<?php echo e(strtolower($key)); ?>.svg" width="21" height="21" alt="<?php echo e($curr->code); ?>" />
-                                                            </div>
-                                                            <?php echo e($key); ?>
-
-                                                        </div>
-                                                    </td>
-                                                    <td><?php echo e(($key == 'RUB' && intval($b->buy) > 1)?$b->buy/100:$b->buy); ?></td>
-                                                    <td><?php echo e(($key == 'RUB' && intval($b->sell) > 1)?$b->buy/100:$b->sell); ?></td>
-                                                </tr>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if(count((array) json_decode($bank['body'])) < 4): ?>
-                                                <?php for($i = 0; $i < (4 - count((array) json_decode($bank['body']))); $i++): ?>
-                                                    <tr>
-                                                        <td>-</td>
-                                                        <td>-</td>
-                                                        <td>-</td>
-                                                    </tr>
-                                                <?php endfor; ?>
-                                            <?php endif; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                        </div>
-
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                    <?php if($banksChunkLoopIteration > 2): ?>
-                        <a class="view-more view-more-banks"><?php echo e($lang->viewMore); ?></a>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <!-- Third Exchanges in Kiosk -->
-            <div class="exchange active exchange-rate-parent" data-tab-content id="exchange-rate-in-banks">
-                <header class="exchange__header flex space-between bank-kiosk-header">
-                    <h2 class="heading-2"><?php echo e($lang->exchangeRateInBanksAndKiosks); ?></h2>
-                </header>
-                <div class="banks-table">
-
-                    <?php $kiosksChunkLoopIteration = 0 ?>
-
-                    <?php $__currentLoopData = $kiosks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keyBC => $kiosksChunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                        <div class="banks-row" id="row-<?php echo e($keyBC); ?>"<?php echo e($keyBC > 1 ? ' style=display:none' : ''); ?>>
-
-                            <?php $kiosksChunkLoopIteration = $loop->iteration ?>
-                        
-                            <?php $__currentLoopData = $kiosksChunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keyB => $kiosk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="bank">
-                                    <header class="scroll-toggle-btn<?php echo e($kiosksChunkLoopIteration < 2 ? ' active' : ''); ?>">
-                                        <img class="bank-logo" src="<?php echo e(url('')); ?>/assets/images/kiosks/<?php echo e($kiosk['bid']); ?>.webp" alt="kiosks">
-                                        <?php if(getCurrentLocale() == 'ka'): ?>
-                                            <?php echo e($kiosk['bank_ka']); ?>
-
-                                        <?php else: ?>
-                                            <?php echo e($kiosk['bank_en']); ?>
-
-                                        <?php endif; ?>
-                                        <img class="bank-arrow-down1 bank-arrow-down" src="<?php echo e(url('')); ?>/assets/images/Down_Arrow_3.svg" alt="Scroll Down" style="display:<?php echo e($kiosksChunkLoopIteration >= 2 ? 'block' : 'none'); ?>;">
-                                        <img class="bank-arrow-up1 bank-arrow-up" src="<?php echo e(url('')); ?>/assets/images/up_arrow_3.svg" alt="Scroll up" style="display:<?php echo e($kiosksChunkLoopIteration < 2 ? 'block' : 'none'); ?>;">
-                                    </header>
-                                    <table class="currenciestable"<?php echo e($kiosksChunkLoopIteration < 2 ? ' style=display:table' : ''); ?>>
-                                        <thead>
-                                            <tr>
-                                                <th><?php echo e($lang->currency); ?></th>
-                                                <th><?php echo e($lang->buy); ?></th>
-                                                <th><?php echo e($lang->sell); ?></th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <?php $__currentLoopData = json_decode($kiosk['body']); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flex gap" style="--gap: 0.5rem">
-                                                            <div>
-                                                                <img src="<?php echo e(url('')); ?>/assets/images/flags/<?php echo e(strtolower($key)); ?>.svg" width="21" height="21" alt="<?php echo e($curr->code); ?>" />
-                                                            </div>
-                                                            <?php echo e($key); ?>
-
-                                                        </div>
-                                                    </td>
-                                                    <td><?php echo e(($key == 'RUB' && intval($k->buy) > 1)?$k->buy/100:$k->buy); ?></td>
-                                                    <td><?php echo e(($key == 'RUB' && intval($k->sell) > 1)?$k->buy/100:$k->sell); ?></td>
-                                                </tr>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if(count((array) json_decode($kiosk['body'])) < 4): ?>
-                                                <?php for($i = 0; $i < (4 - count((array) json_decode($kiosk['body']))); $i++): ?>
-                                                    <tr>
-                                                        <td>-</td>
-                                                        <td>-</td>
-                                                        <td>-</td>
-                                                    </tr>
-                                                <?php endfor; ?>
-                                            <?php endif; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                        </div>
-
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    
-                    <?php if($kiosksChunkLoopIteration > 2): ?>
-                        <a class="view-more view-more-banks"><?php echo e($lang->viewMore); ?></a>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <!-- here canvas -->
-            <section class="dynamics">
-                <header class="flex space-between align-center">
-                    <h2 class="heading-2"><?php echo e($lang->exhangeDynamics); ?></h2>
-
-                    <div class="flex gap">
-                        <div class="filter filter-dropdown">
-                            <button dropdown-trigger id="filter-dropdown-main-btn">
-                                <div>
-                                <img src="<?php echo e(url('')); ?>/assets/images/flags/us.svg" alt="USD" />
-                                USD
-                                </div>
-                                <!-- <img src="<?php echo e(url('')); ?>/assets/images/down-arrow 4.svg" alt="" /> -->
-                            </button>
-                            
-                            <div class="filter-options">
-                                <?php $__currentLoopData = $currs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $curr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($key == 5)break; ?>
-                                    
-                                        <button value="<?php echo e(strtolower($curr->code)); ?>" class="filter-options-btn">
-                                            <img src="<?php echo e(url('')); ?>/assets/images/flags/<?php echo e(strtolower($curr->code)); ?>.svg" alt="<?php echo e($curr->code); ?>" />
-                                            <?php echo e($curr->code); ?>
-
-                                        </button>
-                                    
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </div>
-                        </div>
-
-                        <div class="filter filter-by-date">
-                            <button>
-                                <img src="<?php echo e(url('')); ?>/assets/images/calendar.svg" alt="calendar" />
-                                <span class="date-value"><?php echo e($lang->today); ?></span>
-                                <!-- <img src="<?php echo e(url('')); ?>/assets/images/down-arrow 4.svg" alt="" /> -->
-                            </button>
-                            <div class="date-input-wrap">
-                                <input type="date" name="" id="chartDate"  />
-                            </div>
-                        </div>
-                    </div>
-                </header>
-
-                <div class="dynamics-chart-container-out">
-                    <div class="dynamics-chart-container">
-                        <div id="lineChartLoader">
-                            <img src="<?php echo e(url('')); ?>/assets/images/Loading_icon.gif" width="300" height="100%" alt="Load">
-                        </div>
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                </div>
-            </section>
-            <!-- Crypto currency -->
-            <div class="tab-content crypto-block">
-                <!-- first div of official exchanges -->
-                <div class="exchange exchange2 active" data-tab-content id="crypto-exchange-rate">
-                    <header class="exchange__header table-header flex space-between">
-                        <h2 class="heading-2"><?php echo e($lang->cryptoExchangeRate); ?></h2>
-                        <input type="text" id="searchableRates1" class="search-control" placeholder="<?php echo e($lang->search); ?>">
-                    </header>
-                    <div class="exchange-table crypto-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="flex-th"><?php echo e($lang->currency); ?></th>
-                                    <th class="flex-th">
-                                        <p><?php echo e($lang->price); ?> 
-                                            
-                                        </p>
-                                    </th>
-                                    <th class="flex-th">
-                                        <p><?php echo e($lang->twentyFourHourChange); ?>
-
-                                            
-                                        </p>
-                                    </th>
-                                    
-                                        
-                                            
-                                        
-                                    
-                                    <th class="flex-th">
-                                        <p>
-                                            <?php echo e($lang->volumeTwentyFourHours); ?>                                         
-                                            
-                                        </p>
-                                    </th>
-                                    
-                                    <th><?php echo e($lang->marketCap); ?></th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <?php $__currentLoopData = $cryptoCurrency; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr class="searchablerate1" data-code="<?php echo e(strtolower($item->symbol)); ?>-<?php echo e(strtolower($item->name)); ?>">
-                                        <td>
-                                            <div class="flex gap" style="--gap: 0.5rem">
-                                                <div class="crypto">
-                                                    
-                                                    <?php if(file_exists(public_path('assets/images/crypto_icons/'.strtolower($item->symbol).'.svg')) && $item->symbol != 'CON'): ?>
-                                                        <img src="<?php echo e(url('')); ?>/assets/images/crypto_icons/<?php echo e(strtolower($item->symbol)); ?>.svg" width="20" height="20" alt="<?php echo e($item->name); ?>">
-                                                    <?php else: ?>
-                                                        <img src="<?php echo e(url('')); ?>/assets/images/crypto_icons/no-image.png" width="20" height="20" alt="noimage">
-                                                    <?php endif; ?>
-                                                    <div class="cryptoname">
-                                                        <p class="fullname-crypto"><?php echo e($item->name); ?></p>
-                                                        <p class="abreviation-of-crypto"><?php echo e($item->symbol); ?></p>
-                                                    </div>
-                                                </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-business.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/business.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-presentation-line menu-list-icon align-middle me-1"></i> Business</span>
                                             </div>
-                                        </td>
-                                        <td class="price">$ <?php echo e(isset($item->priceUsd) ? number_format(round($item->priceUsd, 4), 4) : '0'); ?></td>
-                                        <td class="<?php echo e($item->changePercent24Hr > 0 ? 'cryptogreen' : 'cryptogreen-disabled cryptored'); ?>">
-                                            <p>
-                                                <?php if($item->changePercent24Hr > 0): ?>
-                                                    <img src="<?php echo e(url('')); ?>/assets/images/green-arrow-up.svg" alt="rised"> <?php echo e(round($item->changePercent24Hr, 4)); ?>%
-                                                <?php else: ?>
-                                                    <img src="<?php echo e(url('')); ?>/assets/images/red-arrow-down.svg" alt="Exchange Rate Decreased"> <?php echo e(round($item->changePercent24Hr, 4) * - 1); ?>%
-                                                <?php endif; ?>
-                                            </p>
-                                        </td>
-                                        
-                                        <td>
-                                            <p class="daily-view">
-                                                $
-                                                <?php if(isset($item->volumeUsd24Hr)): ?>
-                                                    <?php if($item->volumeUsd24Hr < 1000000): ?>
-                                                        <?php echo e(number_format($item->volumeUsd24Hr)); ?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-corporate.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/corporate.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-chart-pie menu-list-icon align-middle me-1"></i> Corporate</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-finance.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/finance.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-analytics menu-list-icon align-middle me-1"></i> Finance</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                                                    <?php elseif($item->volumeUsd24Hr < 1000000000): ?>
-                                                        <?php echo e(number_format($item->volumeUsd24Hr / 1000000, 2) . ' ' . $lang->m); ?>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="index-application.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/application.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-mobile-android menu-list-icon align-middle me-1"></i> Application</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-saas.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/saas.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-airplay menu-list-icon align-middle me-1"></i> Saas</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-seo.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/seo.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-clapper-board menu-list-icon align-middle me-1"></i> SEO Agency</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-marketing.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/marketing.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-process menu-list-icon align-middle me-1"></i> Marketing</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                                                    <?php else: ?>
-                                                        <?php echo e(number_format($item->volumeUsd24Hr / 1000000000, 2) . ' ' .  $lang->b); ?>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="index-event.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/event.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-post-stamp menu-list-icon align-middle me-1"></i> Event</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-crypto.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/crypto.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-bitcoin-circle menu-list-icon align-middle me-1"></i> Cryptocurrency</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-restaurant.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/restaurant.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-restaurant menu-list-icon align-middle me-1"></i> Restaurant</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-cafe.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/cafe.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-coffee menu-list-icon align-middle me-1"></i> Cafe</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                                                    <?php endif; ?>
-                                                <?php else: ?>
-                                                    0 
-                                                <?php endif; ?>
-                                                
-                                            </p>
-                                        </td>
-                                        
-                                        <td>
-                                            <p class="daily-view">
-                                                $ 
-                                                <?php if(isset($item->marketCapUsd)): ?>
-                                                    <?php if($item->marketCapUsd < 1000000): ?>
-                                                    <?php elseif($item->marketCapUsd < 1000000000): ?>
-                                                        <?php echo e(number_format($item->marketCapUsd / 1000000, 2) . ' ' . $lang->m); ?>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="index-personal.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/personal.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-user menu-list-icon align-middle me-1"></i> Personal</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-portfolio.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/portfolio.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-image-v menu-list-icon align-middle me-1"></i> Portfolio</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-freelancer.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/freelancer.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-brackets-curly menu-list-icon align-middle me-1"></i> Freelancer</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                                                    <?php else: ?>
-                                                        <?php echo e(number_format($item->marketCapUsd / 1000000000, 2) . ' ' . $lang->b); ?>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="index-charity.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/charity.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-thumbs-up menu-list-icon align-middle me-1"></i> Charity</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-personal-blog.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/blog.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-document-layout-left menu-list-icon align-middle me-1"></i> Personal Blog</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-fashion.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/fashion.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-shopping-bag menu-list-icon align-middle me-1"></i> fashion</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-onepage.html" class="sub-menu-item">
+                                            <div class="text-lg-center">
+                                                <span class="d-none d-lg-block"><img src="/assets/images/demos/application.png" class="img-fluid rounded shadow-md" alt=""></span>
+                                                <span class="mt-lg-2 d-block"><i class="uil uil-book menu-list-icon align-middle me-1"></i> App (Onepage)</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
 
-                                                    <?php endif; ?>
-                                                <?php else: ?>
-                                                    0 
-                                                <?php endif; ?>
-                                            </p>
-                                            
-                                        </td>
-                                    </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </tbody>
-                        </table>
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="page-aboutus.html" class="sub-menu-item">About Us</a></li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Services</a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="page-services.html" class="sub-menu-item">Services</a></li>
+                                    <li><a href="page-services-two.html" class="sub-menu-item">Services Two</a></li>
+                                    <li><a href="page-single-service.html" class="sub-menu-item">Single Service </a></li>
+                                </ul>
+                            </li>
+                            <li><a href="page-faqs.html" class="sub-menu-item">FAQs</a></li>
+                            <li><a href="page-pricing.html" class="sub-menu-item">Pricing</a></li>
+                            <li><a href="page-team.html" class="sub-menu-item">Team</a></li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Shop</a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="shop-grids.html" class="sub-menu-item">Product Grids</a></li>
+                                    <li><a href="shop-product-detail.html" class="sub-menu-item">Product Details</a></li>
+                                    <li><a href="shop-cart.html" class="sub-menu-item">Shop Cart</a></li>
+                                    <li><a href="shop-checkout.html" class="sub-menu-item">Checkouts</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Special</a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="page-comingsoon.html" class="sub-menu-item">Coming Soon</a></li>
+                                    <li><a href="page-maintenance.html" class="sub-menu-item">Maintenance</a></li>
+                                    <li><a href="page-error.html" class="sub-menu-item">Error</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="components.html" class="sub-menu-item">Components</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">Portfolio</a><span class="menu-arrow"></span>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li class="megamenu-head">Classic Portfolio</li>
+                                    <li><a href="portfolio-classic-two.html" class="sub-menu-item">Two Column</a></li>
+                                    <li><a href="portfolio-classic-three.html" class="sub-menu-item">Three Column</a></li>
+                                    <li><a href="portfolio-classic-four.html" class="sub-menu-item">Four Column</a></li>
+                                    <li><a href="portfolio-classic-five.html" class="sub-menu-item">Five Column</a></li>
+                                    <li><a href="portfolio-classic-six.html" class="sub-menu-item">Six Column</a></li>
+                                    <li><a href="portfolio-classic-sidebar.html" class="sub-menu-item">Portfolio Sidebar</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <ul>
+                                    <li class="megamenu-head">Creative Portfolio</li>
+                                    <li><a href="portfolio-creative-two.html" class="sub-menu-item">Two Column</a></li>
+                                    <li><a href="portfolio-creative-three.html" class="sub-menu-item">Three Column</a></li>
+                                    <li><a href="portfolio-creative-four.html" class="sub-menu-item">Four Column</a></li>
+                                    <li><a href="portfolio-creative-five.html" class="sub-menu-item">Five Column</a></li>
+                                    <li><a href="portfolio-creative-six.html" class="sub-menu-item">Six Column</a></li>
+                                    <li><a href="portfolio-creative-sidebar.html" class="sub-menu-item">Portfolio Sidebar</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <ul>
+                                    <li class="megamenu-head">Modern Portfolio</li>
+                                    <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
+                                    <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a></li>
+                                    <li><a href="portfolio-modern-four.html" class="sub-menu-item">Four Column</a></li>
+                                    <li><a href="portfolio-modern-five.html" class="sub-menu-item">Five Column</a></li>
+                                    <li><a href="portfolio-modern-six.html" class="sub-menu-item">Six Column</a></li>
+                                    <li><a href="portfolio-modern-sidebar.html" class="sub-menu-item">Portfolio Sidebar</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <ul>
+                                    <li class="megamenu-head">Masonry Portfolio</li>
+                                    <li><a href="portfolio-masonry-two.html" class="sub-menu-item">Two Column</a></li>
+                                    <li><a href="portfolio-masonry-three.html" class="sub-menu-item">Three Column</a></li>
+                                    <li><a href="portfolio-masonry-four.html" class="sub-menu-item">Four Column</a></li>
+                                    <li><a href="portfolio-masonry-five.html" class="sub-menu-item">Five Column</a></li>
+                                    <li><a href="portfolio-masonry-six.html" class="sub-menu-item">Six Column</a></li>
+                                    <li><a href="portfolio-masonry-sidebar.html" class="sub-menu-item">Portfolio Sidebar</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <ul>
+                                    <li class="megamenu-head">Portfolio Detail</li>
+                                    <li><a href="portfolio-detail-one.html" class="sub-menu-item">Portfolio One</a></li>
+                                    <li><a href="portfolio-detail-two.html" class="sub-menu-item">Portfolio Two</a></li>
+                                    <li><a href="portfolio-detail-three.html" class="sub-menu-item">Portfolio Three</a></li>
+                                    <li><a href="portfolio-detail-four.html" class="sub-menu-item">Portfolio Four</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu parent-parent-menu-item">
+                        <a href="javascript:void(0)">Blogs</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Blog</a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="blog-grid.html" class="sub-menu-item">Blog Grids</a></li>
+                                    <li><a href="blog-masonry.html" class="sub-menu-item">Blog Masonry</a></li>
+                                    <li><a href="blog-list.html" class="sub-menu-item">Blog List</a></li>
+                                    <li><a href="blog-grid-sidebar.html" class="sub-menu-item">Blog-Sidebar</a></li>
+                                    <li><a href="blog-masonry-sidebar.html" class="sub-menu-item">Blog Masonry-sidebar</a></li>
+                                    <li><a href="blog-list-sidebar.html" class="sub-menu-item">Blog List-Sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Image Blog</a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="blog-image-grid.html" class="sub-menu-item">Blog Grids</a></li>
+                                    <li><a href="blog-image-masonry.html" class="sub-menu-item">Blog Masonry</a></li>
+                                    <li><a href="blog-image-grid-sidebar.html" class="sub-menu-item">Blog-Sidebar</a></li>
+                                    <li><a href="blog-image-masonry-sidebar.html" class="sub-menu-item">Blog Masonry-sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Blog Detail </a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="blog-detail-one.html" class="sub-menu-item">Blog Detail One</a></li>
+                                    <li><a href="blog-detail-two.html" class="sub-menu-item">Blog Detail Two</a></li>
+                                    <li><a href="blog-detail-three.html" class="sub-menu-item">Blog Detail Three</a></li>
+                                    <li><a href="blog-detail-four.html" class="sub-menu-item">Blog Detail Four</a></li>
+                                    <li><a href="blog-detail-five.html" class="sub-menu-item">Blog Detail Five</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">Single Blog Post</a><span class="submenu-arrow"></span>
+                                <ul class="submenu">
+                                    <li><a href="blog-standard-post.html" class="sub-menu-item">Standard Post</a></li>
+                                    <li><a href="blog-slider-post.html" class="sub-menu-item">Slider Post</a></li>
+                                    <li><a href="blog-youtube-post.html" class="sub-menu-item">Youtube Post</a></li>
+                                    <li><a href="blog-vimeo-post.html" class="sub-menu-item">Vimeo Post</a></li>
+                                    <li><a href="blog-html-video-post.html" class="sub-menu-item">HTML Video Post</a></li>
+                                    <li><a href="blog-audio-post.html" class="sub-menu-item">Audio Post</a></li>
+                                    <li><a href="blog-html-audio-post.html" class="sub-menu-item">HTML Audio Post</a></li>
+                                    <li><a href="blog-blockquote-post.html" class="sub-menu-item">Blockquote</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="blog-author.html" class="sub-menu-item">Author</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="page-contact.html" class="sub-menu-item">Contact us</a></li>
+                </ul><!--end navigation menu-->
+            </div><!--end navigation-->
+        </div><!--end container-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <section class="bg-half-170 bg-light pb-0 d-table w-100" style="background: url('images/bg/corporate01.png') center center;">
+        <div class="container">
+            <div class="row mt-5 align-items-center">
+                <div class="col-lg-7 col-md-6">
+                    <div class="title-heading">
+                        <h4 class="display-3 mb-4 fw-bold title-dark"> Insuring Your Future <br> From Today </h4>
+                        <p class="para-desc text-muted">From banking to wealth management and securities distribution, we dedicated financial services the teams serve all major sectors.</p>
+                        <div class="mt-4 pt-2">
+                            <a href="javascript:void(0)" class="btn btn-lg btn-pills btn-primary">Work with us</a>
+                        </div>
                     </div>
-                    <button class="show-more">
-                        <img src="<?php echo e(url('')); ?>/assets/images/Down_Arrow_3.svg" alt="down" />
-                    </button>
-                    <p class="text-accent2" style="margin-top: 25px;"><?php echo e($lang->lastUpdated); ?>:&nbsp;<?php echo e(\Carbon\Carbon::parse(date('M d, Y'))->formatLocalized('%b %d, %Y')); ?></p>
-                </div>
-            </div> 
-        </section>
-    </main>
+                </div><!--end col-->
 
-    <?php $__env->startPush('popup'); ?>
-        <div class="bg-overlay" onclick="bgoverlay_click()">
-            <div class="popup-currency-selectors" style="display: none;">
-                <div class="popup-header">
-                    <h2><?php echo e($lang->chooseCurrency); ?></h2>
-                    <img src="<?php echo e(url('')); ?>/assets/images/close.svg" alt="Close Popup" onclick="closepopup('.popup-currency-selectors')">
+                <div class="col-lg-5 col-md-6 mt-5 mt-sm-0">
+                    <img src="/assets/images/corporate01.png" class="img-fluid" alt="">
                 </div>
-                <div class="currencies-container" id="currencies-container_box">
-                    <?php $__currentLoopData = $currs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $curr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      
-                            <label for="checkboxInput<?php echo e($curr->code); ?>">
-                                <div class="currency-item" id="checkboxHover<?php echo e($curr->code); ?>">
-                                    <input <?php echo e((in_array($curr->code, $defaults)) ? 'checked':''); ?> id="checkboxInput<?php echo e($curr->code); ?>" class="checkbox" name="currencyCheckBox" type="checkbox" curr-code='<?php echo e($curr->code); ?>'  curr-rate='<?php echo e($curr->rate); ?>'  onChange="myFunction('#checkboxHover<?php echo e($curr->code); ?>', '#hoverH<?php echo e($curr->code); ?>', '#hoverp<?php echo e($curr->code); ?>', this)">
-                                    <div class="currency-main-container">
-                                        <div class="flagname">
-                                            <img src="<?php echo e(url('')); ?>/assets/images/flags/<?php echo e(strtolower($curr->code)); ?>.svg" alt="<?php echo e($curr->code); ?>">
-                                            <h4 id="hoverH<?php echo e($curr->code); ?>"><?php echo e($curr->code); ?></h4>
-                                        </div>
-                                        <p id="hoverp<?php echo e($curr->code); ?>">1 <?php echo e($curr->code); ?> = <?php echo e($curr->rate); ?> GEL</p>
+            </div><!--end row-->
+        </div> <!--end container-->
+    </section><!--end section-->
+    <!-- Hero End -->
+
+    <!-- Start services -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title fw-semibold mb-3">Explore Solutions</h4>
+                        <p class="text-muted para-desc mx-auto mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row">
+                <div class="col-lg-4 mt-4 pt-2">
+                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="fea-icon rounded text-white title-dark">
+                            <i class="uil uil-airplay"></i>
+                        </div>
+
+                        <div class="content mt-3">
+                            <a href="page-single-service.html" class="title h5 text-dark">Responsive Design</a>
+                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="fea-icon rounded text-white title-dark">
+                            <i class="uil uil-eye"></i>
+                        </div>
+
+                        <div class="content mt-3">
+                            <a href="page-single-service.html" class="title h5 text-dark">Retina Ready Graphics</a>
+                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="fea-icon rounded text-white title-dark">
+                            <i class="uil uil-tachometer-fast-alt"></i>
+                        </div>
+
+                        <div class="content mt-3">
+                            <a href="page-single-service.html" class="title h5 text-dark">Powerful Performance</a>
+                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="fea-icon rounded text-white title-dark">
+                            <i class="uil uil-palette"></i>
+                        </div>
+
+                        <div class="content mt-3">
+                            <a href="page-single-service.html" class="title h5 text-dark">Unlimited Color Options</a>
+                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="fea-icon rounded text-white title-dark">
+                            <i class="uil uil-font"></i>
+                        </div>
+
+                        <div class="content mt-3">
+                            <a href="page-single-service.html" class="title h5 text-dark">Customizable Fonts</a>
+                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="fea-icon rounded text-white title-dark">
+                            <i class="uil uil-file-upload-alt"></i>
+                        </div>
+
+                        <div class="content mt-3">
+                            <a href="page-single-service.html" class="title h5 text-dark">Free Updates</a>
+                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+
+        <div class="container mt-100 mt-60">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <img src="/assets/images/about02.jpg" class="img-fluid rounded shadow" alt="">
+                </div><!--end col-->
+
+                <div class="col-lg-7 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="section-title ms-lg-5">
+                        <h4 class="title fw-semibold mb-3">Crafted For Digital Agency.</h4>
+                        <p class="text-muted para-desc mb-0">The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not attract attention to itself or distract the viewer's attention from the layout.</p>
+
+                        <div class="row mt-4">
+                            <div class="col-lg-6 col-12">
+                                <ul class="mb-0 list-unstyled">
+                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Fully Responsive</li>
+                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Finance & Restructuring </li>
+                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Audit & Assurance </li>
+                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Trades & Stock Market </li>
+                                </ul>
+                            </div><!--end col-->
+
+                            <div class="col-lg-6 col-12">
+                                <ul class="mb-0 list-unstyled">
+                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Strategy & Planning </li>
+                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Software & Research </li>
+                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Support & Maintenance </li>
+                                </ul>
+                            </div><!--end col-->
+                        </div><!--end row-->
+
+                        <div class="mt-4">
+                            <a href="javascript:void(0)" class="btn btn-primary">Read More <i class="uil uil-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end section-->
+    <!-- End services -->
+
+    <!-- Start -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 mb-4 pb-2">
+                    <div class="section-title text-center">
+                        <h4 class="title fw-semibold mb-3">Meet Our Team Expert</h4>
+                        <p class="text-muted para-desc mx-auto mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+
+        <div class="container-fluid mt-4 pt-2">
+            <div class="row">
+                <div class="col-12 px-0">
+                    <div class="tiny-six-item">
+                        <div class="tiny-slide">
+                            <div class="card team team-primary">
+                                <div class="card-img">
+                                    <img src="/assets/images/client/09.jpg" class="img-fluid" alt="">
+                                    <div class="card-overlay"></div>
+                                </div>
+                                <div class="team-content">
+                                    <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Dennis Rosario</a>
+                                    <small class="text-white title-dark">C.E.O</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tiny-slide">
+                            <div class="card team team-primary">
+                                <div class="card-img">
+                                    <img src="/assets/images/client/10.jpg" class="img-fluid" alt="">
+                                    <div class="card-overlay"></div>
+                                </div>
+                                <div class="team-content">
+                                    <div class="name">
+                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Billy Gregory</a>
+                                        <small class="text-white title-dark">Manager</small>
                                     </div>
                                 </div>
-                            </label>
-                        
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-                <div class="popup-footer">
-                    <button class="new-button-currency-popup" onclick="closepopup('.popup-currency-selectors')"><?php echo e($lang->save); ?></button>
-                </div>
-            </div>
-            <!-- burger bar menu -->
-            <?php echo $__env->make('nn_site.partials.burger', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <!-- share page pop up -->
-            <div class="share-popup">
-                <div class="share-popup-header">
-                    <h3><?php echo e($lang->share); ?></h3>
-                    <div class="closing-share-popup"onclick="closepopup('.share-popup')" ><img src="<?php echo e(url('')); ?>/assets/images/closing-X.svg" alt="Close"></div>
-                </div>
-                <div class="share-popup-elemenets-parent">
-                    <div class="share-popup-elemenet">
-                        <div class="share-popup-inner-element">
-                            <a class="link-share-button" data-type="whatsapp" href="whatsapp://send?text=<?php echo e(url($_SERVER['REQUEST_URI'])); ?>" data-action="share/whatsapp/share">
-                                <img src="<?php echo e(url('')); ?>/assets/images/whatsapp.svg" alt="WhatsApp">
-                                <p>WhatsApp</p>
-                            </a>
+                            </div>
+                        </div>
+
+                        <div class="tiny-slide">
+                            <div class="card team team-primary">
+                                <div class="card-img">
+                                    <img src="/assets/images/client/11.jpg" class="img-fluid" alt="">
+                                    <div class="card-overlay"></div>
+                                </div>
+                                <div class="team-content">
+                                    <div class="name">
+                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Connie Dunton</a>
+                                        <small class="text-white title-dark">Manager</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tiny-slide">
+                            <div class="card team team-primary">
+                                <div class="card-img">
+                                    <img src="/assets/images/client/12.jpg" class="img-fluid" alt="">
+                                    <div class="card-overlay"></div>
+                                </div>
+                                <div class="team-content">
+                                    <div class="name">
+                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Alberta Petty</a>
+                                        <small class="text-white title-dark">Manager</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tiny-slide">
+                            <div class="card team team-primary">
+                                <div class="card-img">
+                                    <img src="/assets/images/client/13.jpg" class="img-fluid" alt="">
+                                    <div class="card-overlay"></div>
+                                </div>
+                                <div class="team-content">
+                                    <div class="name">
+                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Shirley Garcia</a>
+                                        <small class="text-white title-dark">Manager</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tiny-slide">
+                            <div class="card team team-primary">
+                                <div class="card-img">
+                                    <img src="/assets/images/client/14.jpg" class="img-fluid" alt="">
+                                    <div class="card-overlay"></div>
+                                </div>
+                                <div class="team-content">
+                                    <div class="name">
+                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Michael Wheeler</a>
+                                        <small class="text-white title-dark">Manager</small>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="share-popup-elemenet">
-                        <div class="share-popup-inner-element">
-                            <a data-type="viber" class="link-share-button" href="viber://forward?text=<?php echo e(url($_SERVER['REQUEST_URI'])); ?>">
-                                <img src="<?php echo e(url('')); ?>/assets/images/viber.svg" alt="Viber">
-                                <p>Viber</p>
-                            </a>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+
+        <div class="container mt-100 mt-60">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="section-title mb-4 pb-2 mb-md-0 pb-md-0 me-lg-5">
+                        <h4 class="title fw-semibold mb-3">Our Skills & Expertise</h4>
+                        <p class="text-muted para-desc mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-7 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                    <div class="ms-lg-5">
+                        <div class="progress-box">
+                            <h6 class="text-muted fw-normal">Research</h6>
+                            <div class="progress position-relative">
+                                <div class="progress-bar position-relative bg-primary" style="width:84%;"></div>
+                                <div class="progress-value d-block text-muted h6 fw-normal">84%</div>
+                            </div>
+                        </div><!--end process box-->
+
+                        <div class="progress-box mt-4">
+                            <h6 class="text-muted fw-normal">Sales & Trading</h6>
+                            <div class="progress position-relative">
+                                <div class="progress-bar position-relative bg-primary" style="width:75%;"></div>
+                                <div class="progress-value d-block text-muted h6 fw-normal">75%</div>
+                            </div>
+                        </div><!--end process box-->
+
+                        <div class="progress-box mt-4">
+                            <h6 class="text-muted fw-normal">Investment</h6>
+                            <div class="progress position-relative">
+                                <div class="progress-bar position-relative bg-primary" style="width:79%;"></div>
+                                <div class="progress-value d-block text-muted h6 fw-normal">79%</div>
+                            </div>
+                        </div><!--end process box-->
+
+                        <div class="progress-box mt-4">
+                            <h6 class="text-muted fw-normal">Finance</h6>
+                            <div class="progress position-relative">
+                                <div class="progress-bar position-relative bg-primary" style="width:95%;"></div>
+                                <div class="progress-value d-block text-muted h6 fw-normal">95%</div>
+                            </div>
+                        </div><!--end process box-->
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end container-->
+    <!-- End -->
+
+    <!-- Start CTA -->
+    <section class="bg-cta" style="background: url('images/cta03.jpg') center;">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card py-5 px-4 border-0 rounded bg-white">
+                        <div class="tiny-single-item">
+                            <div class="tiny-slide">
+                                <div class="card client-testi text-center">
+                                    <img src="/assets/images/client/01.jpg" class="avatar avatar-small rounded-pill mx-auto" alt="">
+
+                                    <div class="card-body pb-0 content">
+                                        <p class="h6 fw-normal text-muted fst-italic">" The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not attract attention to itself or distract the viewer's attention from the layout. "</p>
+
+                                        <div class="name mt-4">
+                                            <small class="text-uppercase fw-semibold d-block">Johnny Rosario</small>
+                                            <small class="text-muted">C.E.O</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tiny-slide">
+                                <div class="card client-testi text-center">
+                                    <img src="/assets/images/client/02.jpg" class="avatar avatar-small rounded-pill mx-auto" alt="">
+
+                                    <div class="card-body pb-0 content">
+                                        <p class="h6 fw-normal text-muted fst-italic">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others - which creates a distinct visual impression. "</p>
+
+                                        <div class="name mt-4">
+                                            <small class="text-uppercase fw-semibold d-block">Gale Larose</small>
+                                            <small class="text-muted">Manager</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tiny-slide">
+                                <div class="card client-testi text-center">
+                                    <img src="/assets/images/client/03.jpg" class="avatar avatar-small rounded-pill mx-auto" alt="">
+
+                                    <div class="card-body pb-0 content">
+                                        <p class="h6 fw-normal text-muted fst-italic">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. If the fill text is intended to illustrate the characteristics of different typefaces. "</p>
+
+                                        <div class="name mt-4">
+                                            <small class="text-uppercase fw-semibold d-block">Shelly Goodman</small>
+                                            <small class="text-muted">Manager</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="share-popup-elemenet">
-                        <div class="share-popup-inner-element">
-                            <a data-type="messanger" class="link-share-button" href="fb-messenger://share/?link=<?php echo e(url($_SERVER['REQUEST_URI'])); ?>">
-                                <img src="<?php echo e(url('')); ?>/assets/images/messenger.svg" alt="Messenger">
-                                <p>Messenger</p>
-                            </a>
-                        </div>
-                    
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end section-->
+    <!-- End CTA -->
+
+    <!-- Start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h6 class="text-primary">Blogs</h6>
+                        <h4 class="title fw-semibold mt-2 mb-3">Latest Blog & News</h4>
+                        <p class="text-muted para-desc mx-auto mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
                     </div>
-                    <div class="share-popup-elemenet">
-                        <div class="share-popup-inner-element">
-                            <a href="#" class='copy-url-button'> 
-                                <img src="<?php echo e(url('')); ?>/assets/images/copy-link.svg" alt="Copy Link">
-                                <p><?php echo e($lang->copyLink); ?></p>
-                            </a>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card blog blog-primary shadow rounded overflow-hidden">
+                        <div class="image position-relative overflow-hidden">
+                            <img src="/assets/images/blog/01.jpg" class="img-fluid" alt="">
+
+                            <div class="blog-tag">
+                                <a href="javascript:void(0)" class="badge text-bg-light">Corporate</a>
+                            </div>
+                        </div>
+
+                        <div class="card-body content">
+                            <a href="blog-detail-four.html" class="h5 title text-dark d-block mb-0">Building Your Corporate Identity from Starty</a>
+                            <p class="text-muted mt-2 mb-2">The most well-known dummy text is the 'Lorem Ipsum', in the 16th century.</p>
+                            <a href="blog-detail-four.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    <?php $__env->stopPush(); ?>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card blog blog-primary shadow rounded overflow-hidden">
+                        <div class="image position-relative overflow-hidden">
+                            <img src="/assets/images/blog/02.jpg" class="img-fluid" alt="">
+
+                            <div class="blog-tag">
+                                <a href="javascript:void(0)" class="badge text-bg-light">Branding</a>
+                            </div>
+                        </div>
+
+                        <div class="card-body content">
+                            <a href="blog-detail-four.html" class="h5 title text-dark d-block mb-0">The Dark Side of Overnight Success</a>
+                            <p class="text-muted mt-2 mb-2">The most well-known dummy text is the 'Lorem Ipsum', in the 16th century.</p>
+                            <a href="blog-detail-four.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card blog blog-primary shadow rounded overflow-hidden">
+                        <div class="image position-relative overflow-hidden">
+                            <img src="/assets/images/blog/03.jpg" class="img-fluid" alt="">
+
+                            <div class="blog-tag">
+                                <a href="javascript:void(0)" class="badge text-bg-light">Technology</a>
+                            </div>
+                        </div>
+
+                        <div class="card-body content">
+                            <a href="blog-detail-four.html" class="h5 title text-dark d-block mb-0">The Right Hand of Business IT World</a>
+                            <p class="text-muted mt-2 mb-2">The most well-known dummy text is the 'Lorem Ipsum', in the 16th century.</p>
+                            <a href="blog-detail-four.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end section-->
+    <!-- End -->
+
+    <!-- CTA Start -->
+    <div class="container-fluid px-0">
+        <div class="py-5 position-relative" style="background: url('images/cta02.jpg') center;">
+            <div class="bg-overlay bg-gradient-overlay"></div>
+            <div class="container my-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 col-md-7">
+                        <h4 class="display-6 h4 mb-0 text-white title-dark fw-medium">Make your website unforgettable <br> Join the Starty community.</h4>
+                    </div><!--end col-->
+
+                    <div class="col-lg-4 col-md-5 text-md-end mt-4 mt-sm-0">
+                        <a href="javascript:void(0)" class="btn btn-light">Join us Now</a>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </div><!--end bg image-->
+    </div><!--end container-->
+    <!-- CTA End -->
+
 
 <?php $__env->stopSection(); ?>
 
- 
+
 <?php echo $__env->make('../nn_site/index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/nkarashvili/Documents/laravel/newproj/resources/views/nn_site/pages/home.blade.php ENDPATH**/ ?>
