@@ -1,0 +1,6 @@
+[01-Oct-2018 11:02:26 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/profile.blade.php on line 87
+[11-Oct-2018 18:48:37 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/profile.blade.php on line 87
+[26-Oct-2018 07:01:20 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/profile.blade.php on line 87
+[10-Dec-2018 15:32:41 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/profile.blade.php on line 87
+[22-Jan-2019 01:16:35 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/profile.blade.php on line 87
+[09-Mar-2019 20:32:26 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/profile.blade.php on line 87

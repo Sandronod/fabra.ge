@@ -1,0 +1,55 @@
+
+/*@font-face {*/
+/*    font-family: FiraGO;*/
+/*    src: url(../fonts/fonts/MyriadGEOMedium.eot);*/
+/*    src: url(../fonts/fonts/MyriadGEOMedium.eot?#iefix) format("embedded-opentype"), url(../fonts/fonts/MyriadGEOMedium.svg) format("svg"), url(../fonts/fonts/MyriadGEOMedium.ttf) format("truetype"),*/
+/*        url(../fonts/fonts/MyriadGEOMedium.woff) format("woff"), url(../fonts/fonts/MyriadGEOMedium.woff2) format("woff2");*/
+/*    font-weight: 400;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'FiraGO';*/
+/*    src: url('FiraGO-Medium.eot');*/
+/*    src: url('FiraGO-Medium.eot?#iefix') format('embedded-opentype'),*/
+/*        url('FiraGO-Medium.woff2') format('woff2'),*/
+/*        url('FiraGO-Medium.woff') format('woff'),*/
+/*        url('FiraGO-Medium.ttf') format('truetype'),*/
+/*        url('FiraGO-Medium.svg#FiraGO-Medium') format('svg');*/
+/*    font-weight: 500;*/
+/*    font-style: normal;*/
+/*    font-display: swap;*/
+/*}*/
+
+
+body * {
+    font-family: 'BPG Arial', sans-serif !important;
+    -webkit-font-smoothing:  antialiased !important;
+}
+
+.exchange-table th {
+    font-weight: 600;
+}
+
+.logo a {
+    font-family: 'Roboto' !important;
+}
+
+@media (max-width: 766px) {
+
+    .heading-div h1 {
+        font-size: 22px;
+    }
+
+    .heading-div p {
+        font-size: 13px;
+    }
+
+    .heading-2 {
+        font-size: 0.8rem;
+    }
+}
+
+/* .heading-div h1 {
+    font-family: "BPG Glaho WEB Caps", sans-serif !important;
+} */

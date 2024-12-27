@@ -1,0 +1,13 @@
+[16-Sep-2018 10:23:36 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/AuthController.php on line 13
+[17-Sep-2018 03:10:23 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/PasswordController.php on line 9
+[25-Sep-2018 16:58:51 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/AuthController.php on line 13
+[25-Sep-2018 17:00:14 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/PasswordController.php on line 9
+[26-Sep-2018 11:37:10 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/AuthController.php on line 13
+[27-Sep-2018 15:18:12 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/AuthController.php on line 13
+[27-Sep-2018 15:21:48 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/PasswordController.php on line 9
+[13-Oct-2018 02:48:36 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/AuthController.php on line 13
+[13-Oct-2018 02:48:37 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/AuthController.php on line 13
+[13-Oct-2018 02:48:53 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/PasswordController.php on line 9
+[13-Oct-2018 12:46:57 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/AuthController.php on line 13
+[13-Oct-2018 12:47:07 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/PasswordController.php on line 9
+[13-Nov-2018 12:16:17 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Controller' not found in /home/mydayge/public_html/app/Http/Controllers/Auth/PasswordController.php on line 9

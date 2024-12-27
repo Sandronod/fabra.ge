@@ -1,0 +1,5 @@
+[30-Sep-2018 20:59:38 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_thematic_category/edit.blade.php on line 32
+[13-Oct-2018 20:41:24 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_thematic_category/edit.blade.php on line 32
+[24-Nov-2018 10:41:24 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_thematic_category/edit.blade.php on line 32
+[08-Jan-2019 03:53:30 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_thematic_category/edit.blade.php on line 32
+[27-Feb-2019 20:37:18 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_thematic_category/edit.blade.php on line 32

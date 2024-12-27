@@ -1,0 +1,58 @@
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.gap {
+  gap: var(--gap, 1rem);
+}
+
+// fonts
+.ff-en {
+  font-family: 'Roboto', sans-serif;
+}
+
+.ff-geo {
+  font-family: 'DejaVu Sans', sans-serif;
+}
+
+.fz-900 {
+  font-size: 1.5rem;
+}
+
+.fz-800 {
+  font-size: 1.25rem;
+}
+
+.fz-700 {
+  font-size: 1.125rem;
+}
+
+.fz-400 {
+  font-size: 1rem;
+}
+
+.fz-300 {
+  font-size: 0.875rem;
+}
+
+.text-accent {
+  color: rgba(38, 62, 51, 0.7);
+}
+
+.hide-on-md {
+  @media (max-width: 834px) {
+    display: none;
+  }
+}

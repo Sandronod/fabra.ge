@@ -1,0 +1,137 @@
+.convert {
+  header {
+    margin-bottom: 52px;
+
+    @media (max-width: 834px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+  }
+
+  .converter {
+    margin-bottom: 52px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    gap: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    a {
+      display: flex;
+      gap: 8px;
+      font-size: 1rem;
+      color: rgba(38, 62, 51, 0.7);
+      text-decoration: none;
+    }
+  }
+}
+
+.currency-input {
+  position: relative;
+
+  input {
+    padding-block: 26px;
+    padding-left: 135px;
+    width: 100%;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--clr-theme-dark);
+
+    background: var(--clr-white);
+    border: 1px solid rgba(38, 62, 51, 0.1);
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &::placeholder {
+      font-family: inherit;
+      color: rgba(38, 62, 51, 0.5);
+    }
+  }
+}
+
+.currency-picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--clr-theme-dark);
+
+  background: var(--clr-gray);
+  border-radius: 7px 0px 0px 7px;
+  transition: all 200ms ease-in-out;
+
+  &.active {
+    background-color: #5b9279;
+    color: var(--clr-white);
+    border-bottom-left-radius: 0px;
+  }
+
+  & > button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    gap: 1rem;
+    color: inherit;
+    text-transform: uppercase;
+    border: none;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      img {
+        width: 21px;
+      }
+    }
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.currency-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+
+  background: #f4f5f5;
+  border: 1px solid rgba(38, 62, 51, 0.5);
+  border-radius: 0 0 22px 22px;
+
+  z-index: 10;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-inline: 1rem;
+    padding-block: 0.25rem;
+    color: var(--clr-theme-dark);
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

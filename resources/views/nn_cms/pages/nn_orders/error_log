@@ -1,0 +1,10 @@
+[06-Oct-2018 03:49:45 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_catalog/edit.blade.php on line 32
+[25-Oct-2018 15:45:59 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_catalog/edit.blade.php on line 32
+[12-Nov-2018 19:35:00 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/edit.blade.php on line 32
+[28-Dec-2018 12:50:55 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/edit.blade.php on line 32
+[03-Jan-2019 15:05:38 UTC] PHP Fatal error:  Class 'DB' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/index.blade.php on line 162
+[11-Jan-2019 02:41:49 UTC] PHP Fatal error:  Class 'DB' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/index.blade.php on line 162
+[17-Jan-2019 21:30:36 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/edit.blade.php on line 32
+[18-Feb-2019 21:49:53 UTC] PHP Fatal error:  Class 'DB' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/index.blade.php on line 162
+[27-Feb-2019 22:15:05 UTC] PHP Fatal error:  Class 'DB' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/index.blade.php on line 162
+[01-Mar-2019 16:57:30 UTC] PHP Fatal error:  Class 'LaravelLocalization' not found in /home/mydayge/public_html/resources/views/nn_cms/pages/nn_orders/edit.blade.php on line 32

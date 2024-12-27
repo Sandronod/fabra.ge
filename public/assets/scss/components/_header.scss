@@ -1,0 +1,51 @@
+.header {
+  margin-bottom: 52px;
+  padding-block: 32px 52px;
+  background-image: url('../images/Group 372.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__top {
+    margin-bottom: 52px;
+  }
+}
+
+.logo {
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--clr-theme-dark);
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style-type: none;
+
+  @media (max-width: 834px) {
+    display: none;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--clr-theme-dark);
+    text-decoration: none;
+
+    &.active {
+      background: #eff1f0;
+      border: 1px solid #8b9891;
+      box-sizing: border-box;
+      border-radius: 40px;
+      padding: 13px 24px;
+    }
+  }
+}

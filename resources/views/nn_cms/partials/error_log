@@ -1,0 +1,6 @@
+[26-Sep-2018 04:53:28 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/partials/sidebar.blade.php on line 38
+[27-Sep-2018 15:19:14 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/partials/sidebar.blade.php on line 38
+[02-Oct-2018 13:26:25 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/partials/sidebar.blade.php on line 38
+[02-Oct-2018 16:59:40 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/partials/sidebar.blade.php on line 38
+[12-Oct-2018 18:20:23 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/partials/sidebar.blade.php on line 38
+[13-Feb-2019 18:56:03 UTC] PHP Fatal error:  Class 'Request' not found in /home/mydayge/public_html/resources/views/nn_cms/partials/sidebar.blade.php on line 75

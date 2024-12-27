@@ -1,0 +1,63 @@
+{
+  "_from": "bpg-arial@^1.0.0",
+  "_id": "bpg-arial@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-AyJNnKh54wK57Jm0treeLhJ4zeamUxF/8o+u4JquzvbSY/3/FGwr8z+LJBMUGz0hdnK4FuK3GLPiETKKB/XnAg==",
+  "_location": "/bpg-arial",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "bpg-arial@^1.0.0",
+    "name": "bpg-arial",
+    "escapedName": "bpg-arial",
+    "rawSpec": "^1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/bpg-arial/-/bpg-arial-1.0.0.tgz",
+  "_shasum": "57584ed58aad4a4486978c01bf31cad5119635e6",
+  "_spec": "bpg-arial@^1.0.0",
+  "_where": "C:\\Users\\Nodar\\Desktop\\myvaluta-backend\\myvaluta",
+  "author": {
+    "name": "Lado Lomidze",
+    "email": "lado.lomidze@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/web-fonts/bpg-arial/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "BPG Arial Web-Font Package",
+  "homepage": "https://github.com/web-fonts/bpg-arial",
+  "keywords": [
+    "ttf",
+    "woff",
+    "woff2",
+    "svg",
+    "font",
+    "web-font",
+    "bpg-arial"
+  ],
+  "licenses": [
+    {
+      "type": "CC-BY-NC-ND 4.0",
+      "url": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "css/bpg-arial.css",
+  "name": "bpg-arial",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-fonts/bpg-arial.git"
+  },
+  "version": "1.0.0"
+}

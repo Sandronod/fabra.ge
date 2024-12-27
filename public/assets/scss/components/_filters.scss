@@ -1,0 +1,126 @@
+.filter {
+  position: relative;
+  width: fit-content;
+
+  & > button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    min-width: 153px;
+    padding-block: 14px;
+    padding-inline: 20px;
+    font-size: 1.125rem;
+    color: var(--clr-theme-dark);
+    background: rgba(38, 62, 51, 0.05);
+    border: 1px solid rgba(38, 62, 51, 0.5);
+    border-radius: 40px;
+    transition: border-radius 200ms ease-in-out;
+
+    @media (max-width: 560px) {
+      padding-block: 10px;
+      padding-inline: 16px;
+    }
+
+    & > div {
+      display: flex;
+      gap: 12px;
+    }
+  }
+
+  input {
+    all: unset !important;
+    height: 100%;
+    padding: 0;
+    background-color: transparent;
+  }
+}
+
+.filter-dropdown {
+  &.active {
+    & > button {
+      border-radius: 22px 22px 0 0;
+    }
+
+    .filter-options,
+    .languages-options {
+      max-height: 500px;
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+}
+
+.filter-options {
+  position: absolute;
+  max-height: 0;
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: top;
+
+  transition: all 200ms ease-in-out;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f4f5f5;
+  border: 1px solid rgba(38, 62, 51, 0.5);
+  border-radius: 0 0 22px 22px;
+
+  z-index: 10;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding-block: 14px;
+    padding-inline: 20px;
+    font-size: 1.125rem;
+    color: var(--clr-theme-dark);
+
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.filter-by-date {
+  min-width: 152px;
+  width: max-content;
+  position: relative;
+
+  button {
+    pointer-events: none;
+    position: relative;
+    background-color: #eff1f1;
+    z-index: 10000;
+    width: max-content;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  .date-input-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    input::-webkit-datetime-edit {
+      width: 100%;
+      height: 100%;
+      min-height: 42px;
+      padding-block: 14px;
+      padding-inline: 20px;
+      z-index: 991;
+    }
+    input::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 991;
+      background: transparent;
+    }
+  }
+}
