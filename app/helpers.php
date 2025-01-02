@@ -15,7 +15,9 @@ function fullUrl($passedUrl = null)
     }
     else
     {
-
+        if(getCurrentLocale() == 'ka') {
+            return url($passedUrl);
+        }
         return url(getCurrentLocale() . '/' . $passedUrl);
 
     }
@@ -160,27 +162,27 @@ function getSupportedLocalesExceptSelected()
 //}
 function menu()
 {
-    $menu = nn_menu::getPrimaryMenu();
+    $menu = nn_menu::where('primary', 1)->first();
 
-    $sitemenu = '';
-    $i = 0;
-    foreach ($menu as $m)
-    {
-
-        if ($m->parent_id == 0)
-        {
-            $selected = "";
-            if (request()->route('slug') == $m->slug)
-            {
-                $selected = 'class="selected"';
-            }
-            $sitemenu .= '
-             <li ><a href="' . fullUrl($m->slug) . '"  ' . $selected . '>' . $m->name . '</a></li>';
-            $i++;
-        }
-    }
+//    $sitemenu = '';
+//    $i = 0;
+//    foreach ($menu as $m)
+//    {
+//
+//        if ($m->parent_id == 0)
+//        {
+//            $selected = "";
+//            if (request()->route('slug') == $m->slug)
+//            {
+//                $selected = 'class="selected"';
+//            }
+//            $sitemenu .= '
+//             <li ><a href="' . fullUrl($m->slug) . '"  ' . $selected . '>' . $m->name . '</a></li>';
+//            $i++;
+//        }
+//    }
     // '.$this->menuItem($menu,$m->slug,$actual_link,$m->id).'
-    return $sitemenu;
+    return $menu;
 }
 
 function menuItem($menu, $slug, $actual_link, $id)

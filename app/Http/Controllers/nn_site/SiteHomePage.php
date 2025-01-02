@@ -29,7 +29,6 @@ class SiteHomePage extends SiteController
     public function index(Request $request)
     {
 
-
       return view('nn_site.pages.home');
     }
 

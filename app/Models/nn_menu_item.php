@@ -1,15 +1,1 @@
-<?php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-class nn_menu_item extends Model
-{
-    protected $table = 'nn_menu_item';
-    
-    public function nn_menu_items_lang()
-    {
-		return $this->hasMany('App\Models\nn_menu_item_lang');
-	}
-}
+<?phpnamespace App\Models;use Illuminate\Database\Eloquent\Model;class nn_menu_item extends Model{    protected $table = 'nn_menu_item';    public function nn_menu_items_lang()    {		return $this->hasMany('App\Models\nn_menu_item_lang');	}    public function lang()    {        return $this->hasOne('App\Models\nn_menu_item_lang')            ->where('lang', getCurrentLocale());    }    public function collection()    {        return $this->hasOne('App\Models\nn_collection', 'id', 'collection_id');    }    public function category()    {        return $this->hasOne('App\Models\nn_category', 'id', 'category_id');    }    public function parentItem()    {        return $this->belongsTo('App\Models\nn_menu_item', 'parent_id', 'id');    }    public function subMenu()    {        return $this->hasMany('App\Models\nn_menu_item', 'parent_id', 'id')            ->orderBy('position', 'asc');    }}

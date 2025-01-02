@@ -26,7 +26,8 @@ class nn_menu extends Model
 
     {
 
-		return $this->hasMany('App\Models\nn_menu_item');
+		return $this->hasMany('App\Models\nn_menu_item')
+            ->where('parent_id', 0)->orderBy('position', 'asc');
 
 	}
 

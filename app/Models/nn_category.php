@@ -32,7 +32,14 @@ class nn_category extends Model
 
     ];
 
+    public function lang()
 
+    {
+
+        return $this->hasOne('App\Models\nn_category_lang', 'id', 'category_id')
+            ->where('lang', getCurrentLocale());
+
+    }
 
     //_-_ CMS SIDE
 
@@ -128,7 +135,7 @@ class nn_category extends Model
 
             nn_category_lang::create($input);
 
-            
+
 
         }
 

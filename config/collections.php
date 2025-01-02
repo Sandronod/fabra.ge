@@ -5,7 +5,8 @@ return [
     'collection_types' =>
     [
         'products' => 'products',
-        'about us' => 'aboutus',
+        'collections' => 'collections',
+        'homepage' => 'homepage',
 //        'how it works' => 'howitworks',
 //        'gallery' => 'gallery',
 //        'faq '=> 'faq',
@@ -14,7 +15,9 @@ return [
     ],
 
     'products' => ['name', 'imgurl', 'body', 'description', 'category', 'embed','videoUrl'],
-    'aboutus' => ['name', 'imgurl', 'description', 'body','embed','videoUrl'],
+    'collections' => ['name', 'imgurl', 'embed'],
+    'homepage' => ['name', 'imgurl', 'description', 'body','embed','videoUrl'],
+//    'aboutus' => ['name', 'imgurl', 'description', 'body','embed','videoUrl'],
 //    'howitworks' => ['name', 'imgurl', 'description'],
 //    'faq' => ['name', 'description'],
 //    'testimonials' => ['name', 'imgurl', 'stars', 'description'],
