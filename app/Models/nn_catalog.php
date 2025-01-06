@@ -67,15 +67,9 @@ class nn_catalog extends Model
 		'stars',
 
 		'price',
-
-
-
         'collection_id',
 		'views',
         'sDate',
-
-
-
         'category_id',
 
 		'aqcia_id',
