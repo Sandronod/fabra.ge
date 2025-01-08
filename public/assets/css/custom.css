@@ -1,0 +1,36 @@
+#topnav {
+    background-color:#1e273e !important;
+}
+#topnav.nav-sticky {
+    background-color:#3274f0 !important;
+}
+@media (min-width: 992px) {
+    #topnav .navigation-menu>li>a {
+        font-weight: 400;
+        color: #fff !important;
+    }
+    #topnav .navigation-menu>li:hover>a,
+    #topnav .navigation-menu>li.active>a {
+        color: #a1c2ff !important;
+    }
+
+    #topnav .navigation-menu>li .submenu.megamenu li .megamenu-head {
+        font-size: 12px;
+        color: #3274f0 !important;
+        white-space: normal;
+        min-height: 62px;
+    }
+
+    #topnav .navigation-menu>li .submenu li a {
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+.tooltip {
+    font-size: 12px;
+}
+.tooltip.fade:not(.show) {
+    opacity: 0 !important;
+    transition: none !important;
+}

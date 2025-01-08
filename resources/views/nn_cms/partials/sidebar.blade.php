@@ -751,7 +751,7 @@
 
         </li>
 
-        <li class="nav-item<?php if(Request::is('*/subscribers')): ?> start active<?php endif; ?>">
+        {{-- <li class="nav-item<?php if(Request::is('*/subscribers')): ?> start active<?php endif; ?>">
 
             <a href="{{ url(getCurrentLocale() . '/manager/subscribers') }}" class="nav-link nav-toggle filemanager-btn-sidebar">
 
@@ -763,7 +763,7 @@
 
             </a>
 
-        </li>
+        </li> --}}
 
         <!-- <li class="nav-item<?php if(Request::is('*/orders')): ?> start active<?php endif; ?>">
 

@@ -39,14 +39,16 @@ class PagesService
         return $this->data;
 
     }
+
     public function getCategory($id)
     {
-        $categoryList = nn_catalog::where('category_id', $id)->get();
+        $categoryList = nn_catalog::where('category_id', $id)->where('show', 1)->orderByDesc('position')->get();
         $this->data['categoryList'] = $categoryList;
     }
+
     public function getCollection($id)
     {
-        $collectionList = nn_catalog::where('collection_id', $id)->get();
+        $collectionList = nn_catalog::where('collection_id', $id)->where('show', 1)->orderByDesc('position')->get();
         $this->data['collectionList'] = $collectionList;
     }
 
@@ -56,14 +58,21 @@ class PagesService
         $relatedItems = [];
         $menuItem = null;
         $this->template = 'detail';
-        if($catalog->category_id != ''){
+
+        if($catalog->category_id != '') {
+
             $category = nn_category::where('id', $catalog->category_id)->first();
             $menuItem= nn_menu_item::where('category_id', $category->id)->first();
-            $relatedItems = nn_catalog::where('category_id', $category->id)
-                ->where('id', '!=',  $catalog->id)->orderByRaw('RAND()')->get()->take(3);
+            $relatedItems = nn_catalog
+            ::where('category_id', $category->id)
+            ->where('id', '!=',  $catalog->id)
+            ->orderByRaw('RAND()')
+            ->get()
+            ->take(3);
             $this->data['relatedItems'] = $relatedItems;
 
         }
+
         if($catalog->collection_id != '' && $catalog->category_id == ''){
 
             $collection = nn_category::where('id', $catalog->collection_id)->first();
@@ -76,8 +85,9 @@ class PagesService
 
         return $this->data;
     }
+
     public function getClients(){
-        $this->data["clients"] = nn_catalog::where('collection_id', 14)->get();
+        $this->data["clients"] = nn_catalog::where('collection_id', 14)->where('show', 1)->orderByDesc('position')->get();
     }
 
 

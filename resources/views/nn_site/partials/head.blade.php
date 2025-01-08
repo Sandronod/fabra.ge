@@ -32,7 +32,7 @@
 </title>
 
 <!-- favicon -->
-<link href="/assets/images/favicon.ico" rel="shortcut icon">
+<link href="/assets/images/favicon.png" rel="shortcut icon">
 <!-- Bootstrap -->
 <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="/assets/css/tiny-slider.css" rel="stylesheet" type="text/css" />
@@ -50,3 +50,12 @@
 @stack('css')
 
 {!!$siteSettings->tags_head!!}
+
+<!-- custom css -->
+
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+
+@if (getCurrentLocale() == 'ka')
+    <link rel="stylesheet" href="//cdn.web-fonts.ge/fonts/bpg-banner/css/bpg-banner.min.css">
+    <link href="/assets/css/geo-fonts.css" rel="stylesheet" type="text/css"/>
+@endif

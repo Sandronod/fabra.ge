@@ -4,8 +4,14 @@
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-between">
                     <ul class="list-unstyled mb-0">
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)" class="text-muted fw-normal"><i data-feather="mail" class="fea icon-sm text-primary"></i> support@starty.com</a></li>
-                        <li class="list-inline-item mb-0 ms-3"><a href="javascript:void(0)" class="text-muted fw-normal"><i data-feather="map-pin" class="fea icon-sm text-primary"></i> 4432 Pick Street Denver, CO 80203</a></li>
+                        <li class="list-inline-item mb-0"><a href="mailto:{{$siteSettings->email}}" class="text-muted fw-normal"><i data-feather="mail" class="fea icon-sm text-primary"></i> {{$siteSettings->email}}</a></li>
+                        <li class="list-inline-item mb-0 ms-3"><a href="javascript:void(0)" class="text-muted fw-normal"><i data-feather="map-pin" class="fea icon-sm text-primary"></i>
+                            @if (getCurrentLocale() == 'ka')
+                                {{$siteSettings->address_ka}}
+                            @elseif (getCurrentLocale() == 'en')
+                            {{$siteSettings->address_en}}
+                            @endif
+                        </a></li>
                     </ul>
 
                     <ul class="list-unstyled social-icon tagline-social mb-0">
@@ -25,8 +31,8 @@
 <header id="topnav" class="defaultscroll sticky tagline-height">
     <div class="container">
         <!-- Logo container-->
-        <a class="logo" href="index.html">
-            <img src="/assets/images/logo-dark.png" class="logo-light-mode" alt="">
+        <a class="logo" href="{{fullUrl()}}">
+            <img src="/assets/images/logo.png" class="logo-light-mode" alt="">
             <img src="/assets/images/logo-light.png" class="logo-dark-mode" alt="">
         </a>
         <!-- End Logo container-->
@@ -48,7 +54,7 @@
             <li class="list-inline-item search-icon mb-0">
                 <div class="dropdown">
                     <button type="button" class="btn btn-link text-decoration-none dropdown-toggle mb-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="uil uil-search h5 text-dark mb-0"></i>
+                        <i class="uil uil-search h5 text-white mb-0"></i>
                     </button>
                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-4 py-0" style="width: 300px;">
                         <form class="p-4">
@@ -89,7 +95,15 @@
                                                 <li class="megamenu-head">{{$menuItem->lang->name}}</li>
                                                 @if(isset($menuItem->subMenu[0]))
                                                     @foreach($menuItem->subMenu as $subItem)
-                                                        <li><a href="{{fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)}}" class="sub-menu-item">{{$subItem->lang->name}}</a></li>
+                                                        <li><a href="{{fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)}}" class="sub-menu-item" 
+
+                                                            @if(mb_strlen($subItem->lang->name) > 22) 
+                                                                data-bs-toggle="tooltip" 
+                                                                data-bs-placement="top" 
+                                                                data-bs-title="{{ $subItem->lang->name }}"
+                                                            @endif
+                                                            
+                                                            >{{$subItem->lang->name}}</a></li>
                                                     @endforeach
                                                 @endif
                                             </ul>
