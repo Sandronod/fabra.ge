@@ -79,12 +79,7 @@
 </footer><!--end footer-->
 <!-- End -->
 
-<!-- Back to top -->
-<ul class="text-center list-unstyled switcher-button mb-0 position-fixed" style="top: 20%; left: 10px; z-index: 2;">
-    <li class="d-grid"><a href="javascript:void(0)" class="btn btn-icon rounded-circle btn-dark dark-version t-dark" onclick="setTheme('style-dark')"> <i class="uil uil-moon fs-5"></i> </a></li>
-    <li class="d-grid"><a href="javascript:void(0)" class="btn btn-icon rounded-circle btn-dark light-version t-light" onclick="setTheme('style')"> <i class="uil uil-sun fs-5"></i> </a></li>
-    <li class="d-grid"><a href="https://1.envato.market/starty" target="_blank" class="btn btn-icon rounded-circle btn-primary mt-2"> <i class="uil uil-shopping-cart fs-5"></i> </a></li>
-</ul>
+
 <a href="javascript:void(0)" onclick="topFunction()" id="back-to-top" class="back-to-top rounded-pill"><i class="mdi mdi-arrow-up"></i></a>
 <!-- Back to top -->
 

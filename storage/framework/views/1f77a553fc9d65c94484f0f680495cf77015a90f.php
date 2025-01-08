@@ -1,6 +1,7 @@
 
     <!-- javascript -->
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <?php echo $__env->yieldPushContent('js'); ?>
     <script src="/assets/js/tiny-slider.js"></script>
     <script src="/assets/js/feather.min.js"></script>
 
@@ -12,5 +13,4 @@
     <script src="/assets/js/app.js"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
 
 
-    <?php echo $__env->yieldPushContent('js'); ?>
 <?php /**PATH C:\xampp\htdocs\fabra.ge\resources\views/nn_site/partials/scripts.blade.php ENDPATH**/ ?>

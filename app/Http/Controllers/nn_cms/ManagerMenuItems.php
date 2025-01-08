@@ -397,7 +397,7 @@ class ManagerMenuItems extends ManagerSiteController
 
         $menuitemLang->name = $request->name;
 
-        if($request->type == 'text' || $request->type == 'collection' || $request->type == 'contact'){ // check if type is: text or collection
+        if($request->type != 'link'){ // check if type is: text or collection
 
             $menuitemLang->link = '';
 
@@ -407,7 +407,7 @@ class ManagerMenuItems extends ManagerSiteController
 
             $menuitemLang->imgurl = $request->imgurl;
 
-        }else if($request->type == 'link'){ // check if type is: link
+        }else { // check if type is: link
 
             $menuitemLang->link = $request->link;
 

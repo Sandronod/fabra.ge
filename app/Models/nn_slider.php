@@ -40,6 +40,16 @@ class nn_slider extends Model
 
     */
 
+    public function lang()
+
+    {
+
+        return $this->hasOne('App\Models\nn_slider_lang', 'slider_id', 'id')
+            ->where('lang', getCurrentLocale());
+
+    }
+
+
     public static function getSliderItem()
 
     {
@@ -132,16 +142,15 @@ class nn_slider extends Model
 
         $inputLang['imgurl'] = $input->imgurl;
 
-        $inputLang['link_name_1'] = $input->link_name_1;
+        $inputLang['link_name_1'] = $input->link_name;
 
-        $inputLang['link_name_2'] = $input->link_name_2;
+        // $inputLang['link_name_2'] = $input->link_name_2;
 
-        $inputLang['link_1'] = $input->link_1;
+        $inputLang['link_1'] = $input->link;
 
-        $inputLang['link_2'] = $input->link_2;
+        // $inputLang['link_2'] = $input->link_2;
 
         $inputLang['slider_id'] = $insertedId;
-
 
 
         foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties){
@@ -151,9 +160,7 @@ class nn_slider extends Model
             $inputLang['lang'] = $localeCode;
 
 
-
             nn_slider_lang::create($inputLang);
-
 
 
         }
@@ -239,11 +246,11 @@ class nn_slider extends Model
 
         $inputLang['link_name_1'] = $input->link_name_1;
 
-        $inputLang['link_name_2'] = $input->link_name_2;
+        // $inputLang['link_name_2'] = $input->link_name_2;
 
         $inputLang['link_1'] = $input->link_1;
 
-        $inputLang['link_2'] = $input->link_2;
+        // $inputLang['link_2'] = $input->link_2;
 
 
 

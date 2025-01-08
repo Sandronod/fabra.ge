@@ -4,470 +4,170 @@
     <?php echo $__env->make('nn_site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
+<?php $__env->startPush('css'); ?>
+<link href="/assets/css/swiper.min.css" rel="stylesheet" type="text/css" /> 
+<?php $__env->stopPush(); ?>
 
-    <!-- Hero Start -->
-    <section class="bg-half-170 bg-light pb-0 d-table w-100" style="background: url('images/bg/corporate01.png') center center;">
-        <div class="container">
-            <div class="row mt-5 align-items-center">
-                <div class="col-lg-7 col-md-6">
-                    <div class="title-heading">
-                        <h4 class="display-3 mb-4 fw-bold title-dark"> Insuring Your Future <br> From Today </h4>
-                        <p class="para-desc text-muted">From banking to wealth management and securities distribution, we dedicated financial services the teams serve all major sectors.</p>
-                        <div class="mt-4 pt-2">
-                            <a href="javascript:void(0)" class="btn btn-lg btn-pills btn-primary">Work with us</a>
-                        </div>
-                    </div>
-                </div><!--end col-->
+    
 
-                <div class="col-lg-5 col-md-6 mt-5 mt-sm-0">
-                    <img src="/assets/images/corporate01.png" class="img-fluid" alt="">
-                </div>
-            </div><!--end row-->
-        </div> <!--end container-->
+       <!-- Hero Start -->
+       <section class="swiper-slider-hero position-relative d-block vh-100">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="swiper-slide d-flex align-items-center overflow-hidden">
+                    <div class="slide-inner slide-bg-image d-flex align-items-center" data-jarallax='{"speed": 0.5}' style="background: center center;" data-background="<?php echo e($slide->lang->imgurl); ?>">
+                        <div class="bg-overlay bg-linear-gradient"></div>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="title-heading text-center">
+                                        <h1 class=" display-3 text-white title-dark mb-4"><?php echo e($slide->lang->name); ?></h1>
+                                        <p class="para-desc mx-auto text-white-50"><?php echo e($slide->lang->description); ?></p>
+                                        <div class="mt-4 pt-2">
+                                            <a href="<?php echo e($slide->lang->link_1); ?>" class="btn btn-primary"><?php echo e($slide->lang->link_name_1); ?></a>
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div><!--end container-->
+                    </div><!-- end slide-inner --> 
+                </div> <!-- end swiper-slide -->
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+        
+            </div>
+            <!-- end swiper-wrapper -->
+
+            <!-- swipper controls -->
+            <!-- <div class="swiper-pagination"></div> -->
+            <div class="swiper-button-next border rounded-circle text-center"></div>
+            <div class="swiper-button-prev border rounded-circle text-center"></div>
+        </div><!--end container-->
     </section><!--end section-->
     <!-- Hero End -->
-
-    <!-- Start services -->
     <section class="section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="section-title text-center mb-4 pb-2">
-                        <h4 class="title fw-semibold mb-3">Explore Solutions</h4>
-                        <p class="text-muted para-desc mx-auto mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-
-            <div class="row">
-                <div class="col-lg-4 mt-4 pt-2">
-                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
-                        <div class="fea-icon rounded text-white title-dark">
-                            <i class="uil uil-airplay"></i>
-                        </div>
-
-                        <div class="content mt-3">
-                            <a href="page-single-service.html" class="title h5 text-dark">Responsive Design</a>
-                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
-                        <div class="fea-icon rounded text-white title-dark">
-                            <i class="uil uil-eye"></i>
-                        </div>
-
-                        <div class="content mt-3">
-                            <a href="page-single-service.html" class="title h5 text-dark">Retina Ready Graphics</a>
-                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
-                        <div class="fea-icon rounded text-white title-dark">
-                            <i class="uil uil-tachometer-fast-alt"></i>
-                        </div>
-
-                        <div class="content mt-3">
-                            <a href="page-single-service.html" class="title h5 text-dark">Powerful Performance</a>
-                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
-                        <div class="fea-icon rounded text-white title-dark">
-                            <i class="uil uil-palette"></i>
-                        </div>
-
-                        <div class="content mt-3">
-                            <a href="page-single-service.html" class="title h5 text-dark">Unlimited Color Options</a>
-                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
-                        <div class="fea-icon rounded text-white title-dark">
-                            <i class="uil uil-font"></i>
-                        </div>
-
-                        <div class="content mt-3">
-                            <a href="page-single-service.html" class="title h5 text-dark">Customizable Fonts</a>
-                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
-                        <div class="fea-icon rounded text-white title-dark">
-                            <i class="uil uil-file-upload-alt"></i>
-                        </div>
-
-                        <div class="content mt-3">
-                            <a href="page-single-service.html" class="title h5 text-dark">Free Updates</a>
-                            <p class="text-muted para mt-2 mb-0">This prevents repetitive patterns from impairing the overall facilitates the comparison.</p>
-                        </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-
-        <div class="container mt-100 mt-60">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6">
-                    <img src="/assets/images/about02.jpg" class="img-fluid rounded shadow" alt="">
-                </div><!--end col-->
-
-                <div class="col-lg-7 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                    <div class="section-title ms-lg-5">
-                        <h4 class="title fw-semibold mb-3">Crafted For Digital Agency.</h4>
-                        <p class="text-muted para-desc mb-0">The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not attract attention to itself or distract the viewer's attention from the layout.</p>
-
-                        <div class="row mt-4">
-                            <div class="col-lg-6 col-12">
-                                <ul class="mb-0 list-unstyled">
-                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Fully Responsive</li>
-                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Finance & Restructuring </li>
-                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Audit & Assurance </li>
-                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Trades & Stock Market </li>
-                                </ul>
-                            </div><!--end col-->
-
-                            <div class="col-lg-6 col-12">
-                                <ul class="mb-0 list-unstyled">
-                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Strategy & Planning </li>
-                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Software & Research </li>
-                                    <li class="mb-0"><span class="text-primary h4 me-2"><i class="uil uil-check-circle align-middle"></i></span> Support & Maintenance </li>
-                                </ul>
-                            </div><!--end col-->
-                        </div><!--end row-->
-
-                        <div class="mt-4">
-                            <a href="javascript:void(0)" class="btn btn-primary">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-                        </div>
-                    </div>
+                <div class="col-lg-10">
+                    <div id="grid" class="row">
+                        <div class="col-md-6 col-12 picture-item">
+                            <div class="section-title text-center text-md-start mt-md-5 mb-4 pb-2">
+                                <h6 class="text-primary">Our Work</h6>
+                                <h4 class="title mb-3">Inspire design for <br> the Digital Age</h4>
+                                <p class="para-desc mx-auto text-muted mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
+                            </div>
+                        </div><!--end col-->
+                        <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            
+                        
+                        <div class="col-md-6 col-12 mt-4  pt-2 <?php echo e($key === 0 ? 'pt-sm-0 mt-sm-0' : ''); ?> picture-item">
+                            <div class="card portfolio portfolio-modern portfolio-primary rounded overflow-hidden shadow rounded">
+                                <a href="<?php echo e(fullUrl('list/'.$product->parentItem->slug.'/'.$product->slug)); ?>" >
+                                    <img src="<?php echo e($product->lang->imgurl); ?>" class="img-fluid" alt="">
+                                </a>
+                                <div class="content text-center p-3">
+                                    <a href="<?php echo e(fullUrl('list/'.$product->parentItem->slug.'/'.$product->slug)); ?>" class="text-dark h6 mb-0 d-block title"><?php echo e($product->lang->name); ?></a>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  
+    
+                      
+    
+                        <div class="col-md-6 col-12 mt-4 pt-2 picture-item">
+                            <div class="section-title text-center text-md-start">
+                                <h4 class="mb-3">Check out more creative designs</h4>
+                                <p class="para-desc mx-auto text-muted mb-4">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
+                            
+                                <a href="javascript:void(0)" class="btn btn-primary">Explore More <i class="uil uil-arrow-right align-middle"></i></a>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
                 </div><!--end col-->
             </div><!--end row-->
         </div><!--end container-->
     </section><!--end section-->
-    <!-- End services -->
 
-    <!-- Start -->
+    <section class="section">
+        <div class="container">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
+                    <div class="section-title" id="tech">
+                        <h4><?php echo e($whys->lang->name); ?></h4>
+                    </div>
+
+                    <div class="accordion mt-4 pt-2" id="buyingquestion">
+                        <?php $__currentLoopData = $whys->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$why): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            
+                       
+                        <div class="accordion-item rounded border-0 shadow <?php echo e($key !== 0 ? 'mt-3' : ''); ?>">
+                            <h2 class="accordion-header" id="headingOne<?php echo e($key); ?>">
+                                <button class="accordion-button border-0 bg-white <?php echo e($key !== 0 ? 'collapsed' : ''); ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo e($key); ?>"
+                                    aria-expanded="<?php echo e($key === 0 ? 'true' : 'false'); ?>" aria-controls="collapse<?php echo e($key); ?>">
+                                    <?php echo e($why->lang->name); ?>
+
+                                </button>
+                            </h2>
+                            <div id="collapse<?php echo e($key); ?>" class="accordion-collapse border-0 collapse <?php echo e($key === 0 ? 'show' : ''); ?>" aria-labelledby="headingOne<?php echo e($key); ?>">
+                                
+                                <div class="accordion-body text-muted bg-white">
+                                    <?php echo e($why->lang->description); ?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </div><!--end teb pane-->
+            </div>
+        </div>
+    </section>
     <section class="section bg-light">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 mb-4 pb-2">
-                    <div class="section-title text-center">
-                        <h4 class="title fw-semibold mb-3">Meet Our Team Expert</h4>
-                        <p class="text-muted para-desc mx-auto mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-
-        <div class="container-fluid mt-4 pt-2">
-            <div class="row">
-                <div class="col-12 px-0">
-                    <div class="tiny-six-item">
-                        <div class="tiny-slide">
-                            <div class="card team team-primary">
-                                <div class="card-img">
-                                    <img src="/assets/images/client/09.jpg" class="img-fluid" alt="">
-                                    <div class="card-overlay"></div>
-                                </div>
-                                <div class="team-content">
-                                    <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Dennis Rosario</a>
-                                    <small class="text-white title-dark">C.E.O</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tiny-slide">
-                            <div class="card team team-primary">
-                                <div class="card-img">
-                                    <img src="/assets/images/client/10.jpg" class="img-fluid" alt="">
-                                    <div class="card-overlay"></div>
-                                </div>
-                                <div class="team-content">
-                                    <div class="name">
-                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Billy Gregory</a>
-                                        <small class="text-white title-dark">Manager</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tiny-slide">
-                            <div class="card team team-primary">
-                                <div class="card-img">
-                                    <img src="/assets/images/client/11.jpg" class="img-fluid" alt="">
-                                    <div class="card-overlay"></div>
-                                </div>
-                                <div class="team-content">
-                                    <div class="name">
-                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Connie Dunton</a>
-                                        <small class="text-white title-dark">Manager</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tiny-slide">
-                            <div class="card team team-primary">
-                                <div class="card-img">
-                                    <img src="/assets/images/client/12.jpg" class="img-fluid" alt="">
-                                    <div class="card-overlay"></div>
-                                </div>
-                                <div class="team-content">
-                                    <div class="name">
-                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Alberta Petty</a>
-                                        <small class="text-white title-dark">Manager</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tiny-slide">
-                            <div class="card team team-primary">
-                                <div class="card-img">
-                                    <img src="/assets/images/client/13.jpg" class="img-fluid" alt="">
-                                    <div class="card-overlay"></div>
-                                </div>
-                                <div class="team-content">
-                                    <div class="name">
-                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Shirley Garcia</a>
-                                        <small class="text-white title-dark">Manager</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tiny-slide">
-                            <div class="card team team-primary">
-                                <div class="card-img">
-                                    <img src="/assets/images/client/14.jpg" class="img-fluid" alt="">
-                                    <div class="card-overlay"></div>
-                                </div>
-                                <div class="team-content">
-                                    <div class="name">
-                                        <a href="javascript:void(0)" class="h6 name text-uppercase d-block mb-0 text-white title-dark">Michael Wheeler</a>
-                                        <small class="text-white title-dark">Manager</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-
-        <div class="container mt-100 mt-60">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6">
-                    <div class="section-title mb-4 pb-2 mb-md-0 pb-md-0 me-lg-5">
-                        <h4 class="title fw-semibold mb-3">Our Skills & Expertise</h4>
-                        <p class="text-muted para-desc mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-7 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
-                    <div class="ms-lg-5">
-                        <div class="progress-box">
-                            <h6 class="text-muted fw-normal">Research</h6>
-                            <div class="progress position-relative">
-                                <div class="progress-bar position-relative bg-primary" style="width:84%;"></div>
-                                <div class="progress-value d-block text-muted h6 fw-normal">84%</div>
-                            </div>
-                        </div><!--end process box-->
-
-                        <div class="progress-box mt-4">
-                            <h6 class="text-muted fw-normal">Sales & Trading</h6>
-                            <div class="progress position-relative">
-                                <div class="progress-bar position-relative bg-primary" style="width:75%;"></div>
-                                <div class="progress-value d-block text-muted h6 fw-normal">75%</div>
-                            </div>
-                        </div><!--end process box-->
-
-                        <div class="progress-box mt-4">
-                            <h6 class="text-muted fw-normal">Investment</h6>
-                            <div class="progress position-relative">
-                                <div class="progress-bar position-relative bg-primary" style="width:79%;"></div>
-                                <div class="progress-value d-block text-muted h6 fw-normal">79%</div>
-                            </div>
-                        </div><!--end process box-->
-
-                        <div class="progress-box mt-4">
-                            <h6 class="text-muted fw-normal">Finance</h6>
-                            <div class="progress position-relative">
-                                <div class="progress-bar position-relative bg-primary" style="width:95%;"></div>
-                                <div class="progress-value d-block text-muted h6 fw-normal">95%</div>
-                            </div>
-                        </div><!--end process box-->
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-    </section><!--end container-->
-    <!-- End -->
-
-    <!-- Start CTA -->
-    <section class="bg-cta" style="background: url('images/cta03.jpg') center;">
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="card py-5 px-4 border-0 rounded bg-white">
-                        <div class="tiny-single-item">
-                            <div class="tiny-slide">
-                                <div class="card client-testi text-center">
-                                    <img src="/assets/images/client/01.jpg" class="avatar avatar-small rounded-pill mx-auto" alt="">
-
-                                    <div class="card-body pb-0 content">
-                                        <p class="h6 fw-normal text-muted fst-italic">" The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not attract attention to itself or distract the viewer's attention from the layout. "</p>
-
-                                        <div class="name mt-4">
-                                            <small class="text-uppercase fw-semibold d-block">Johnny Rosario</small>
-                                            <small class="text-muted">C.E.O</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="card client-testi text-center">
-                                    <img src="/assets/images/client/02.jpg" class="avatar avatar-small rounded-pill mx-auto" alt="">
-
-                                    <div class="card-body pb-0 content">
-                                        <p class="h6 fw-normal text-muted fst-italic">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others - which creates a distinct visual impression. "</p>
-
-                                        <div class="name mt-4">
-                                            <small class="text-uppercase fw-semibold d-block">Gale Larose</small>
-                                            <small class="text-muted">Manager</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tiny-slide">
-                                <div class="card client-testi text-center">
-                                    <img src="/assets/images/client/03.jpg" class="avatar avatar-small rounded-pill mx-auto" alt="">
-
-                                    <div class="card-body pb-0 content">
-                                        <p class="h6 fw-normal text-muted fst-italic">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. If the fill text is intended to illustrate the characteristics of different typefaces. "</p>
-
-                                        <div class="name mt-4">
-                                            <small class="text-uppercase fw-semibold d-block">Shelly Goodman</small>
-                                            <small class="text-muted">Manager</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-    </section><!--end section-->
-    <!-- End CTA -->
-
-    <!-- Start -->
-    <section class="section">
-        <div class="container">
-            <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="section-title text-center mb-4 pb-2">
-                        <h6 class="text-primary">Blogs</h6>
-                        <h4 class="title fw-semibold mt-2 mb-3">Latest Blog & News</h4>
-                        <p class="text-muted para-desc mx-auto mb-0">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
+                        <h4 class="title fw-semibold mb-4"><?php echo e($clients->lang->name); ?></h4>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
+        </div><!--end container-->
 
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="card blog blog-primary shadow rounded overflow-hidden">
-                        <div class="image position-relative overflow-hidden">
-                            <img src="/assets/images/blog/01.jpg" class="img-fluid" alt="">
-
-                            <div class="blog-tag">
-                                <a href="javascript:void(0)" class="badge text-bg-light">Corporate</a>
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tiny-five-item">
+                        <?php $__currentLoopData = $clients->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            
+                        <div class="tiny-slide">
+                            <div class="card portfolio portfolio-classic portfolio-primary m-2 rounded overflow-hidden">
+                                <div class="card-img position-relative text-center">
+                                    <img src="<?php echo e($client->lang->imgurl); ?>" class="img-fluid" alt="">
+                                    <div class="card-overlay"></div>
+    
+                                    <div class="pop-icon">
+                                        <a href="<?php echo e($client->lang->imgurl); ?>" class="btn btn-pills btn-icon lightbox"><i class="uil uil-camera"></i></a>
+                                    </div>
+                                </div>
+                                <div class="content pt-3">
+                                    <span class="text-dark h6 mb-0 d-block title"><?php echo e($client->lang->name); ?></span>
+                                </div>
                             </div>
-                        </div>
+                        </div><!--end col-->
+                        
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                        <div class="card-body content">
-                            <a href="blog-detail-four.html" class="h5 title text-dark d-block mb-0">Building Your Corporate Identity from Starty</a>
-                            <p class="text-muted mt-2 mb-2">The most well-known dummy text is the 'Lorem Ipsum', in the 16th century.</p>
-                            <a href="blog-detail-four.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="card blog blog-primary shadow rounded overflow-hidden">
-                        <div class="image position-relative overflow-hidden">
-                            <img src="/assets/images/blog/02.jpg" class="img-fluid" alt="">
-
-                            <div class="blog-tag">
-                                <a href="javascript:void(0)" class="badge text-bg-light">Branding</a>
-                            </div>
-                        </div>
-
-                        <div class="card-body content">
-                            <a href="blog-detail-four.html" class="h5 title text-dark d-block mb-0">The Dark Side of Overnight Success</a>
-                            <p class="text-muted mt-2 mb-2">The most well-known dummy text is the 'Lorem Ipsum', in the 16th century.</p>
-                            <a href="blog-detail-four.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="card blog blog-primary shadow rounded overflow-hidden">
-                        <div class="image position-relative overflow-hidden">
-                            <img src="/assets/images/blog/03.jpg" class="img-fluid" alt="">
-
-                            <div class="blog-tag">
-                                <a href="javascript:void(0)" class="badge text-bg-light">Technology</a>
-                            </div>
-                        </div>
-
-                        <div class="card-body content">
-                            <a href="blog-detail-four.html" class="h5 title text-dark d-block mb-0">The Right Hand of Business IT World</a>
-                            <p class="text-muted mt-2 mb-2">The most well-known dummy text is the 'Lorem Ipsum', in the 16th century.</p>
-                            <a href="blog-detail-four.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-                        </div>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
         </div><!--end container-->
     </section><!--end section-->
     <!-- End -->
-
-    <!-- CTA Start -->
-    <div class="container-fluid px-0">
-        <div class="py-5 position-relative" style="background: url('images/cta02.jpg') center;">
-            <div class="bg-overlay bg-gradient-overlay"></div>
-            <div class="container my-5">
-                <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-7">
-                        <h4 class="display-6 h4 mb-0 text-white title-dark fw-medium">Make your website unforgettable <br> Join the Starty community.</h4>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-5 text-md-end mt-4 mt-sm-0">
-                        <a href="javascript:void(0)" class="btn btn-light">Join us Now</a>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </div><!--end bg image-->
-    </div><!--end container-->
-    <!-- CTA End -->
-
+<?php $__env->startPush('js'); ?>
+<script src="/assets/js/swiper.min.js"></script> 
+<?php $__env->stopPush(); ?>
 
 <?php $__env->stopSection(); ?>
 

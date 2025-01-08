@@ -1,6 +1,7 @@
 
     <!-- javascript -->
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    @stack('js')
     <script src="/assets/js/tiny-slider.js"></script>
     <script src="/assets/js/feather.min.js"></script>
 
@@ -12,4 +13,3 @@
     <script src="/assets/js/app.js"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
 
 
-    @stack('js')

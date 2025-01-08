@@ -39,7 +39,7 @@
 <link href="/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
 <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet" />
 
-
+<?php echo $__env->yieldPushContent('css'); ?>
 <link href="/assets/css/tobii.min.css" rel="stylesheet" type="text/css" />
 <link href="/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
 
@@ -47,7 +47,7 @@
 <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
 
 
-<?php echo $__env->yieldPushContent('css'); ?>
+
 
 <?php echo $siteSettings->tags_head; ?>
 

@@ -368,7 +368,7 @@
 
                                                         <div class="form-group">
 
-                                                            <label for="fc-link_name_1_{{ $langs[$i] }}">{{ trans('general.fclbLinkName') }} 1</label>
+                                                            <label for="fc-link_name_1_{{ $langs[$i] }}">{{ trans('general.fclbLinkName') }}</label>
 
                                                             <input type="text" name="link_name_1" id="fc-link_name_1_{{ $langs[$i] }}" class="form-control">
 
@@ -380,7 +380,7 @@
 
                                                         <div class="form-group">
 
-                                                            <label for="fc-link_1_{{ $langs[$i] }}">{{ trans('general.fclbLink') }} 1</label>
+                                                            <label for="fc-link_1_{{ $langs[$i] }}">{{ trans('general.fclbLink') }}</label>
 
                                                             <input type="text" name="link_1" id="fc-link_1_{{ $langs[$i] }}" class="form-control">
 
@@ -389,7 +389,7 @@
                                                     </div>
 
                                                 </div>
-
+{{-- 
                                                 <div class="row">
 
                                                     <div class="col-md-6">
@@ -416,7 +416,7 @@
 
                                                     </div>
 
-                                                </div>
+                                                </div> --}}
 
                                             </div>
 

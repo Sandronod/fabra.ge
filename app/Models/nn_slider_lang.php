@@ -26,7 +26,9 @@ class nn_slider_lang extends Model
 
         'imgurl',
 
-        'link_name',
+        'link_name_1',
+
+        'link_name_2',
 
         'link_1',
 
