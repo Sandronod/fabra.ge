@@ -5,21 +5,38 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <ul class="list-unstyled mb-0">
                         <li class="list-inline-item mb-0"><a href="mailto:{{$siteSettings->email}}" class="text-muted fw-normal"><i data-feather="mail" class="fea icon-sm text-primary"></i> {{$siteSettings->email}}</a></li>
-                        <li class="list-inline-item mb-0 ms-3"><a href="javascript:void(0)" class="text-muted fw-normal"><i data-feather="map-pin" class="fea icon-sm text-primary"></i>
+                        <li class="list-inline-item mb-0 ms-3"><span class="text-muted fw-normal"><i data-feather="map-pin" class="fea icon-sm text-primary"></i>
                             @if (getCurrentLocale() == 'ka')
                                 {{$siteSettings->address_ka}}
                             @elseif (getCurrentLocale() == 'en')
-                            {{$siteSettings->address_en}}
+                                {{$siteSettings->address_en}}
                             @endif
-                        </a></li>
+                        </span></li>
                     </ul>
 
-                    <ul class="list-unstyled social-icon tagline-social mb-0">
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-facebook-f h6 mb-0"></i></a></li>
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-instagram h6 mb-0"></i></a></li>
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-twitter h6 mb-0"></i></a></li>
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-linkedin h6 mb-0"></i></a></li>
-                    </ul><!--end icon-->
+                    <div class="d-flex align-items-center">
+                        <ul class="list-unstyled social-icon tagline-social mb-0">
+                            @if ($siteSettings->facebook)
+                                <li class="list-inline-item mb-0"><a href="{{$siteSettings->facebook}}" target="_blank"><i class="uil uil-facebook-f h6 mb-0"></i></a></li>
+                            @endif
+                            @if ($siteSettings->instagram)
+                                <li class="list-inline-item mb-0"><a href="{{$siteSettings->instagram}}" target="_blank"><i class="uil uil-instagram h6 mb-0"></i></a></li>
+                            @endif
+                            {{-- <li class="list-inline-item mb-0"><a href="javascript:void(0)" target="_blank"><i class="uil uil-twitter h6 mb-0"></i></a></li> --}}
+                            @if ($siteSettings->linkedin)
+                                <li class="list-inline-item mb-0"><a href="{{$siteSettings->linkedin}}" target="_blank"><i class="uil uil-linkedin h6 mb-0"></i></a></li>
+                            @endif
+                        </ul><!--end icon-->
+                        @if (getCurrentLocale() == 'ka')
+                            <a href="{{LaravelLocalization::getLocalizedURL('en')}}" class="lang">
+                                <img src="/assets/images/lang-en.svg" alt="" class="lang-img"> En 
+                            </a>
+                        @elseif (getCurrentLocale() == 'en')
+                            <a href="{{LaravelLocalization::getLocalizedURL('ka')}}" class="lang">
+                                <img src="/assets/images/lang-ka.svg" alt="" class="lang-img"> Ge 
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
@@ -50,7 +67,8 @@
             </div>
         </div>
 
-        <ul class="buy-button list-inline mb-0">
+        <!-- search-->
+        {{-- <ul class="buy-button list-inline mb-0">
             <li class="list-inline-item search-icon mb-0">
                 <div class="dropdown">
                     <button type="button" class="btn btn-link text-decoration-none dropdown-toggle mb-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,7 +81,8 @@
                     </div>
                 </div>
             </li>
-        </ul>
+        </ul> --}}
+        <!-- search end -->
 
         <div id="navigation">
             <!-- Navigation Menu-->
@@ -97,7 +116,7 @@
                                                     @foreach($menuItem->subMenu as $subItem)
                                                         <li><a href="{{fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)}}" class="sub-menu-item" 
 
-                                                            @if(mb_strlen($subItem->lang->name) > 22) 
+                                                            @if(mb_strlen($subItem->lang->name) > 24) 
                                                                 data-bs-toggle="tooltip" 
                                                                 data-bs-placement="top" 
                                                                 data-bs-title="{{ $subItem->lang->name }}"

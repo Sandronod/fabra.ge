@@ -2,7 +2,7 @@
 @section('content')
 
     @include('nn_site.partials.header')
-    <section class="section bg-light">
+    <section class="section bg-light pb-4">
         <div class="container">
             <div class="row mt-5 align-items-center">
 
@@ -23,7 +23,7 @@
     </section>
 
 <!-- Start Description -->
-<section class="section">
+<section class="section pb-0">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-6">
@@ -38,11 +38,12 @@
             </div><!--end col-->
         </div><!--end row-->
     </div>
+</section>
 
 @if($detail->images->count() > 0)
-    <section class="section">
+    <section class="section pt-4">
         <div class="container">
-            <div class="container mt-30 mt-20">
+            <div class="container mt-5 mb-5">
                 <div class="row">
                     <div class="col-12">
                         <span class="divider-main divider"></span>
@@ -54,7 +55,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="section-title">
-                            <h4 class="title mb-0">ფოტოები</h4>
+                            <h4 class="title mb-5">ფოტოები</h4>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -66,7 +67,7 @@
                     <div class="col-md-3 col-12 spacing picture-item" data-groups='["branding"]'>
                         <div class="card portfolio portfolio-classic portfolio-primary rounded overflow-hidden">
                             <div class="card-img position-relative">
-                                <img src="{{$img->lang->imgurl}}" class="img-fluid" alt="">
+                                <img src="{{$img->lang->imgurl}}" class="img-fluid" alt="" width="100%" style="object-fit:cover; max-height: 120px;">
                                 <div class="card-overlay"></div>
 
                                 <div class="pop-icon">
@@ -82,50 +83,45 @@
 
 @endif
     @if(isset($relatedItems) && count($relatedItems) > 0)
-    <div class="container mt-30 mt-20">
-        <div class="row">
-            <div class="col-12">
-                <span class="divider-main divider"></span>
-            </div><!--end col-->
-        </div><!--end row-->
-    </div><!--end container-->
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-12">
+                    <span class="divider-main divider"></span>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
 
-    <div class="container mt-30 mt-20">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="section-title">
-                    <h4 class="title mb-0">მსგავსი პროდუქტები</h4>
-                </div>
-            </div><!--end col-->
-        </div><!--end row-->
+        <div class="container pt-2">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h4 class="title mb-3">მსგავსი პროდუქტები</h4>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
 
-        <div class="row">
-            @foreach($relatedItems as $item)
-                <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                    <div class="card blog blog-primary shadow rounded overflow-hidden">
-                        <div class="image position-relative overflow-hidden">
-                            <img src="{{$item->lang->imgurl}}" class="img-fluid" alt="">
+            <div class="row">
+                @foreach($relatedItems as $item)
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="card blog blog-primary shadow rounded overflow-hidden">
+                            <div class="image position-relative overflow-hidden">
+                                <img src="{{$item->lang->imgurl}}" class="img-fluid" alt="">
 
-                            <div class="blog-tag">
-{{--                                <a href="javascript:void(0)" class="badge text-bg-light">{{ $category->lang->imgurl }}</a>--}}
+                                <div class="blog-tag">
+    {{--                                <a href="javascript:void(0)" class="badge text-bg-light">{{ $category->lang->imgurl }}</a>--}}
+                                </div>
+                            </div>
+
+                            <div class="card-body content">
+                                <a href="{{fullUrl('detail/'.$item->slug)}}" class="h5 title text-dark d-block mb-0">{{$item->lang->name}}</a>
+                                <p class="text-muted mt-2 mb-2">{{$item->lang->description}}</p>
+                                <a href="{{fullUrl('detail/'.$item->slug)}}" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
                             </div>
                         </div>
-
-                        <div class="card-body content">
-                            <a href="{{fullUrl('detail/'.$item->slug)}}" class="h5 title text-dark d-block mb-0">{{$item->lang->name}}</a>
-                            <p class="text-muted mt-2 mb-2">{{$item->lang->description}}</p>
-                            <a href="{{fullUrl('detail/'.$item->slug)}}" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-                        </div>
                     </div>
-                </div>
-            @endforeach
-
-
-
-
-        </div><!--end row-->
-    </div><!--end container-->
-
-</section><!--end section-->
+                @endforeach
+            </div><!--end row-->
+        </div><!--end container-->
+    </section><!--end section-->
     @endif
 @endsection

@@ -23,7 +23,7 @@
 
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">ელ-ფოსტა</label>
+                                <label class="col-md-2 control-label">Email</label>
                                 <div class="col-md-7">
                                     <input type="text" name="email" class="form-control input-lg" value="<?php echo e($siteSettings ? $siteSettings->email : ''); ?>">
                                 </div>
@@ -39,19 +39,25 @@
                             
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">ტელეფონი</label>
+                                <label class="col-md-2 control-label">Mobile</label>
+                                <div class="col-md-7">
+                                    <input type="text" name="mobile" class="form-control input-lg" value="<?php echo e($siteSettings ? $siteSettings->mobile : ''); ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Telephone</label>
                                 <div class="col-md-7">
                                     <input type="text" name="phone" class="form-control input-lg" value="<?php echo e($siteSettings ? $siteSettings->phone : ''); ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">მისამართი GEO</label>
+                                <label class="col-md-2 control-label">Address GEO</label>
                                 <div class="col-md-7">
                                     <input type="text" name="address_ka" class="form-control input-lg" value="<?php echo e($siteSettings ? $siteSettings->address_ka : ''); ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">მისამართი ENG</label>
+                                <label class="col-md-2 control-label">Address ENG</label>
                                 <div class="col-md-7">
                                     <input type="text" name="address_en" class="form-control input-lg" value="<?php echo e($siteSettings ? $siteSettings->address_en : ''); ?>">
                                 </div>
@@ -65,11 +71,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Twitter</label>
+                            <label class="col-md-2 control-label">Instagram</label>
                             <div class="col-md-7">
-                                <input type="text" name="twitter" class="form-control input-lg" value="<?php echo e($siteSettings ? $siteSettings->twitter : ''); ?>">
+                                <input type="text" name="instagram" class="form-control input-lg" value="<?php echo e($siteSettings ? $siteSettings->instagram : ''); ?>">
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <label class="col-md-2 control-label">Linkedin</label>
                             <div class="col-md-7">

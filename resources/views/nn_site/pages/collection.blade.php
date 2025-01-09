@@ -3,7 +3,7 @@
 
     @include('nn_site.partials.header')
 
-    <section class="section bg-light">
+    <section class="section bg-light pb-4">
         <div class="container">
             <div class="row mt-5 align-items-center">
 
@@ -30,7 +30,7 @@
                     @foreach($collectionList as $item)
 
                         <div class="col-lg-3 col-md-6 mb-4 pb-2 ">
-                            <div class="card blog blog-primary shadow rounded overflow-hidden">
+                            <div class="card blog blog-primary shadow rounded overflow-hidden text-center">
                                 <div class="image position-relative overflow-hidden">
                                     <img src="{{$item->lang->imgurl}}" class="img-fluid" alt="">
                                 </div>

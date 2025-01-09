@@ -5,23 +5,40 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <ul class="list-unstyled mb-0">
                         <li class="list-inline-item mb-0"><a href="mailto:<?php echo e($siteSettings->email); ?>" class="text-muted fw-normal"><i data-feather="mail" class="fea icon-sm text-primary"></i> <?php echo e($siteSettings->email); ?></a></li>
-                        <li class="list-inline-item mb-0 ms-3"><a href="javascript:void(0)" class="text-muted fw-normal"><i data-feather="map-pin" class="fea icon-sm text-primary"></i>
+                        <li class="list-inline-item mb-0 ms-3"><span class="text-muted fw-normal"><i data-feather="map-pin" class="fea icon-sm text-primary"></i>
                             <?php if(getCurrentLocale() == 'ka'): ?>
                                 <?php echo e($siteSettings->address_ka); ?>
 
                             <?php elseif(getCurrentLocale() == 'en'): ?>
-                            <?php echo e($siteSettings->address_en); ?>
+                                <?php echo e($siteSettings->address_en); ?>
 
                             <?php endif; ?>
-                        </a></li>
+                        </span></li>
                     </ul>
 
-                    <ul class="list-unstyled social-icon tagline-social mb-0">
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-facebook-f h6 mb-0"></i></a></li>
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-instagram h6 mb-0"></i></a></li>
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-twitter h6 mb-0"></i></a></li>
-                        <li class="list-inline-item mb-0"><a href="javascript:void(0)"><i class="uil uil-linkedin h6 mb-0"></i></a></li>
-                    </ul><!--end icon-->
+                    <div class="d-flex align-items-center">
+                        <ul class="list-unstyled social-icon tagline-social mb-0">
+                            <?php if($siteSettings->facebook): ?>
+                                <li class="list-inline-item mb-0"><a href="<?php echo e($siteSettings->facebook); ?>" target="_blank"><i class="uil uil-facebook-f h6 mb-0"></i></a></li>
+                            <?php endif; ?>
+                            <?php if($siteSettings->instagram): ?>
+                                <li class="list-inline-item mb-0"><a href="<?php echo e($siteSettings->instagram); ?>" target="_blank"><i class="uil uil-instagram h6 mb-0"></i></a></li>
+                            <?php endif; ?>
+                            
+                            <?php if($siteSettings->linkedin): ?>
+                                <li class="list-inline-item mb-0"><a href="<?php echo e($siteSettings->linkedin); ?>" target="_blank"><i class="uil uil-linkedin h6 mb-0"></i></a></li>
+                            <?php endif; ?>
+                        </ul><!--end icon-->
+                        <?php if(getCurrentLocale() == 'ka'): ?>
+                            <a href="<?php echo e(LaravelLocalization::getLocalizedURL('en')); ?>" class="lang">
+                                <img src="/assets/images/lang-en.svg" alt="" class="lang-img"> En 
+                            </a>
+                        <?php elseif(getCurrentLocale() == 'en'): ?>
+                            <a href="<?php echo e(LaravelLocalization::getLocalizedURL('ka')); ?>" class="lang">
+                                <img src="/assets/images/lang-ka.svg" alt="" class="lang-img"> Ge 
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
@@ -52,20 +69,9 @@
             </div>
         </div>
 
-        <ul class="buy-button list-inline mb-0">
-            <li class="list-inline-item search-icon mb-0">
-                <div class="dropdown">
-                    <button type="button" class="btn btn-link text-decoration-none dropdown-toggle mb-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="uil uil-search h5 text-white mb-0"></i>
-                    </button>
-                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-4 py-0" style="width: 300px;">
-                        <form class="p-4">
-                            <input type="text" id="text" name="name" class="form-control border bg-white" placeholder="Search...">
-                        </form>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <!-- search-->
+        
+        <!-- search end -->
 
         <div id="navigation">
             <!-- Navigation Menu-->
@@ -99,7 +105,7 @@
                                                     <?php $__currentLoopData = $menuItem->subMenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <li><a href="<?php echo e(fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)); ?>" class="sub-menu-item" 
 
-                                                            <?php if(mb_strlen($subItem->lang->name) > 22): ?> 
+                                                            <?php if(mb_strlen($subItem->lang->name) > 24): ?> 
                                                                 data-bs-toggle="tooltip" 
                                                                 data-bs-placement="top" 
                                                                 data-bs-title="<?php echo e($subItem->lang->name); ?>"

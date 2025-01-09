@@ -3,7 +3,7 @@
 
     @include('nn_site.partials.header')
 
-    <section class="section bg-light">
+    <section class="section bg-light pb-4">
         <div class="container">
             <div class="row mt-5 align-items-center">
 

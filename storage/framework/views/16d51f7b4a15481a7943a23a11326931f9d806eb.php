@@ -3,7 +3,7 @@
 
     <?php echo $__env->make('nn_site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <section class="section bg-light">
+    <section class="section bg-light pb-4">
         <div class="container">
             <div class="row mt-5 align-items-center">
 

@@ -41,6 +41,7 @@ class ManagerSiteSettings extends ManagerSiteController
             'email' => $request->get('email'),
             // 'header_logo' => $request->get('header_logo'),
             // 'footer_logo' => $request->get('footer_logo'),
+            'mobile' => $request->get('mobile'),
             'phone' => $request->get('phone'),
             // 'one_time_payment_price' => (float) $request->get('one_time_payment_price'),
             // 'month_payment_price' => (float) $request->get('month_payment_price'),
@@ -68,7 +69,8 @@ class ManagerSiteSettings extends ManagerSiteController
             'footer_text_en' => $request->get('footer_text_en'),
             'footer_text_ru' => $request->get('footer_text_ru'),*/
             'facebook' => $request->get('facebook'),
-            'twitter' => $request->get('twitter'),
+            'instagram' => $request->get('instagram'),
+            // 'twitter' => $request->get('twitter'),
             'linkedin' => $request->get('linkedin'),
           // 'linkedin' => $request->get('linkedin'),
             // 'youtube' => $request->get('youtube'),

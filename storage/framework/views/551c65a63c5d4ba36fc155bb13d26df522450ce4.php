@@ -3,7 +3,7 @@
 
     <?php echo $__env->make('nn_site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <section class="section bg-light">
+    <section class="section bg-light pb-4">
         <div class="container">
             <div class="row mt-5 align-items-center">
 
@@ -30,7 +30,7 @@
                     <?php $__currentLoopData = $collectionList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                         <div class="col-lg-3 col-md-6 mb-4 pb-2 ">
-                            <div class="card blog blog-primary shadow rounded overflow-hidden">
+                            <div class="card blog blog-primary shadow rounded overflow-hidden text-center">
                                 <div class="image position-relative overflow-hidden">
                                     <img src="<?php echo e($item->lang->imgurl); ?>" class="img-fluid" alt="">
                                 </div>
