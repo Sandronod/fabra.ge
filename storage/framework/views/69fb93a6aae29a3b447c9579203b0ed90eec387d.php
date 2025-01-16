@@ -1,50 +1,32 @@
-@extends('../nn_site/index')
-@section('content')
 
-    @include('nn_site.partials.header')
+<?php $__env->startSection('content'); ?>
+
+    <?php echo $__env->make('nn_site.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
-    @push('css')
+    <?php $__env->startPush('css'); ?>
         <link href="/assets/css/swiper.min.css" rel="stylesheet" type="text/css" />
-    @endpush
+    <?php $__env->stopPush(); ?>
 
-    {{-- <section class="bg-half-170 bg-light pb-0 d-table w-100" style="background: url('images/bg/corporate01.png') center center;">
-        <div class="container">
-            <div class="row mt-5 align-items-center">
-                <div class="col-lg-7 col-md-6">
-                    <div class="title-heading">
-                        <h4 class="display-3 mb-4 fw-bold title-dark"> Insuring Your Future <br> From Today </h4>
-                        <p class="para-desc text-muted">From banking to wealth management and securities distribution, we dedicated financial services the teams serve all major sectors.</p>
-                        <div class="mt-4 pt-2">
-                            <a href="javascript:void(0)" class="btn btn-lg btn-pills btn-primary">Work with us</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-6 mt-5 mt-sm-0">
-                    <img src="/assets/images/corporate01.png" class="img-fluid" alt="">
-                </div>
-            </div>
-        </div>
-    </section> --}}
+    
 
     <!-- Hero Start -->
     <section class="swiper-slider-hero position-relative d-block vh-100">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                @if (count($slider))
-                    @foreach($slider as $slide)
+                <?php if(count($slider)): ?>
+                    <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="swiper-slide d-flex align-items-center overflow-hidden">
-                            <div class="slide-inner slide-bg-image d-flex align-items-center" data-jarallax='{"speed": 0.5}' style="background: center center;" data-background="{{$slide->lang->imgurl}}">
+                            <div class="slide-inner slide-bg-image d-flex align-items-center" data-jarallax='{"speed": 0.5}' style="background: center center;" data-background="<?php echo e($slide->lang->imgurl); ?>">
                                 <div class="bg-overlay bg-linear-gradient"></div>
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-12">
                                             <div class="title-heading text-center">
-                                                <h1 class=" display-3 text-white title-dark mb-4">{{$slide->lang->name}}</h1>
-                                                <p class="para-desc mx-auto text-white-50">{{$slide->lang->description}}</p>
+                                                <h1 class=" display-3 text-white title-dark mb-4"><?php echo e($slide->lang->name); ?></h1>
+                                                <p class="para-desc mx-auto text-white-50"><?php echo e($slide->lang->description); ?></p>
                                                 <div class="mt-4 pt-2">
-                                                    <a href="{{$slide->lang->link_1}}" class="btn btn-primary">{{$slide->lang->link_name_1}}</a>
+                                                    <a href="<?php echo e($slide->lang->link_1); ?>" class="btn btn-primary"><?php echo e($slide->lang->link_name_1); ?></a>
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -52,8 +34,8 @@
                                 </div><!--end container-->
                             </div><!-- end slide-inner -->
                         </div> <!-- end swiper-slide -->
-                    @endforeach
-                @endif
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
             </div>
             <!-- end swiper-wrapper -->
 
@@ -76,18 +58,18 @@
                                 <p class="para-desc mx-auto text-muted mb-0">ჩვენ გავამარტივებთ თქვენ საქმიანობას, შეგიქმნით კომფორტს თქვენი ბიზნესის წარმატებაში!</p>
                             </div>
                         </div><!--end col-->
-                        @foreach ($products1 as $key => $product1)
-                            <div class="col-md-6 col-12 mt-4 pt-2 {{$key === 0 ? 'pt-sm-0 mt-sm-0' : ''}} picture-item">
+                        <?php $__currentLoopData = $products1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-md-6 col-12 mt-4 pt-2 <?php echo e($key === 0 ? 'pt-sm-0 mt-sm-0' : ''); ?> picture-item">
                                 <div class="card portfolio portfolio-modern portfolio-primary rounded overflow-hidden shadow rounded text-center style="min-height: 200px;">
-                                <a href="{{fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)}}" style="min-height: 200px;">
-                                    <img src="{{$product1->lang->imgurl}}" class="img-fluid" alt="" height="280" style="max-height: 280px;">
+                                <a href="<?php echo e(fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)); ?>" style="min-height: 200px;">
+                                    <img src="<?php echo e($product1->lang->imgurl); ?>" class="img-fluid" alt="" height="280" style="max-height: 280px;">
                                 </a>
                                 <div class="content text-center p-3">
-                                    <a href="{{fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)}}" class="text-white h6 mb-0 d-block title">{{$product1->lang->name}}</a>
+                                    <a href="<?php echo e(fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)); ?>" class="text-white h6 mb-0 d-block title"><?php echo e($product1->lang->name); ?></a>
                                 </div>
                             </div>
                     </div><!--end col-->
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-6 col-12 mt-4 pt-2 picture-item">
                         <div class="section-title text-center text-md-start">
                             <h4 class="mb-3">Check out more creative designs</h4>
@@ -108,13 +90,13 @@
                 <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
                     <div class="app-feature-shape position-relative">
                         <div class="tiny-single-item">
-                            @if(isset($products2->catalog))
-                                @foreach ($products2->catalog as $key => $product2)
+                            <?php if(isset($products2->catalog)): ?>
+                                <?php $__currentLoopData = $products2->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="tiny-slide" style="vertical-align: middle !important;">
-                                        <img src="{{$product2->lang->imgurl}}" class="img-fluid" alt="">
+                                        <img src="<?php echo e($product2->lang->imgurl); ?>" class="img-fluid" alt="">
                                     </div>
-                                @endforeach
-                            @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div><!--end col-->
@@ -133,7 +115,7 @@
                             </ul>
 
                             <div class="mt-4">
-                                <a href="{{fullUrl('list/fulis-damushaveba/qaghaldis-fulis-mtvleli-damkhariskhebeli')}}" class="btn btn-soft-primary">იხილეთ მეტი <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                <a href="<?php echo e(fullUrl('list/fulis-damushaveba/qaghaldis-fulis-mtvleli-damkhariskhebeli')); ?>" class="btn btn-soft-primary">იხილეთ მეტი <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                             </div>
                         </div>
                     </div>
@@ -147,28 +129,30 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
                     <div class="section-title" id="tech">
-                        <h4>{{$whys->lang->name}}</h4>
+                        <h4><?php echo e($whys->lang->name); ?></h4>
                     </div>
 
                     <div class="accordion mt-4 pt-2" id="buyingquestion">
-                        @foreach ($whys->catalog as $key=>$why )
+                        <?php $__currentLoopData = $whys->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$why): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
-                            <div class="accordion-item rounded border-0 shadow {{$key !== 0 ? 'mt-3' : ''}}">
-                                <h2 class="accordion-header" id="headingOne{{$key}}">
-                                    <button class="accordion-button border-0 bg-white {{$key !== 0 ? 'collapsed' : ''}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$key}}"
-                                            aria-expanded="{{$key === 0 ? 'true' : 'false'}}" aria-controls="collapse{{$key}}">
-                                        {{$why->lang->name}}
+                            <div class="accordion-item rounded border-0 shadow <?php echo e($key !== 0 ? 'mt-3' : ''); ?>">
+                                <h2 class="accordion-header" id="headingOne<?php echo e($key); ?>">
+                                    <button class="accordion-button border-0 bg-white <?php echo e($key !== 0 ? 'collapsed' : ''); ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo e($key); ?>"
+                                            aria-expanded="<?php echo e($key === 0 ? 'true' : 'false'); ?>" aria-controls="collapse<?php echo e($key); ?>">
+                                        <?php echo e($why->lang->name); ?>
+
                                     </button>
                                 </h2>
-                                <div id="collapse{{$key}}" class="accordion-collapse border-0 collapse {{$key === 0 ? 'show' : ''}}" aria-labelledby="headingOne{{$key}}">
-                                    {{-- data-bs-parent="#buyingquestion"> --}}
+                                <div id="collapse<?php echo e($key); ?>" class="accordion-collapse border-0 collapse <?php echo e($key === 0 ? 'show' : ''); ?>" aria-labelledby="headingOne<?php echo e($key); ?>">
+                                    
                                     <div class="accordion-body text-muted bg-white">
-                                        {{$why->lang->description}}
+                                        <?php echo e($why->lang->description); ?>
+
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div><!--end teb pane-->
             </div>
@@ -179,7 +163,7 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="section-title text-center mb-4 pb-2">
-                        <h4 class="title fw-semibold mb-4">{{$clients->lang->name}}</h4>
+                        <h4 class="title fw-semibold mb-4"><?php echo e($clients->lang->name); ?></h4>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
@@ -189,25 +173,23 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tiny-five-item">
-                        @foreach ($clients->catalog as $client)
+                        <?php $__currentLoopData = $clients->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <div class="tiny-slide">
                                 <div class="card portfolio portfolio-classic portfolio-primary m-2 rounded overflow-hidden">
                                     <div class="card-img position-relative text-center">
-                                        <img src="{{$client->lang->imgurl}}" class="img-fluid" alt="">
+                                        <img src="<?php echo e($client->lang->imgurl); ?>" class="img-fluid" alt="">
                                         <div class="card-overlay"></div>
 
                                         <div class="pop-icon">
-                                            <a href="{{$client->lang->imgurl}}" class="btn btn-pills btn-icon lightbox"><i class="uil uil-camera"></i></a>
+                                            <a href="<?php echo e($client->lang->imgurl); ?>" class="btn btn-pills btn-icon lightbox"><i class="uil uil-camera"></i></a>
                                         </div>
                                     </div>
-                                    {{-- <div class="content pt-3">
-                                        <span class="text-dark h6 mb-0 d-block title">{{$client->lang->name}}</span>
-                                    </div> --}}
+                                    
                                 </div>
                             </div><!--end col-->
 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </div>
                 </div><!--end col-->
@@ -215,9 +197,11 @@
         </div><!--end container-->
     </section><!--end section-->
     <!-- End -->
-    @push('js')
+    <?php $__env->startPush('js'); ?>
         <script src="/assets/js/swiper.min.js"></script>
-    @endpush
+    <?php $__env->stopPush(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('../nn_site/index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\projects\fabra.ge\resources\views/nn_site/pages/home.blade.php ENDPATH**/ ?>

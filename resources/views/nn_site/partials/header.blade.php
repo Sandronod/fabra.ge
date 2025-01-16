@@ -29,11 +29,11 @@
                         </ul><!--end icon-->
                         @if (getCurrentLocale() == 'ka')
                             <a href="{{LaravelLocalization::getLocalizedURL('en')}}" class="lang">
-                                <img src="/assets/images/lang-en.svg" alt="" class="lang-img"> En 
+                                <img src="/assets/images/lang-en.svg" alt="" class="lang-img"> En
                             </a>
                         @elseif (getCurrentLocale() == 'en')
                             <a href="{{LaravelLocalization::getLocalizedURL('ka')}}" class="lang">
-                                <img src="/assets/images/lang-ka.svg" alt="" class="lang-img"> Ge 
+                                <img src="/assets/images/lang-ka.svg" alt="" class="lang-img"> Ge
                             </a>
                         @endif
                     </div>
@@ -107,26 +107,24 @@
                             @endif
                                 <span class="menu-arrow"></span>
                             @if(isset($item->subMenu[0]))
-                                <ul class="submenu megamenu">
+                                <ul class="submenu">
                                     @foreach($item->subMenu as $menuItem)
-                                        <li>
-                                            <ul>
-                                                <li class="megamenu-head">{{$menuItem->lang->name}}</li>
-                                                @if(isset($menuItem->subMenu[0]))
-                                                    @foreach($menuItem->subMenu as $subItem)
-                                                        <li><a href="{{fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)}}" class="sub-menu-item" 
 
-                                                            @if(mb_strlen($subItem->lang->name) > 24) 
-                                                                data-bs-toggle="tooltip" 
-                                                                data-bs-placement="top" 
-                                                                data-bs-title="{{ $subItem->lang->name }}"
-                                                            @endif
-                                                            
-                                                            >{{$subItem->lang->name}}</a></li>
-                                                    @endforeach
+                                                @if(isset($menuItem->subMenu[0]))
+                                                    <li class="has-submenu parent-menu-item"><a href="javascript:void(0)">{{$menuItem->lang->name}}</a><span class="submenu-arrow"></span>
+                                                        <ul class="submenu">
+                                                            @foreach($menuItem->subMenu as $subItem)
+                                                                <li><a href="{{fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)}}" class="sub-menu-item"
+
+                                                                    >{{$subItem->lang->name}}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+
+                                                @else
+                                                    <li><a href="#" class="sub-menu-item">{{$menuItem->lang->name}}</a></li>
                                                 @endif
-                                            </ul>
-                                        </li>
+                                       
                                     @endforeach
                                 </ul>
                             @endif
