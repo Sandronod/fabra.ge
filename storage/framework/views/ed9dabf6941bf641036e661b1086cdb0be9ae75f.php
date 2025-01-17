@@ -27,19 +27,68 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-6">
-                <img src="<?php echo e($detail->lang->imgurl); ?>" style="max-height:500px; max-width:500px;"  class="img-fluid rounded shadow" alt="">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tiny-single-item1 product-details">
+                                <div class="tiny-slide">
+                                    <img src="<?php echo e($detail->lang->imgurl); ?>" class="img-fluid " alt="">
+                                </div>
+
+                                <?php if($detail->lang->embed): ?>
+                                    <div class="tiny-slide">
+                                        <?php echo $detail->lang->embed; ?>
+
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+
             </div><!--end col-->
 
             <div class="col-lg-7 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
                 <div class="section-title ms-lg-5">
                     <h4 class="title mb-3"><?php echo e($detail->lang->name); ?></h4>
-                    <p class="text-muted"> <?php echo $detail->lang->body; ?></p>
+                    <p class="text-muted">
+
+                        <?php echo $detail->lang->body; ?>
+
+                        <?php if($detail->files->count() > 0): ?>
+                            <?php $__currentLoopData = $detail->files; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $file): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <a href="<?php echo e($file->lang->fileurl); ?>" target="_blank" class="btn btn-primary mt-2" ><?php echo e($file->lang->name); ?></a>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
+                    </p>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
     </div>
 </section>
+    <?php if($detail->lang->embed != ''): ?>
 
+
+            <div class="container pt-2">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h4 class="title mb-3"></h4>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-6 mb-4 pb-2">
+                        <?php echo $detail->lang->embed; ?>
+
+                    </div>
+
+                </div><!--end row-->
+            </div><!--end container-->
+
+    <?php endif; ?>
 <?php if($detail->images->count() > 0): ?>
     <section class="section pt-4">
         <div class="container">
@@ -80,9 +129,12 @@
 
             </div><!--end row-->
         </div><!--end container-->
+        </div>
+    </section>
 
 <?php endif; ?>
     <?php if(isset($relatedItems) && count($relatedItems) > 0): ?>
+        <section class="section pt-4">
         <div class="container mt-5 mb-5">
             <div class="row">
                 <div class="col-12">
@@ -124,6 +176,27 @@
         </div><!--end container-->
     </section><!--end section-->
     <?php endif; ?>
+    <?php $__env->startPush('js'); ?>
+        <script type="module">
+            var slider = tns({
+                container: '.tiny-single-item1',
+                items: 1,
+                controls: true,
+                mouseDrag: true,
+                loop: true,
+                rewind: true,
+                autoplay: true,
+                autoplayButtonOutput: false,
+                autoplayTimeout: 3000,
+                navPosition: "bottom",
+                controlsText: ['<i class="mdi mdi-chevron-left "></i>', '<i class="mdi mdi-chevron-right"></i>'],
+                nav: true,
+                speed: 400,
+                gutter: 0,
+            });
+
+        </script>
+    <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('../nn_site/index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\fabra.ge\resources\views/nn_site/pages/detail.blade.php ENDPATH**/ ?>

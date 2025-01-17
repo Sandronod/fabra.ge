@@ -1,1 +1,0 @@
-<?php /**PATH /Users/nkarashvili/Documents/laravel/newproj/resources/views/nn_site/partials/header.blade.php ENDPATH**/ ?>

@@ -25,6 +25,9 @@
         text-overflow: ellipsis;
         overflow: hidden;
     }
+    #topnav .parent-parent-menu-item .has-submenu > a {
+        padding-right: 45px !important;
+    }
 }
 
 #topnav .navigation-menu>li .submenu li a {
@@ -89,4 +92,20 @@
     border-radius: 50%;
     margin-top: 2px;
     margin-right: 10px;
+}
+
+.companies-tabs__title {
+    font-size: 24px;
+    height: 30px;
+}
+.companies-tabs__button {
+    color: #465863;
+}
+.companies-tabs__button:not(.companies-tabs__button--active) {
+    opacity: .2;
+    font-size: 18px; 
+}
+
+.product-details .tiny-slide iframe {
+    width: 100% !important;
 }

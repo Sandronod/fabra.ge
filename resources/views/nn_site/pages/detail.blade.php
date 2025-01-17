@@ -30,18 +30,16 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <div class="tiny-single-item1" >
+                            <div class="tiny-single-item1 product-details">
                                 <div class="tiny-slide">
                                     <img src="{{$detail->lang->imgurl}}" class="img-fluid " alt="">
                                 </div>
 
-                                <div class="tiny-slide">
-                                    <img src="{{$detail->lang->imgurl}}" class="img-fluid " alt="">
-                                </div>
-
-                                <div class="tiny-slide">
-                                    {!! $detail->lang->embed !!}
-                                </div>
+                                @if ($detail->lang->embed)
+                                    <div class="tiny-slide">
+                                        {!! $detail->lang->embed !!}
+                                    </div>
+                                @endif
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->

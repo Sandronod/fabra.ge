@@ -25,6 +25,19 @@
     <section class="section">
         <div class="container">
             <div class="row">
+                <?php if($category->collection_id == 13 || $category->collection_id == 14): ?>
+                    <div class="companies-tabs d-inline-flex align-items-end mb-5">
+                        <h2 class="companies-tabs__title">
+                            <a href="<?php echo e(fullUrl('momtsodeblebi')); ?>" class="companies-tabs__button text-uppercase<?php echo e($category->collection_id == 13 ? ' companies-tabs__button--active' : ''); ?>">მომწოდებლები</a>
+                        </h2>
+                        <span>
+                            &nbsp;&nbsp;⏺︎&nbsp;&nbsp;
+                        </span>
+                        <h2 class="companies-tabs__title">
+                            <a href="<?php echo e(fullUrl('klientebi')); ?>" class="companies-tabs__button text-uppercase<?php echo e($category->collection_id == 14 ? ' companies-tabs__button--active' : ''); ?>">კლიენტები</a>
+                        </h2>
+                    </div>
+                <?php endif; ?>
                 <?php if($category): ?>
 
                     <?php $__currentLoopData = $collectionList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

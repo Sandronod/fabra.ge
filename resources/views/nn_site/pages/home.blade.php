@@ -108,13 +108,11 @@
                 <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
                     <div class="app-feature-shape position-relative">
                         <div class="tiny-single-item">
-                            @if(isset($products2->catalog))
-                                @foreach ($products2->catalog as $key => $product2)
-                                    <div class="tiny-slide" style="vertical-align: middle !important;">
-                                        <img src="{{$product2->lang->imgurl}}" class="img-fluid" alt="">
-                                    </div>
-                                @endforeach
-                            @endif
+                            @foreach ($products2->catalog as $key => $product2)
+                                <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
+                                    <img src="{{$product2->lang->imgurl}}" class="img-fluid" alt="">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div><!--end col-->

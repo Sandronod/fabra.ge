@@ -122,7 +122,7 @@
                                                     </li>
 
                                                 @else
-                                                    <li><a href="#" class="sub-menu-item">{{$menuItem->lang->name}}</a></li>
+                                                    <li><a href="{{fullUrl($menuItem->slug)}}" class="sub-menu-item">{{$menuItem->lang->name}}</a></li>
                                                 @endif
                                        
                                     @endforeach

@@ -20,15 +20,15 @@
 
 <title>
     fabra.ge
-{{--    @if (isset ($isTextPage) || isset ($isContactPage))--}}
-{{--        {{$item->name}} - Myvaluta.ge--}}
-{{--    @else--}}
-{{--        @if (getCurrentLocale() == 'ka')--}}
-{{--            {{isset ($isBankCurrencies) ? $siteSettings->bank_currencies_title_ka : $siteSettings->title_ka}}--}}
-{{--        @elseif (getCurrentLocale() == 'en')--}}
-{{--            {{isset ($isBankCurrencies) ? $siteSettings->bank_currencies_title_en : $siteSettings->title_en}}--}}
-{{--        @endif--}}
-{{--    @endif--}}
+   {{-- @if (isset ($isTextPage) || isset ($isContactPage))--}}
+       {{-- {{$item->lang->name}} - fabra.ge --}}
+   {{-- @else --}}
+       {{-- @if (getCurrentLocale() == 'ka') --}}
+           {{-- {{isset ($isBankCurrencies) ? $siteSettings->bank_currencies_title_ka : $siteSettings->title_ka}} --}}
+       {{-- @elseif (getCurrentLocale() == 'en') --}}
+           {{-- {{isset ($isBankCurrencies) ? $siteSettings->bank_currencies_title_en : $siteSettings->title_en}} --}}
+        {{-- @endif --}}
+    {{-- @endif --}}
 </title>
 
 <!-- favicon -->

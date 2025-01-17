@@ -35,7 +35,7 @@ class SiteHomePage extends SiteController
       $data["clients"] = nn_collection::find(14);
       $data["products1"] = nn_menu_item::orderBy('position', 'asc')->where('category_id', '>', 0)->orderByRaw('RAND()')->get()->take(4);
 
-      $data["products2"] = nn_collection::find(8);
+      $data["products2"] = nn_collection::find(18);
 
       return view('nn_site.pages.home',$data);
     }

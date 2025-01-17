@@ -31,11 +31,11 @@
                         </ul><!--end icon-->
                         <?php if(getCurrentLocale() == 'ka'): ?>
                             <a href="<?php echo e(LaravelLocalization::getLocalizedURL('en')); ?>" class="lang">
-                                <img src="/assets/images/lang-en.svg" alt="" class="lang-img"> En 
+                                <img src="/assets/images/lang-en.svg" alt="" class="lang-img"> En
                             </a>
                         <?php elseif(getCurrentLocale() == 'en'): ?>
                             <a href="<?php echo e(LaravelLocalization::getLocalizedURL('ka')); ?>" class="lang">
-                                <img src="/assets/images/lang-ka.svg" alt="" class="lang-img"> Ge 
+                                <img src="/assets/images/lang-ka.svg" alt="" class="lang-img"> Ge
                             </a>
                         <?php endif; ?>
                     </div>
@@ -96,26 +96,24 @@
                             <?php endif; ?>
                                 <span class="menu-arrow"></span>
                             <?php if(isset($item->subMenu[0])): ?>
-                                <ul class="submenu megamenu">
+                                <ul class="submenu">
                                     <?php $__currentLoopData = $item->subMenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li>
-                                            <ul>
-                                                <li class="megamenu-head"><?php echo e($menuItem->lang->name); ?></li>
-                                                <?php if(isset($menuItem->subMenu[0])): ?>
-                                                    <?php $__currentLoopData = $menuItem->subMenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <li><a href="<?php echo e(fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)); ?>" class="sub-menu-item" 
 
-                                                            <?php if(mb_strlen($subItem->lang->name) > 24): ?> 
-                                                                data-bs-toggle="tooltip" 
-                                                                data-bs-placement="top" 
-                                                                data-bs-title="<?php echo e($subItem->lang->name); ?>"
-                                                            <?php endif; ?>
-                                                            
-                                                            ><?php echo e($subItem->lang->name); ?></a></li>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if(isset($menuItem->subMenu[0])): ?>
+                                                    <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"><?php echo e($menuItem->lang->name); ?></a><span class="submenu-arrow"></span>
+                                                        <ul class="submenu">
+                                                            <?php $__currentLoopData = $menuItem->subMenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <li><a href="<?php echo e(fullUrl('list/'.$subItem->parentItem->slug.'/'.$subItem->slug)); ?>" class="sub-menu-item"
+
+                                                                    ><?php echo e($subItem->lang->name); ?></a></li>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                    </li>
+
+                                                <?php else: ?>
+                                                    <li><a href="<?php echo e(fullUrl($menuItem->slug)); ?>" class="sub-menu-item"><?php echo e($menuItem->lang->name); ?></a></li>
                                                 <?php endif; ?>
-                                            </ul>
-                                        </li>
+                                       
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             <?php endif; ?>
