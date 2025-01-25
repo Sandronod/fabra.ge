@@ -53,9 +53,9 @@
                     <div id="grid" class="row">
                         <div class="col-md-6 col-12 picture-item">
                             <div class="section-title text-center text-md-start mt-md-5 mb-4 pb-2">
-                                <h6 class="text-primary">რას გთავაზობთ</h6>
-                                <h4 class="title mb-3">ჩვენთან ხარისხი პრიორიტეტია</h4>
-                                <p class="para-desc mx-auto text-muted mb-0">ჩვენ გავამარტივებთ თქვენ საქმიანობას, შეგიქმნით კომფორტს თქვენი ბიზნესის წარმატებაში!</p>
+                                <h6 class="text-primary"><?php echo e($lang->whatWeOffer); ?></h6>
+                                <h4 class="title mb-3"><?php echo e($lang->forUsQuality); ?></h4>
+                                <p class="para-desc mx-auto text-muted mb-0"><?php echo e($lang->whatWeOfferDescr); ?></p>
                             </div>
                         </div><!--end col-->
                         <?php $__currentLoopData = $products1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -72,9 +72,9 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-6 col-12 mt-4 pt-2 picture-item">
                         <div class="section-title text-center text-md-start">
-                            <h4 class="mb-3">Check out more creative designs</h4>
-                            <p class="para-desc mx-auto text-muted mb-4">Our design projects are fresh and simple and will benefit your business greatly. Learn more about our work!</p>
-                            <a href="javascript:void(0)" class="btn btn-primary">Explore More <i class="uil uil-arrow-right align-middle"></i></a>
+                            <h4 class="mb-3"><?php echo e($lang->exploreMoreTitle); ?></h4>
+                            <p class="para-desc mx-auto text-muted mb-4"><?php echo e($lang->exploreMoreDescr); ?></p>
+                            <a href="<?php echo e(fullUrl('list/industriuli-printerebi/gaoyenebis-sfero-1')); ?>" class="btn btn-primary"><?php echo e($lang->exploreMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -102,18 +102,18 @@
                 <div class="col-lg-7 col-md-6 order-md-2 order-1">
                     <div class="ms-lg-5">
                         <div class="section-title section-title-analitics">
-                            <h6 class="text-primary">გთავაზობთ</h6>
-                            <h4 class="title mb-4">დაითვალე ფული <br> მარტივად</h4>
-                            <p class="text-muted para-desc mb-0">მომსახურება რომელიც ყველაზე მნიშვნელოვანს, დროს დაგაზოგინებს.</p>
+                            <h6 class="text-primary"><?php echo e($lang->offer); ?></h6>
+                            <h4 class="title mb-4"><?php echo e($lang->offerTitle1); ?> <br> <?php echo e($lang->offerTitle2); ?></h4>
+                            <p class="text-muted para-desc mb-0"><?php echo e($lang->offerDescr); ?></p>
 
                             <ul class="list-unstyled text-muted mt-3">
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>სისწრაფე</li>
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>სიზუსტე</li>
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>ეფექტურობა</li>
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span><?php echo e($lang->exploreListItem1); ?></li>
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span><?php echo e($lang->exploreListItem2); ?></li>
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span><?php echo e($lang->exploreListItem3); ?></li>
                             </ul>
 
                             <div class="mt-4">
-                                <a href="<?php echo e(fullUrl('list/fulis-damushaveba/qaghaldis-fulis-mtvleli-damkhariskhebeli')); ?>" class="btn btn-soft-primary">იხილეთ მეტი <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                <a href="<?php echo e(fullUrl('list/fulis-mimoqtsevis-martva/khurda-fulis-mtvleli-damkhariskhebeli-manqanebi')); ?>" class="btn btn-soft-primary"><?php echo e($lang->readMore); ?> <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                             </div>
                         </div>
                     </div>

@@ -5,13 +5,11 @@
     <section class="section bg-light pb-4">
         <div class="container">
             <div class="row mt-5 align-items-center">
-
-
                 <div class="col-lg-12 col-md-12 mt-12 mt-sm-0">
                     <div class="text-md-end text-center">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="/">მთავარი</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo e(fullUrl('')); ?>"><?php echo e($lang->main); ?></a></li>
                                 <li class="breadcrumb-item"><a href="<?php echo e(fullUrl('list/'.$menuItem->parentItem->slug.'/'.$menuItem->slug)); ?> "><?php echo e($menuItem->lang->name); ?></a></li>
                                 <li class="breadcrumb-item"><a href="javascript:void(0)"><?php echo e($detail->lang->name); ?></a></li>
                             </ul>
@@ -31,9 +29,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="tiny-single-item1 product-details">
-                                <div class="tiny-slide">
-                                    <img src="<?php echo e($detail->lang->imgurl); ?>" class="img-fluid " alt="">
-                                </div>
+                                <?php if($detail->lang->imgurl): ?>
+                                    <div class="tiny-slide">
+                                        <img src="<?php echo e($detail->lang->imgurl); ?>" class="img-fluid" style="object-fit: cover;" alt="">
+                                    </div>
+                                <?php endif; ?>
 
                                 <?php if($detail->lang->embed): ?>
                                     <div class="tiny-slide">
@@ -66,29 +66,7 @@
         </div><!--end row-->
     </div>
 </section>
-    <?php if($detail->lang->embed != ''): ?>
-
-
-            <div class="container pt-2">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="section-title">
-                            <h4 class="title mb-3"></h4>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-
-                <div class="row">
-
-                    <div class="col-lg-12 col-md-6 mb-4 pb-2">
-                        <?php echo $detail->lang->embed; ?>
-
-                    </div>
-
-                </div><!--end row-->
-            </div><!--end container-->
-
-    <?php endif; ?>
+    
 <?php if($detail->images->count() > 0): ?>
     <section class="section pt-4">
         <div class="container">
@@ -104,7 +82,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="section-title">
-                            <h4 class="title mb-5">ფოტოები</h4>
+                            <h4 class="title mb-5"><?php echo e($lang->photos); ?></h4>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -115,8 +93,8 @@
 
                     <div class="col-md-3 col-12 spacing picture-item" data-groups='["branding"]'>
                         <div class="card portfolio portfolio-classic portfolio-primary rounded overflow-hidden">
-                            <div class="card-img position-relative">
-                                <img src="<?php echo e($img->lang->imgurl); ?>" class="img-fluid" alt="" width="100%" style="object-fit:cover; max-height: 120px;">
+                            <div class="card-img position-relative text-center">
+                                <img src="<?php echo e($img->lang->imgurl); ?>" class="img-fluid" alt="" style="object-fit:cover; max-height: 120px;">
                                 <div class="card-overlay"></div>
 
                                 <div class="pop-icon">
@@ -156,18 +134,17 @@
                 <?php $__currentLoopData = $relatedItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-lg-4 col-md-6 mb-4 pb-2">
                         <div class="card blog blog-primary shadow rounded overflow-hidden">
-                            <div class="image position-relative overflow-hidden">
+                            <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="display-block image position-relative overflow-hidden">
                                 <img src="<?php echo e($item->lang->imgurl); ?>" class="img-fluid" alt="">
 
                                 <div class="blog-tag">
-    
                                 </div>
-                            </div>
+                            </a>
 
                             <div class="card-body content">
                                 <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="h5 title text-dark d-block mb-0"><?php echo e($item->lang->name); ?></a>
                                 <p class="text-muted mt-2 mb-2"><?php echo e($item->lang->description); ?></p>
-                                <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
+                                <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="link text-dark"><?php echo e($lang->readMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
                             </div>
                         </div>
                     </div>
@@ -185,7 +162,7 @@
                 mouseDrag: true,
                 loop: true,
                 rewind: true,
-                autoplay: true,
+                autoplay: false,
                 autoplayButtonOutput: false,
                 autoplayTimeout: 3000,
                 navPosition: "bottom",

@@ -109,3 +109,32 @@
 .product-details .tiny-slide iframe {
     width: 100% !important;
 }
+
+@media screen and (min-width: 768px) {
+    .mobile-lang {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .tagline {
+        display: none !important;
+    }
+    .tagline-height {
+        top: 0 !important;
+    }
+    .topnav-container-inner {
+        display: flex;
+        align-items: center;
+    }
+}
+
+#topnav .navbar-toggle span {
+    background-color: #fff !important;
+}
+
+#topnav .navigation-menu>li>a,
+#topnav .navigation-menu>li .submenu li a, 
+.breadcrumb .breadcrumb-item  {
+    text-transform: initial !important;
+}

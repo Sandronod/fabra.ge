@@ -11,7 +11,7 @@
                     <div class="text-md-end text-center">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="/">მთავარი</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo e(fullUrl('')); ?>"><?php echo e($lang->main); ?></a></li>
                                 <li class="breadcrumb-item"><a href="javascript:void(0)"><?php echo e($category->lang->name); ?></a></li>
                             </ul>
                         </nav>
@@ -55,10 +55,10 @@
                                     <i class="uil uil-map-marker d-block rounded h3 mb-0"></i>
                                 </div>
                                 <div class="content mt-3">
-                                    <h5 class="footer-head">მისამართი</h5>
+                                    <h5 class="footer-head"><?php echo e($lang->address); ?></h5>
                                     <p class="text-muted"><?php if(getCurrentLocale() == 'ka'): ?><?php echo e($siteSettings->address_ka); ?><?php elseif(getCurrentLocale() == 'en'): ?><?php echo e($siteSettings->address_en); ?><?php endif; ?></p>
                                     <a href="https://www.google.com/maps/place/40+Zhiuli+Shartava+St,+T'bilisi/@41.7302803,44.7670107,17z/data=!3m1!4b1!4m6!3m5!1s0x404472e79d397513:0xa743c3c5de72322d!8m2!3d41.7302763!4d44.7695856!16s%2Fg%2F11_v2prxq?entry=tts&g_ep=EgoyMDI1MDEwNi4xIPu8ASoASAFQAw%3D%3D"
-                                        target="_blank">რუკაზე ნახვა</a>
+                                        target="_blank"><?php echo e($lang->viewMap); ?></a>
                                 </div>
                             </div>
                         </div><!--end col-->

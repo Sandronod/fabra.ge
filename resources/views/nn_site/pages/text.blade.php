@@ -9,7 +9,7 @@
                     <div class="text-md-end text-center">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="/">მთავარი</a></li>
+                                <li class="breadcrumb-item"><a href="{{fullUrl('')}}">{{$lang->main}}</a></li>
                                 <li class="breadcrumb-item"><a href="javascript:void(0)">{{$category->lang->name}}</a></li>
                             </ul>
                         </nav>
@@ -44,7 +44,7 @@
 
             </div><!--end row-->
         </div>
-        @if(isset($clients) && $clients->count() > 0)
+        {{-- @if(isset($clients) && $clients->count() > 0)
             <div class="container mt-100 mt-60">
                 <h4 class="title mb-2">ჩვენი კლიენტები</h4>
                 <div class="row">
@@ -62,9 +62,7 @@
                                                         <a href="{{$client->lang->imgurl}}" class="btn btn-pills btn-icon lightbox"><i class="uil uil-camera"></i></a>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="content pt-3">
-                                                    <span class="text-dark h6 mb-0 d-block title">{{$client->lang->name}}</span>
-                                                </div> --}}
+                                      
                                             </div>
                                         </div><!--end col-->
                                         @endforeach
@@ -75,7 +73,7 @@
                     </div><!--end col-->
                 </div><!--end row-->
             </div>
-        @endif
+        @endif --}}
     </section>
 
 

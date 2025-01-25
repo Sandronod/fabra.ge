@@ -12,7 +12,7 @@
                     <div class="text-md-end text-center">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="/">მთავარი</a></li>
+                                <li class="breadcrumb-item"><a href="{{fullUrl('')}}">{{$lang->main}}</a></li>
                                 <li class="breadcrumb-item"><a href="#">{{$category->lang->name}}</a></li>
                             </ul>
                         </nav>
@@ -31,18 +31,18 @@
 
                 <div class="col-lg-4 col-md-6 mb-4 pb-2">
                     <div class="card blog blog-primary shadow rounded overflow-hidden h-100">
-                        <div class="image position-relative overflow-hidden">
-                            <img src="{{$item->lang->imgurl}}" class="img-fluid" style="height: 305px;" alt="">
+                        <a href="{{fullUrl('detail/'.$item->slug)}}" class="display-block image position-relative overflow-hidden">
+                            <img src="{{$item->lang->imgurl}}" class="img-fluid" style="height: 305px;" alt="" style="object-fit: cover;">
 
                             <div class="blog-tag">
                                 <a href="javascript:void(0)" class="badge text-bg-light">{{ $category->lang->name }}</a>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="card-body content">
                             <a href="{{fullUrl('detail/'.$item->slug)}}" class="h5 title text-dark d-block mb-0">{{$item->lang->name}}</a>
                             <p class="text-muted mt-2 mb-2">{{$item->lang->description}}</p>
-                            <a href="{{fullUrl('detail/'.$item->slug)}}" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
+                            <a href="{{fullUrl('detail/'.$item->slug)}}" class="link text-dark">{{$lang->readMore}} <i class="uil uil-arrow-right align-middle"></i></a>
                         </div>
                     </div>
                 </div><!--end col-->

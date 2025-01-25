@@ -12,7 +12,7 @@
                     <div class="text-md-end text-center">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="/">მთავარი</a></li>
+                                <li class="breadcrumb-item"><a href="{{fullUrl('')}}">{{$lang->main}}</a></li>
                                 <li class="breadcrumb-item"><a href="#">{{$category->lang->name}}</a></li>
                             </ul>
                         </nav>
@@ -28,13 +28,13 @@
                 @if ($category->collection_id == 13 || $category->collection_id == 14)
                     <div class="companies-tabs d-inline-flex align-items-end mb-5">
                         <h2 class="companies-tabs__title">
-                            <a href="{{fullUrl('momtsodeblebi')}}" class="companies-tabs__button text-uppercase{{$category->collection_id == 13 ? ' companies-tabs__button--active' : ''}}">მომწოდებლები</a>
+                            <a href="{{fullUrl('momtsodeblebi')}}" class="companies-tabs__button text-uppercase{{$category->collection_id == 13 ? ' companies-tabs__button--active' : ''}}">{{$lang->providers}}</a>
                         </h2>
                         <span>
                             &nbsp;&nbsp;⏺︎&nbsp;&nbsp;
                         </span>
                         <h2 class="companies-tabs__title">
-                            <a href="{{fullUrl('klientebi')}}" class="companies-tabs__button text-uppercase{{$category->collection_id == 14 ? ' companies-tabs__button--active' : ''}}">კლიენტები</a>
+                            <a href="{{fullUrl('klientebi')}}" class="companies-tabs__button text-uppercase{{$category->collection_id == 14 ? ' companies-tabs__button--active' : ''}}">{{$lang->clients}}</a>
                         </h2>
                     </div>
                 @endif

@@ -12,7 +12,7 @@
                     <div class="text-md-end text-center">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="/">მთავარი</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo e(fullUrl('')); ?>"><?php echo e($lang->main); ?></a></li>
                                 <li class="breadcrumb-item"><a href="#"><?php echo e($category->lang->name); ?></a></li>
                             </ul>
                         </nav>
@@ -28,13 +28,13 @@
                 <?php if($category->collection_id == 13 || $category->collection_id == 14): ?>
                     <div class="companies-tabs d-inline-flex align-items-end mb-5">
                         <h2 class="companies-tabs__title">
-                            <a href="<?php echo e(fullUrl('momtsodeblebi')); ?>" class="companies-tabs__button text-uppercase<?php echo e($category->collection_id == 13 ? ' companies-tabs__button--active' : ''); ?>">მომწოდებლები</a>
+                            <a href="<?php echo e(fullUrl('momtsodeblebi')); ?>" class="companies-tabs__button text-uppercase<?php echo e($category->collection_id == 13 ? ' companies-tabs__button--active' : ''); ?>"><?php echo e($lang->providers); ?></a>
                         </h2>
                         <span>
                             &nbsp;&nbsp;⏺︎&nbsp;&nbsp;
                         </span>
                         <h2 class="companies-tabs__title">
-                            <a href="<?php echo e(fullUrl('klientebi')); ?>" class="companies-tabs__button text-uppercase<?php echo e($category->collection_id == 14 ? ' companies-tabs__button--active' : ''); ?>">კლიენტები</a>
+                            <a href="<?php echo e(fullUrl('klientebi')); ?>" class="companies-tabs__button text-uppercase<?php echo e($category->collection_id == 14 ? ' companies-tabs__button--active' : ''); ?>"><?php echo e($lang->clients); ?></a>
                         </h2>
                     </div>
                 <?php endif; ?>

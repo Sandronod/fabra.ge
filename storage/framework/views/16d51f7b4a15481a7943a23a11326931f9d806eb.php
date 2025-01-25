@@ -12,7 +12,7 @@
                     <div class="text-md-end text-center">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="/">მთავარი</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo e(fullUrl('')); ?>"><?php echo e($lang->main); ?></a></li>
                                 <li class="breadcrumb-item"><a href="#"><?php echo e($category->lang->name); ?></a></li>
                             </ul>
                         </nav>
@@ -31,18 +31,18 @@
 
                 <div class="col-lg-4 col-md-6 mb-4 pb-2">
                     <div class="card blog blog-primary shadow rounded overflow-hidden h-100">
-                        <div class="image position-relative overflow-hidden">
-                            <img src="<?php echo e($item->lang->imgurl); ?>" class="img-fluid" style="height: 305px;" alt="">
+                        <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="display-block image position-relative overflow-hidden">
+                            <img src="<?php echo e($item->lang->imgurl); ?>" class="img-fluid" style="height: 305px;" alt="" style="object-fit: cover;">
 
                             <div class="blog-tag">
                                 <a href="javascript:void(0)" class="badge text-bg-light"><?php echo e($category->lang->name); ?></a>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="card-body content">
                             <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="h5 title text-dark d-block mb-0"><?php echo e($item->lang->name); ?></a>
                             <p class="text-muted mt-2 mb-2"><?php echo e($item->lang->description); ?></p>
-                            <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
+                            <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="link text-dark"><?php echo e($lang->readMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
                         </div>
                     </div>
                 </div><!--end col-->
