@@ -32,6 +32,7 @@ class SiteHomePage extends SiteController
     {
       $data["slider"] = nn_slider::orderBy('position', 'asc')->get();
       $data["whys"] = nn_collection::find(15);
+      $data["bullets"] = nn_collection::find(23);
       $data["clients"] = nn_collection::find(14);
       $data["products1"] = nn_menu_item::orderBy('position', 'asc')->where('category_id', '>', 0)->orderByRaw('RAND()')->get()->take(4);
 
