@@ -1,8 +1,10 @@
 #topnav {
-    background-color:#1e273e !important;
+    /* background-color:#1e273e !important; */
+    background-color:#8c18bd !important;
 }
 #topnav.nav-sticky {
-    background-color:#3274f0 !important;
+    /* background-color:#3274f0 !important; */
+    background-color:#8c18bd !important;
 }
 @media (min-width: 992px) {
     #topnav .navigation-menu>li>a {
@@ -138,3 +140,43 @@
 .breadcrumb .breadcrumb-item  {
     text-transform: initial !important;
 }
+
+/* override */
+.btn-primary {
+    background-color: #8c18bd !important;
+    border-color: #8c18bd !important;
+}
+.btn-primary:hover {
+    background-color: #5f0a83 !important;
+    border-color: #5f0a83 !important;
+}
+
+.features.feature-primary .fea-icon {
+    background-color: #8c18bd !important;
+}
+.features.feature-primary.feature-bg:hover {
+    background-color: #8c18bd !important;
+}
+.features.feature-primary.feature-bg:hover .fea-icon {
+    color: #8c18bd !important;
+}
+
+.back-to-top {
+    background-color: #8c18bd !important;
+}
+.back-to-top:hover {
+    background-color: #5f0a83 !important;
+}
+
+/* @media (min-width: 992px) { */
+    #topnav .navigation-menu>li .submenu li a:hover,
+    #topnav .has-submenu.active .submenu li.active>a {
+        color: #8c18bd !important;
+    }
+    #topnav .navigation-menu>li:hover>a, #topnav .navigation-menu>li.active>a {
+        color: #dd8eff !important;
+    }
+    #topnav .has-submenu .submenu .has-submenu:hover .submenu-arrow {
+        border-color: #8c18bd !important;
+    }
+/* } */

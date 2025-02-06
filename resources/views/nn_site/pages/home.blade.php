@@ -78,11 +78,10 @@
             <div class="row">
                 @foreach($bullets->catalog as $bullet)
                     <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                        <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="features feature-primary feature-bg border-0 p-4 rounded shadow h-100">
                             <div class="fea-icon rounded text-white title-dark">
                                 <i class="uil uil-eye"></i>
                             </div>
-
                             <div class="content mt-3">
                                 <a href="{{$bullet->lang->embed}}" class="title h5 text-dark">{{$bullet->lang->name}}</a>
                                 <p class="text-muted para mt-2 mb-0">{{$bullet->lang->description}}</p>

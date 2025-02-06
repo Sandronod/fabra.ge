@@ -40,7 +40,7 @@ class nn_collection extends Model
     }
 
     public function catalog(){
-        return $this->hasMany('App\Models\nn_catalog', 'collection_id',  'id');
+        return $this->hasMany('App\Models\nn_catalog', 'collection_id',  'id')->orderBy('position', 'asc')->where('show', 1);
     }
 
 

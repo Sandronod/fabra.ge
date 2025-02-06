@@ -32,7 +32,7 @@
                 <div class="col-lg-4 col-md-6 mb-4 pb-2">
                     <div class="card blog blog-primary shadow rounded overflow-hidden h-100">
                         <a href="{{fullUrl('detail/'.$item->slug)}}" class="display-block image position-relative overflow-hidden">
-                            <img src="{{$item->lang->imgurl}}" class="img-fluid" style="height: 305px;" alt="" style="object-fit: cover;">
+                            <img src="{{$item->lang->imgurl}}" class="img-fluid" style="height: 305px; object-fit: contain;" alt="">
 
                             <div class="blog-tag">
                                 <a href="javascript:void(0)" class="badge text-bg-light">{{ $category->lang->name }}</a>

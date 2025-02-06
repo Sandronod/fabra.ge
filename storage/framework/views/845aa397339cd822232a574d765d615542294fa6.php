@@ -9,6 +9,7 @@
     <?php $__env->stopPush(); ?>
 
     
+    <!-- Start services -->
 
     <!-- Hero Start -->
     <section class="swiper-slider-hero position-relative d-block vh-100">
@@ -45,6 +46,34 @@
             <div class="swiper-button-prev border rounded-circle text-center"></div>
         </div><!--end container-->
     </section><!--end section-->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title fw-semibold mb-3"><?php echo e($bullets->lang->name); ?></h4>
+                        <p class="text-muted para-desc mx-auto mb-0"><?php echo e($bullets->lang->description); ?></p>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row">
+                <?php $__currentLoopData = $bullets->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bullet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                        <div class="features feature-primary feature-bg border-0 p-4 rounded shadow h-100">
+                            <div class="fea-icon rounded text-white title-dark">
+                                <i class="uil uil-eye"></i>
+                            </div>
+                            <div class="content mt-3">
+                                <a href="<?php echo e($bullet->lang->embed); ?>" class="title h5 text-dark"><?php echo e($bullet->lang->name); ?></a>
+                                <p class="text-muted para mt-2 mb-0"><?php echo e($bullet->lang->description); ?></p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div><!--end row-->
+        </div><!--end container-->
+    </section>
     <!-- Hero End -->
     <section class="section pb-2">
         <div class="container">
