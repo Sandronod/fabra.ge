@@ -141,6 +141,13 @@
     text-transform: initial !important;
 }
 
+.pdf-button {
+    color: #3c4858;
+}
+.pdf-button:hover {
+    color: #5f0a83;
+}
+
 /* override */
 .btn-primary {
     background-color: #8c18bd !important;
