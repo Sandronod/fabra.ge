@@ -5,6 +5,7 @@ namespace App\Http\services;
 use App\Models\nn_catalog;
 use App\Models\nn_category;
 use App\Models\nn_menu_item;
+use App\Models\nn_collection;
 
 class PagesService
 {
@@ -24,12 +25,24 @@ class PagesService
             $this->template = 'products';
         }
         if($menuItem->type == 'collection'){
-            $this->getCollection($menuItem->collection->id);
-            $this->template = 'collection';
+            $collection = nn_collection::find($menuItem->collection->id);
+
+            $this->getCollection($menuItem->collection->id, $collection->type);
+            if($collection->type === 'products'){
+                $this->template = 'products';
+            }else{
+                $this->template = 'collection';
+            }
+
+
         }
         if($menuItem->type == 'text'){
             $this->getClients();
             $this->template = 'text';
+            $this->data["siteTitle"] = $menuItem->lang->name;
+            $this->data["metaData"]['title'] = $menuItem->lang->name;
+            $this->data["metaData"]['description'] = $menuItem->lang->description;
+            $this->data["metaData"]['image'] = fullUrl($menuItem->lang->imgurl);
         }
         if($menuItem->type == 'contact'){
             $this->template = 'contact';
@@ -46,15 +59,27 @@ class PagesService
         $this->data['categoryList'] = $categoryList;
     }
 
-    public function getCollection($id)
+    public function getCollection($id, $collectionType)
     {
+
         $collectionList = nn_catalog::where('collection_id', $id)->where('show', 1)->orderByDesc('position')->get();
-        $this->data['collectionList'] = $collectionList;
+        if($collectionType === 'products'){
+            $this->data['categoryList'] = $collectionList;
+
+        }else{
+            $this->data['collectionList'] = $collectionList;
+        }
+
     }
 
     public function getDetail()
     {
         $catalog = nn_catalog::where('slug', $this->slug)->first();
+        $this->template = 'text';
+        $this->data["siteTitle"] = $catalog->lang->name;
+        $this->data["metaData"]['title'] = $catalog->lang->name;
+        $this->data["metaData"]['description'] = $catalog->lang->description;
+        $this->data["metaData"]['image'] = fullUrl($catalog->lang->imgurl);
         $relatedItems = [];
         $menuItem = null;
         $this->template = 'detail';

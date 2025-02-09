@@ -1,7 +1,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 @if (getCurrentLocale() == 'ka')
     @include ('nn_site.partials.head_tags')
 @elseif (getCurrentLocale() == 'en')
@@ -17,18 +16,16 @@
         <meta name="description" content="{{isset ($isBankCurrencies) ? $siteSettings->bank_currencies_description_en : $siteSettings->description_en}}">
     @endif
 @endif
-
 <title>
-    fabra.ge
-   {{-- @if (isset ($isTextPage) || isset ($isContactPage))--}}
-       {{-- {{$item->lang->name}} - fabra.ge --}}
-   {{-- @else --}}
-       {{-- @if (getCurrentLocale() == 'ka') --}}
-           {{-- {{isset ($isBankCurrencies) ? $siteSettings->bank_currencies_title_ka : $siteSettings->title_ka}} --}}
-       {{-- @elseif (getCurrentLocale() == 'en') --}}
-           {{-- {{isset ($isBankCurrencies) ? $siteSettings->bank_currencies_title_en : $siteSettings->title_en}} --}}
-        {{-- @endif --}}
-    {{-- @endif --}}
+    @if (isset($siteTitle))
+        {{$siteTitle}}
+    @else
+        @if (getCurrentLocale() == 'ka')
+           {{$siteSettings->title_ka}}
+        @elseif (getCurrentLocale() == 'en')
+            {{$siteSettings->title_en}}
+        @endif
+    @endif
 </title>
 
 <!-- favicon -->

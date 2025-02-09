@@ -60,11 +60,10 @@
             <div class="row">
                 <?php $__currentLoopData = $bullets->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bullet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                        <div class="features feature-primary feature-bg border-0 p-4 rounded shadow">
+                        <div class="features feature-primary feature-bg border-0 p-4 rounded shadow h-100">
                             <div class="fea-icon rounded text-white title-dark">
                                 <i class="uil uil-eye"></i>
                             </div>
-
                             <div class="content mt-3">
                                 <a href="<?php echo e($bullet->lang->embed); ?>" class="title h5 text-dark"><?php echo e($bullet->lang->name); ?></a>
                                 <p class="text-muted para mt-2 mb-0"><?php echo e($bullet->lang->description); ?></p>

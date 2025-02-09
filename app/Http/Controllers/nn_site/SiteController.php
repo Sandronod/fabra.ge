@@ -23,6 +23,16 @@ class SiteController extends Controller
         $data['primaryMenu'] = nn_menu::getPrimaryMenu();
         $data['footerMenu'] = nn_menu::getMenuByName('footer');
         $data['siteSettings'] = nn_site_settings::first();
+        if(laravelLocalization::getCurrentLocale() == 'ka'){
+            $data["metaData"]["title"] = $data['siteSettings']->title_ka;
+            $data["metaData"]["description"] = $data['siteSettings']->description_ka;
+        }else{
+            $data["metaData"]["title"] = $data['siteSettings']->title_en;
+            $data["metaData"]["description"] = $data['siteSettings']->description_en;
+        }
+        $data["metaData"]["image"] = fullUrl($data['siteSettings']->header_logo);
+
+
 
         $data['lang'] = (object) json_decode(file_get_contents(base_path('public/lang/'.getCurrentLocale().'.json')), true);
 
@@ -39,9 +49,9 @@ class SiteController extends Controller
             }
 
             return $next($request);
-            
+
         });
-    
+
         View::share($data);
 
         if ((\Str::contains(substr(url()->current(), 0), ['/ka']))) {

@@ -1,7 +1,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <?php if(getCurrentLocale() == 'ka'): ?>
     <?php echo $__env->make('nn_site.partials.head_tags', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php elseif(getCurrentLocale() == 'en'): ?>
@@ -17,18 +16,19 @@
         <meta name="description" content="<?php echo e(isset ($isBankCurrencies) ? $siteSettings->bank_currencies_description_en : $siteSettings->description_en); ?>">
     <?php endif; ?>
 <?php endif; ?>
-
 <title>
-    fabra.ge
-   
-       
-   
-       
-           
-       
-           
-        
-    
+    <?php if(isset($siteTitle)): ?>
+        <?php echo e($siteTitle); ?>
+
+    <?php else: ?>
+        <?php if(getCurrentLocale() == 'ka'): ?>
+           <?php echo e($siteSettings->title_ka); ?>
+
+        <?php elseif(getCurrentLocale() == 'en'): ?>
+            <?php echo e($siteSettings->title_en); ?>
+
+        <?php endif; ?>
+    <?php endif; ?>
 </title>
 
 <!-- favicon -->
@@ -59,4 +59,5 @@
 <?php if(getCurrentLocale() == 'ka'): ?>
     <link rel="stylesheet" href="//cdn.web-fonts.ge/fonts/bpg-banner/css/bpg-banner.min.css">
     <link href="/assets/css/geo-fonts.css" rel="stylesheet" type="text/css"/>
-<?php endif; ?><?php /**PATH C:\projects\fabra.ge\resources\views/nn_site/partials/head.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php /**PATH C:\projects\fabra.ge\resources\views/nn_site/partials/head.blade.php ENDPATH**/ ?>
