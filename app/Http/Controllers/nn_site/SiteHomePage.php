@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\nn_slider;
 use App\Models\nn_catalog;
+use App\Models\nn_category;
 use App\Models\nn_menu_item;
 use App\Models\nn_collection;
 use HttpRequest;
@@ -34,8 +35,19 @@ class SiteHomePage extends SiteController
       $data["whys"] = nn_collection::find(15);
       $data["bullets"] = nn_collection::find(23);
       $data["clients"] = nn_collection::find(14);
-      $data["products1"] = nn_menu_item::orderBy('position', 'asc')->where('category_id', '>', 0)->orderByRaw('RAND()')->get()->take(4);
-      $data["products2"] = nn_collection::find(18);
+     // $data["products1"] = nn_menu_item::orderBy('position', 'asc')->where('category_id', '>', 0)->orderByRaw('RAND()')->get()->take(4);
+         $catalog = nn_catalog::find(66);
+         if(isset($catalog->category_id)){
+             $category_id = $catalog->category_id;
+         }else{
+                $category = nn_category::orderByRaw('RAND()')->get()->first();
+                $category_id = $category->category_id;
+         }
+        $catalogs = nn_catalog::where('category_id', $category_id)->orderByRaw('RAND()')->get()->take(4);
+         $data["product1_menu"] = nn_menu_item::where('category_id', $category_id)->orderBy('position', 'asc')->first();
+        $data["products1"] = $catalogs;
+
+        $data["products2"] = nn_collection::find(18);
 
       return view('nn_site.pages.home',$data);
     }

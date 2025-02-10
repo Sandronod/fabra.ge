@@ -6,9 +6,10 @@ return [
     [
         'products' => 'products',
         'collections' => 'collections',
-        'homepage' => 'homepage',
+        'homeCategory' => 'homeCategory',
         'FAQ' => 'FAQ',
         'bullets' => 'bullets',
+
 //        'how it works' => 'howitworks',
 //        'gallery' => 'gallery',
 //        'faq '=> 'faq',
@@ -16,9 +17,9 @@ return [
 //        'testimonials' => 'testimonials',
     ],
 
-    'products' => ['name', 'imgurl', 'body', 'description', 'category', 'embed','videoUrl'],
+    'products' => ['name', 'imgurl', 'body', 'description', 'category', 'embed'],
     'collections' => ['name', 'imgurl', 'embed'],
-    'homepage' => ['name', 'imgurl', 'description', 'body','embed','videoUrl'],
+    'homeCategory' => ['category'],
     'FAQ' => ['name','description'],
     'bullets' => ['name','description', 'embed'],
 //    'aboutus' => ['name', 'imgurl', 'description', 'body','embed','videoUrl'],

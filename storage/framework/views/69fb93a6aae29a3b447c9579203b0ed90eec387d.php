@@ -90,11 +90,11 @@
                         <?php $__currentLoopData = $products1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-md-6 col-12 mt-4 pt-2 <?php echo e($key === 0 ? 'pt-sm-0 mt-sm-0' : ''); ?> picture-item">
                                 <div class="card portfolio portfolio-modern portfolio-primary rounded overflow-hidden shadow rounded text-center style="min-height: 200px;">
-                                <a href="<?php echo e(fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)); ?>" style="min-height: 200px;">
+                                <a href="<?php echo e(fullUrl('detail/'.$product1->slug)); ?>" style="min-height: 200px;">
                                     <img src="<?php echo e($product1->lang->imgurl); ?>" class="img-fluid" alt="" height="280" style="max-height: 280px;">
                                 </a>
                                 <div class="content text-center p-3">
-                                    <a href="<?php echo e(fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)); ?>" class="text-white h6 mb-0 d-block title"><?php echo e($product1->lang->name); ?></a>
+                                    <a href="<?php echo e(fullUrl('detail/'.$product1->slug)); ?>" class="text-white h6 mb-0 d-block title"><?php echo e($product1->lang->name); ?></a>
                                 </div>
                             </div>
                     </div><!--end col-->
@@ -103,7 +103,7 @@
                         <div class="section-title text-center text-md-start">
                             <h4 class="mb-3"><?php echo e($lang->exploreMoreTitle); ?></h4>
                             <p class="para-desc mx-auto text-muted mb-4"><?php echo e($lang->exploreMoreDescr); ?></p>
-                            <a href="<?php echo e(fullUrl('list/industriuli-printerebi/gaoyenebis-sfero-1')); ?>" class="btn btn-primary"><?php echo e($lang->exploreMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
+                            <a href="<?php echo e(fullUrl('list/'.$product1_menu->parentItem->slug."/".$product1_menu->slug)); ?>" class="btn btn-primary"><?php echo e($lang->exploreMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
