@@ -108,15 +108,15 @@
                         @foreach ($products1 as $key => $product1)
                             <div class="col-md-6 col-12 mt-4 pt-2 {{$key === 0 ? 'pt-sm-0 mt-sm-0' : ''}} picture-item">
                                 <div class="card portfolio portfolio-modern portfolio-primary rounded overflow-hidden shadow rounded text-center style="min-height: 200px;">
-                                <a href="{{fullUrl('detail/'.$product1->slug)}}" style="min-height: 200px;">
-                                    <img src="{{$product1->lang->imgurl}}" class="img-fluid" alt="" height="280" style="max-height: 280px;">
-                                </a>
-                                <div class="content text-center p-3">
-                                    <a href="{{fullUrl('detail/'.$product1->slug)}}" class="text-white h6 mb-0 d-block title">{{$product1->lang->name}}</a>
+                                    <a href="{{fullUrl('detail/'.$product1->slug)}}" style="min-height: 200px;">
+                                        <img src="{{$product1->lang->imgurl}}" class="img-fluid" alt="" height="280" style="max-height: 280px;">
+                                    </a>
+                                    <div class="content text-center p-3">
+                                        <a href="{{fullUrl('detail/'.$product1->slug)}}" class="text-white h6 mb-0 d-block title">{{$product1->lang->name}}</a>
+                                    </div>
                                 </div>
-                            </div>
-                    </div><!--end col-->
-                    @endforeach
+                            </div><!--end col-->
+                        @endforeach
                     <div class="col-md-6 col-12 mt-4 pt-2 picture-item">
                         <div class="section-title text-center text-md-start">
                             <h4 class="mb-3">{{$lang->exploreMoreTitle}}</h4>
@@ -129,45 +129,49 @@
         </div><!--end row-->
         </div><!--end container-->
     </section><!--end section-->
+    @if ($products2->count())
+        <section class="section pt-4 pb-4">
 
-    <section class="section pt-4 pb-4">
-
-        <div class="container-fluid mt-100 mt-60">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
-                    <div class="app-feature-shape position-relative">
-                        <div class="tiny-single-item">
-                            @foreach ($products2->catalog as $key => $product2)
+            <div class="container-fluid mt-100 mt-60">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
+                        <div class="app-feature-shape position-relative">
+                            <div class="tiny-single-item">
                                 <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                    <img src="{{$product2->lang->imgurl}}" class="img-fluid" alt="">
+                                    <img src="{{$products2[0]->lang->imgurl}}" class="img-fluid" alt="">
                                 </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-7 col-md-6 order-md-2 order-1">
-                    <div class="ms-lg-5">
-                        <div class="section-title section-title-analitics">
-                            <h6 class="text-primary">{{$lang->offer}}</h6>
-                            <h4 class="title mb-4">{{$lang->offerTitle1}} <br> {{$lang->offerTitle2}}</h4>
-                            <p class="text-muted para-desc mb-0">{{$lang->offerDescr}}</p>
-
-                            <ul class="list-unstyled text-muted mt-3">
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem1}}</li>
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem2}}</li>
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem3}}</li>
-                            </ul>
-
-                            <div class="mt-4">
-                                <a href="{{fullUrl('list/fulis-mimoqtsevis-martva/khurda-fulis-mtvleli-damkhariskhebeli-manqanebi')}}" class="btn btn-soft-primary">{{$lang->readMore}} <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                @if ($products2[0]->images->count())
+                                    @foreach ($products2[0]->images as $prod2Image)
+                                        <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
+                                            <img src="{{$prod2Image->lang->imgurl}}" class="img-fluid" alt="">
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-    </section>
+                    </div><!--end col-->
+
+                    <div class="col-lg-7 col-md-6 order-md-2 order-1">
+                        <div class="ms-lg-5">
+                            <div class="section-title section-title-analitics">
+                                <h6 class="text-primary">{{$lang->offer}}</h6>
+                                <h4 class="title mb-4">{{$products2[0]->lang->name}}</h4>
+                                <p class="text-muted para-desc mb-0">{!!$products2[0]->lang->body!!}</p>
+                                {{-- <ul class="list-unstyled text-muted mt-3">
+                                    <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem1}}</li>
+                                    <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem2}}</li>
+                                    <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem3}}</li>
+                                </ul> --}}
+                                <div class="mt-4">
+                                    <a href="{{fullUrl('detail/'.$products2[0]->slug)}}" class="btn btn-soft-primary">{{$lang->readMore}} <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section>
+    @endif
 
     <section class="section pt-2">
         <div class="container">

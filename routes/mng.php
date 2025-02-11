@@ -387,6 +387,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
             Route::post('catalog/store', 'ManagerCatalog@store');
             Route::post('{id}/catalog/destroy', 'ManagerCatalog@destroy');
             Route::post('catalog/show-hide-toggle', 'ManagerCatalog@showHideToggle')->name('admin.catalog.show-hide-toggle');
+            Route::post('catalog/show-hide-toggle-home', 'ManagerCatalog@showHideToggleHome')->name('admin.catalog.show-hide-toggle-home');
             Route::post('catalog/change-positions', 'ManagerCatalog@changePositions')->name('admin.catalog.change-positions');
 
 

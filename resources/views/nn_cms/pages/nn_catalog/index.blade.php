@@ -112,6 +112,7 @@
                                 <th> {{ trans('general.id') }} </th>
                                 <th> {{ trans('general.dtName') }} </th>
                                 <th> {{ trans('general.dtTools') }} </th>
+                                <th> Show on home Page </th>
                                 <th> Show / Hide </th>
                             </tr>
                         </thead>
@@ -131,6 +132,11 @@
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </div>
+                                    </td>
+                                    <td>
+                                        @if ($item->type == 'products')
+                                            <input type="checkbox" class="make-switch show-hide-toggle-home" data-catalog-id="{{$item->id}}" data-on-color="warning"         data-off-color="default" data-size="small" data-on-text="Show" data-off-text="Hide"{{$item->show_home ? ' checked' : ''}}>
+                                        @endif
                                     </td>
                                     <td>
                                         <input type="checkbox" class="make-switch show-hide-toggle" data-catalog-id="{{$item->id}}" data-on-color="primary" data-off-color="default" data-size="small" data-on-text="Show" data-off-text="Hide"{{$item->show ? ' checked' : ''}}>
@@ -220,6 +226,21 @@
 
                     $.ajax({
                         url: '{{ route('admin.catalog.show-hide-toggle') }}',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        type: 'post',
+                        data: {catalogId: catalogId},
+                        success: function() {
+                        }
+                    });
+                });
+
+                $(document).on('switchChange.bootstrapSwitch', '.show-hide-toggle-home', function(event, state) {
+                    catalogId = $(this).data('catalog-id');
+
+                    $.ajax({
+                        url: '{{ route('admin.catalog.show-hide-toggle-home') }}',
                         headers: {
                             'X-CSRF-TOKEN': csrfToken
                         },

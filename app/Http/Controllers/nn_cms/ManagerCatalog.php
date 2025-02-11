@@ -140,7 +140,8 @@ public static function getCollTypes($from = "create")
 
         $data['items'] = nn_catalog::where(['nn_catalog_lang.lang' => getCurrentLocale(), 'collection_id' => $collectionId])
         ->join('nn_catalog_lang', 'nn_catalog.id', '=', 'nn_catalog_lang.catalog_id')
-        ->select('nn_catalog.id', 'nn_catalog.show', 'nn_catalog.category_id', 'nn_catalog.aqcia_id', 'nn_catalog_lang.name', 'nn_catalog_lang.body', 'nn_catalog_lang.description', 'nn_catalog_lang.imgurl')
+        ->join('nn_collection', 'nn_catalog.collection_id', '=', 'nn_collection.id')
+        ->select('nn_catalog.id', 'nn_catalog.show', 'nn_catalog.category_id', 'nn_catalog.aqcia_id', 'nn_catalog_lang.name', 'nn_catalog_lang.body', 'nn_catalog_lang.description', 'nn_catalog_lang.imgurl', 'nn_catalog.show_home', 'nn_collection.type')
         ->orderBy('nn_catalog.position', 'desc')
         ->orderBy('nn_catalog.views', 'desc')
         ->paginate(20);
@@ -705,6 +706,15 @@ public static function getCollTypes($from = "create")
         $catalog = nn_catalog::where('id', $request->catalogId)->first();
 
         $catalog->show = $catalog->show == 1 ? 0 : 1;
+
+        $catalog->save();
+    }
+
+    public function showHideToggleHome(Request $request)
+    {
+        $catalog = nn_catalog::where('id', $request->catalogId)->first();
+
+        $catalog->show_home = $catalog->show_home == 1 ? 0 : 1;
 
         $catalog->save();
     }

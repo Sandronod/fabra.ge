@@ -90,20 +90,20 @@
                         <?php $__currentLoopData = $products1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-md-6 col-12 mt-4 pt-2 <?php echo e($key === 0 ? 'pt-sm-0 mt-sm-0' : ''); ?> picture-item">
                                 <div class="card portfolio portfolio-modern portfolio-primary rounded overflow-hidden shadow rounded text-center style="min-height: 200px;">
-                                <a href="<?php echo e(fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)); ?>" style="min-height: 200px;">
-                                    <img src="<?php echo e($product1->lang->imgurl); ?>" class="img-fluid" alt="" height="280" style="max-height: 280px;">
-                                </a>
-                                <div class="content text-center p-3">
-                                    <a href="<?php echo e(fullUrl('list/'.$product1->parentItem->slug.'/'.$product1->slug)); ?>" class="text-white h6 mb-0 d-block title"><?php echo e($product1->lang->name); ?></a>
+                                    <a href="<?php echo e(fullUrl('detail/'.$product1->slug)); ?>" style="min-height: 200px;">
+                                        <img src="<?php echo e($product1->lang->imgurl); ?>" class="img-fluid" alt="" height="280" style="max-height: 280px;">
+                                    </a>
+                                    <div class="content text-center p-3">
+                                        <a href="<?php echo e(fullUrl('detail/'.$product1->slug)); ?>" class="text-white h6 mb-0 d-block title"><?php echo e($product1->lang->name); ?></a>
+                                    </div>
                                 </div>
-                            </div>
-                    </div><!--end col-->
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </div><!--end col-->
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-6 col-12 mt-4 pt-2 picture-item">
                         <div class="section-title text-center text-md-start">
                             <h4 class="mb-3"><?php echo e($lang->exploreMoreTitle); ?></h4>
                             <p class="para-desc mx-auto text-muted mb-4"><?php echo e($lang->exploreMoreDescr); ?></p>
-                            <a href="<?php echo e(fullUrl('list/industriuli-printerebi/gaoyenebis-sfero-1')); ?>" class="btn btn-primary"><?php echo e($lang->exploreMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
+                            <a href="<?php echo e(fullUrl('list/'.$product1_menu->parentItem->slug."/".$product1_menu->slug)); ?>" class="btn btn-primary"><?php echo e($lang->exploreMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -111,45 +111,45 @@
         </div><!--end row-->
         </div><!--end container-->
     </section><!--end section-->
+    <?php if($products2->count()): ?>
+        <section class="section pt-4 pb-4">
 
-    <section class="section pt-4 pb-4">
-
-        <div class="container-fluid mt-100 mt-60">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
-                    <div class="app-feature-shape position-relative">
-                        <div class="tiny-single-item">
-                            <?php $__currentLoopData = $products2->catalog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="container-fluid mt-100 mt-60">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
+                        <div class="app-feature-shape position-relative">
+                            <div class="tiny-single-item">
                                 <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                    <img src="<?php echo e($product2->lang->imgurl); ?>" class="img-fluid" alt="">
+                                    <img src="<?php echo e($products2[0]->lang->imgurl); ?>" class="img-fluid" alt="">
                                 </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </div>
-                    </div>
-                </div><!--end col-->
-
-                <div class="col-lg-7 col-md-6 order-md-2 order-1">
-                    <div class="ms-lg-5">
-                        <div class="section-title section-title-analitics">
-                            <h6 class="text-primary"><?php echo e($lang->offer); ?></h6>
-                            <h4 class="title mb-4"><?php echo e($lang->offerTitle1); ?> <br> <?php echo e($lang->offerTitle2); ?></h4>
-                            <p class="text-muted para-desc mb-0"><?php echo e($lang->offerDescr); ?></p>
-
-                            <ul class="list-unstyled text-muted mt-3">
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span><?php echo e($lang->exploreListItem1); ?></li>
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span><?php echo e($lang->exploreListItem2); ?></li>
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span><?php echo e($lang->exploreListItem3); ?></li>
-                            </ul>
-
-                            <div class="mt-4">
-                                <a href="<?php echo e(fullUrl('list/fulis-mimoqtsevis-martva/khurda-fulis-mtvleli-damkhariskhebeli-manqanebi')); ?>" class="btn btn-soft-primary"><?php echo e($lang->readMore); ?> <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                <?php if($products2[0]->images->count()): ?>
+                                    <?php $__currentLoopData = $products2[0]->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prod2Image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
+                                            <img src="<?php echo e($prod2Image->lang->imgurl); ?>" class="img-fluid" alt="">
+                                        </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div>
                         </div>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-    </section>
+                    </div><!--end col-->
+
+                    <div class="col-lg-7 col-md-6 order-md-2 order-1">
+                        <div class="ms-lg-5">
+                            <div class="section-title section-title-analitics">
+                                <h6 class="text-primary"><?php echo e($lang->offer); ?></h6>
+                                <h4 class="title mb-4"><?php echo e($products2[0]->lang->name); ?></h4>
+                                <p class="text-muted para-desc mb-0"><?php echo $products2[0]->lang->body; ?></p>
+                                
+                                <div class="mt-4">
+                                    <a href="<?php echo e(fullUrl('detail/'.$products2[0]->slug)); ?>" class="btn btn-soft-primary"><?php echo e($lang->readMore); ?> <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section>
+    <?php endif; ?>
 
     <section class="section pt-2">
         <div class="container">
