@@ -15,6 +15,11 @@
             </div>
         </td>
         <td>
+            @if ($item->type == 'products')
+                <input type="checkbox" class="make-switch show-hide-toggle-home" data-catalog-id="{{$item->id}}" data-on-color="warning"         data-off-color="default" data-size="small" data-on-text="Show" data-off-text="Hide"{{$item->show_home ? ' checked' : ''}}>
+            @endif
+        </td>
+        <td>
             <input type="checkbox" class="make-switch show-hide-toggle" data-catalog-id="{{$item->id}}" data-on-color="primary" data-off-color="default" data-size="small" data-on-text="Show" data-off-text="Hide"{{$item->show ? ' checked' : ''}}>
         </td>
     </tr>

@@ -22,10 +22,12 @@ class PagesService
         $menuItem = nn_menu_item::where('slug', $this->slug)->first();
         if($menuItem->type == 'category'){
             $this->getCategory($menuItem->category->id);
+            $this->data["siteTitle"] = $menuItem->lang->name;
             $this->template = 'products';
         }
         if($menuItem->type == 'collection'){
             $collection = nn_collection::find($menuItem->collection->id);
+            $this->data["siteTitle"] = $menuItem->lang->name;
 
             $this->getCollection($menuItem->collection->id, $collection->type);
             if($collection->type === 'products'){
@@ -45,6 +47,7 @@ class PagesService
             $this->data["metaData"]['image'] = fullUrl($menuItem->lang->imgurl);
         }
         if($menuItem->type == 'contact'){
+            $this->data["siteTitle"] = $menuItem->lang->name;
             $this->template = 'contact';
         }
 
@@ -91,6 +94,7 @@ class PagesService
             $relatedItems = nn_catalog
             ::where('category_id', $category->id)
             ->where('id', '!=',  $catalog->id)
+            ->where('show', 1)
             ->orderByRaw('RAND()')
             ->get()
             ->take(3);

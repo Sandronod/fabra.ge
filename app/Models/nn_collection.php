@@ -62,6 +62,8 @@ class nn_collection extends Model
 
                             ->select('nn_collection.id', 'nn_collection.type', 'nn_collection_lang.name', 'nn_collection_lang.description')
 
+                            ->orderByRaw("CASE WHEN nn_collection.type = 'products' THEN 0 ELSE 1 END")
+
                             ->orderBy('nn_collection.created_at','desc')
 
                             ->get();

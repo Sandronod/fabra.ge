@@ -32,9 +32,17 @@ class SiteHomePage extends SiteController
     public function index(Request $request)
     {
       $data["slider"] = nn_slider::orderBy('position', 'asc')->get();
+
       $data["whys"] = nn_collection::find(15);
+      $data['whys']->catalog = $data['whys']->catalog->sortByDesc('position');
+
       $data["bullets"] = nn_collection::find(23);
+      $data['bullets']->catalog = $data['bullets']->catalog->sortByDesc('position');
+      
       $data["clients"] = nn_collection::find(14);
+      $data['clients']->catalog = $data['clients']->catalog->sortByDesc('position');
+
+
      // $data["products1"] = nn_menu_item::orderBy('position', 'asc')->where('category_id', '>', 0)->orderByRaw('RAND()')->get()->take(4);
          $catalog = nn_catalog::find(66);
          if(isset($catalog->category_id)){

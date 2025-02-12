@@ -26,7 +26,7 @@
     </section>
 
 <!-- Start Description -->
-<section class="section pb-0">
+<section class="section{{isset($relatedItems) && $relatedItems->count() ? ' pb-0' : ''}}">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-6">
@@ -76,7 +76,7 @@
                                 @if ($file->lang->name)
                                  {{$file->lang->name}}
                                 @else
-                                    გადმოტვირთეთ ფაილი
+                                    {{$lang->downloadFile}}
                                 @endif
                             </a>
                             @endforeach
@@ -168,7 +168,7 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="section-title">
-                        <h4 class="title mb-3">მსგავსი პროდუქტები</h4>
+                        <h4 class="title mb-3">{{$lang->similarProducts}}</h4>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
@@ -176,9 +176,9 @@
             <div class="row">
                 @foreach($relatedItems as $item)
                     <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog blog-primary shadow rounded overflow-hidden">
-                            <a href="{{fullUrl('detail/'.$item->slug)}}" class="display-block image position-relative overflow-hidden">
-                                <img src="{{$item->lang->imgurl}}" class="img-fluid" alt="">
+                        <div class="card blog blog-primary shadow rounded overflow-hidden h-100">
+                            <a href="{{fullUrl('detail/'.$item->slug)}}" class="display-block text-center image position-relative overflow-hidden">
+                                <img src="{{$item->lang->imgurl}}" class="img-fluid" alt="" style="max-height: 170px;width: auto;">
 
                                 <div class="blog-tag">
                                 </div>

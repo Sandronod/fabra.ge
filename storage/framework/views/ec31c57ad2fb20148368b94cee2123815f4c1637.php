@@ -39,9 +39,9 @@
 <!-- END THEME GLOBAL SCRIPTS -->
 <script>
     let bg = [
-        '<?php echo e(url('assets/nn_cms/images/1.jpeg')); ?>',
-        '<?php echo e(url('assets/nn_cms/images/2.png')); ?>',
-        '<?php echo e(url('assets/nn_cms/images/3.png')); ?>',
+        '<?php echo e(url('assets/nn_cms/images/1.jpg')); ?>',
+        '<?php echo e(url('assets/nn_cms/images/2.jpg')); ?>',
+        '<?php echo e(url('assets/nn_cms/images/3.jpg')); ?>',
     ];
     let imageUrl = bg[Math.floor(Math.random()*bg.length)];
     $('.login-img').attr("src", imageUrl);

@@ -39,9 +39,9 @@
 <!-- END THEME GLOBAL SCRIPTS -->
 <script>
     let bg = [
-        '{{url('assets/nn_cms/images/1.jpeg')}}',
-        '{{url('assets/nn_cms/images/2.png')}}',
-        '{{url('assets/nn_cms/images/3.png')}}',
+        '{{url('assets/nn_cms/images/1.jpg')}}',
+        '{{url('assets/nn_cms/images/2.jpg')}}',
+        '{{url('assets/nn_cms/images/3.jpg')}}',
     ];
     let imageUrl = bg[Math.floor(Math.random()*bg.length)];
     $('.login-img').attr("src", imageUrl);

@@ -31,7 +31,7 @@
 
                 <div class="col-lg-4 col-md-6 mb-4 pb-2">
                     <div class="card blog blog-primary shadow rounded overflow-hidden h-100">
-                        <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="display-block image position-relative overflow-hidden">
+                        <a href="<?php echo e(fullUrl('detail/'.$item->slug)); ?>" class="display-block image position-relative overflow-hidden text-center">
                             <img src="<?php echo e($item->lang->imgurl); ?>" class="img-fluid" style="height: 305px; object-fit: contain;" alt="">
 
                             <div class="blog-tag">

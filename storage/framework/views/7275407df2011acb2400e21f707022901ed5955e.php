@@ -17,17 +17,20 @@
     <?php endif; ?>
 <?php endif; ?>
 <title>
+    <?php if(getCurrentLocale() == 'ka'): ?>
+        <?php echo e($siteSettings->title_ka); ?>
+
+    <?php elseif(getCurrentLocale() == 'en'): ?>
+        <?php echo e($siteSettings->title_en); ?>
+
+    <?php endif; ?>
+    &nbsp;-&nbsp;
     <?php if(isset($siteTitle)): ?>
         <?php echo e($siteTitle); ?>
 
     <?php else: ?>
-        <?php if(getCurrentLocale() == 'ka'): ?>
-           <?php echo e($siteSettings->title_ka); ?>
+        <?php echo e($lang->main); ?>
 
-        <?php elseif(getCurrentLocale() == 'en'): ?>
-            <?php echo e($siteSettings->title_en); ?>
-
-        <?php endif; ?>
     <?php endif; ?>
 </title>
 

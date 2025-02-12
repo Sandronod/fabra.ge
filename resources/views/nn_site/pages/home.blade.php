@@ -44,9 +44,11 @@
                                             <div class="title-heading text-center">
                                                 <h1 class=" display-3 text-white title-dark mb-4">{{$slide->lang->name}}</h1>
                                                 <p class="para-desc mx-auto text-white-50">{{$slide->lang->description}}</p>
-                                                <div class="mt-4 pt-2">
-                                                    <a href="{{$slide->lang->link_1}}" class="btn btn-primary">{{$slide->lang->link_name_1}}</a>
-                                                </div>
+                                                @if ($slide->lang->link_1)
+                                                    <div class="mt-4 pt-2">
+                                                        <a href="{{$slide->lang->link_1}}" class="btn btn-primary" target="_blank">{{$slide->lang->link_name_1}}</a>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div><!--end col-->
                                     </div><!--end row-->
@@ -83,7 +85,11 @@
                                 <i class="uil uil-setting"></i>
                             </div>
                             <div class="content mt-3">
-                                <a href="{{$bullet->lang->embed}}" class="title h5 text-dark">{{$bullet->lang->name}}</a>
+                                @if($bullet->lang->embed)
+                                    <a href="{{$bullet->lang->embed}}" class="title h5 text-dark">{{$bullet->lang->name}}</a>
+                                @else
+                                    <span class="title h5 text-dark">{{$bullet->lang->name}}</span>
+                                @endif
                                 <p class="text-muted para mt-2 mb-0">{{$bullet->lang->description}}</p>
                             </div>
                         </div>
@@ -93,7 +99,7 @@
         </div><!--end container-->
     </section>
     <!-- Hero End -->
-    <section class="section pb-2">
+    <section class="section pt-2 pb-10">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -130,20 +136,20 @@
         </div><!--end container-->
     </section><!--end section-->
     @if ($products2->count())
-        <section class="section pt-4 pb-4">
+        <section class="section pt-2 pb-10">
 
-            <div class="container-fluid mt-100 mt-60">
+            <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
                         <div class="app-feature-shape position-relative">
                             <div class="tiny-single-item">
                                 <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                    <img src="{{$products2[0]->lang->imgurl}}" class="img-fluid" alt="">
+                                    <img src="{{$products2[0]->lang->imgurl}}" class="img-fluid" alt="" style="max-height: 550px;">
                                 </div>
                                 @if ($products2[0]->images->count())
                                     @foreach ($products2[0]->images as $prod2Image)
                                         <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                            <img src="{{$prod2Image->lang->imgurl}}" class="img-fluid" alt="">
+                                            <img src="{{$prod2Image->lang->imgurl}}" class="img-fluid" alt="" style="max-height: 550px;">
                                         </div>
                                     @endforeach
                                 @endif
@@ -183,9 +189,7 @@
 
                     <div class="accordion mt-4 pt-2" id="buyingquestion">
                         @foreach ($whys->catalog as $key=>$why )
-
-
-                            <div class="accordion-item rounded border-0 shadow {{$key !== 0 ? 'mt-3' : ''}}">
+                            <div class="accordion-item rounded border-0 shadow mb-3">
                                 <h2 class="accordion-header" id="headingOne{{$key}}">
                                     <button class="accordion-button border-0 bg-white {{$key !== 0 ? 'collapsed' : ''}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$key}}"
                                             aria-expanded="{{$key === 0 ? 'true' : 'false'}}" aria-controls="collapse{{$key}}">

@@ -17,14 +17,16 @@
     @endif
 @endif
 <title>
+    @if (getCurrentLocale() == 'ka')
+        {{$siteSettings->title_ka}}
+    @elseif (getCurrentLocale() == 'en')
+        {{$siteSettings->title_en}}
+    @endif
+    &nbsp;-&nbsp;
     @if (isset($siteTitle))
         {{$siteTitle}}
     @else
-        @if (getCurrentLocale() == 'ka')
-           {{$siteSettings->title_ka}}
-        @elseif (getCurrentLocale() == 'en')
-            {{$siteSettings->title_en}}
-        @endif
+        {{$lang->main}}
     @endif
 </title>
 
