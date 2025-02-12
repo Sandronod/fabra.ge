@@ -19,7 +19,7 @@ return [
 
     'products' => ['name', 'imgurl', 'body', 'description', 'category', 'embed'],
     'collections' => ['name', 'imgurl', 'embed'],
-    'homeCategory' => ['category'],
+    'homeCategory' => ['name','category'],
     'FAQ' => ['name','description'],
     'bullets' => ['name','description', 'embed'],
 //    'aboutus' => ['name', 'imgurl', 'description', 'body','embed','videoUrl'],
