@@ -84,7 +84,7 @@ class PagesService
         $menuItem = null;
         $this->template = 'detail';
 
-        if($catalog->category_id != '') {
+        if($catalog->category_id != '' && $catalog->category_id != 0) {
 
             $category = nn_category::where('id', $catalog->category_id)->first();
             $menuItem= nn_menu_item::where('category_id', $category->id)->first();
@@ -96,6 +96,8 @@ class PagesService
             ->take(3);
             $this->data['relatedItems'] = $relatedItems;
 
+        }else{
+            $menuItem= nn_menu_item::where('collection_id',  $catalog->collection_id)->first();
         }
 
         if($catalog->collection_id != '' && $catalog->category_id == ''){

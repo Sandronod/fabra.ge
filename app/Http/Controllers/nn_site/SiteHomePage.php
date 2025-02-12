@@ -43,7 +43,8 @@ class SiteHomePage extends SiteController
                 $category = nn_category::orderByRaw('RAND()')->get()->first();
                 $category_id = $category->category_id;
          }
-        $catalogs = nn_catalog::where('category_id', $category_id)->where('show_home', 0)->orderByRaw('RAND()')->get()->take(4);
+        $catalogs = nn_catalog::where('category_id', $category_id)->where('show_home', 0)->
+            where('id', '!=', 66)->orderByRaw('RAND()')->get()->take(4);
         $data["product1_menu"] = nn_menu_item::where('category_id', $category_id)->orderBy('position', 'asc')->first();
         $data["products1"] = $catalogs;
 

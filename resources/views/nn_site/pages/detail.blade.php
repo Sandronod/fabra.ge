@@ -10,7 +10,12 @@
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb mb-0 p-0">
                                 <li class="breadcrumb-item"><a href="{{fullUrl('')}}">{{$lang->main}}</a></li>
-                                <li class="breadcrumb-item"><a href="{{fullUrl('list/'.$menuItem->parentItem->slug.'/'.$menuItem->slug)}} ">{{$menuItem->lang->name}}</a></li>
+                                @if(isset($menuItem->parentItem->slug))
+                                    <li class="breadcrumb-item"><a href="{{fullUrl('list/'.$menuItem->parentItem->slug.'/'.$menuItem->slug)}} ">{{$menuItem->lang->name}}</a></li>
+                                @else
+                                    <li class="breadcrumb-item"><a href="{{fullUrl('list/'.$menuItem->slug)}} ">{{$menuItem->lang->name}}</a></li>
+
+                                @endif
                                 <li class="breadcrumb-item"><a href="javascript:void(0)">{{$detail->lang->name}}</a></li>
                             </ul>
                         </nav>
