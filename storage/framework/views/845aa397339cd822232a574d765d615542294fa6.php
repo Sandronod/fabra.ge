@@ -12,7 +12,7 @@
     <!-- Start services -->
 
     <!-- Hero Start -->
-    <section class="swiper-slider-hero position-relative d-block vh-100">
+    <section class="swiper-slider-hero home-main-slider position-relative d-block vh-100">
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <?php if(count($slider)): ?>
@@ -42,6 +42,9 @@
             </div>
             <!-- end swiper-wrapper -->
 
+            <!-- Swiper Pagination (Bullets) -->
+            <div class="swiper-pagination"></div>
+
             <!-- swipper controls -->
             <!-- <div class="swiper-pagination"></div> -->
             <div class="swiper-button-next border rounded-circle text-center"></div>
@@ -68,7 +71,7 @@
                             </div>
                             <div class="content mt-3">
                                 <?php if($bullet->lang->embed): ?>
-                                    <a href="<?php echo e($bullet->lang->embed); ?>" class="title h5 text-dark"><?php echo e($bullet->lang->name); ?></a>
+                                    <a href="<?php echo e($bullet->lang->embed); ?>" class="title h5 text-dark" target="_blank"><?php echo e($bullet->lang->name); ?></a>
                                 <?php else: ?>
                                     <span class="title h5 text-dark"><?php echo e($bullet->lang->name); ?></span>
                                 <?php endif; ?>
@@ -81,83 +84,61 @@
         </div><!--end container-->
     </section>
     <!-- Hero End -->
-    <section class="section pt-2 pb-10">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div id="grid" class="row">
-                        <div class="col-md-6 col-12 picture-item">
-                            <div class="section-title text-center text-md-start mt-md-5 mb-4 pb-2">
-                                <h6 class="text-primary"><?php echo e($lang->whatWeOffer); ?></h6>
-                                <h4 class="title mb-3"><?php echo e($lang->forUsQuality); ?></h4>
-                                <p class="para-desc mx-auto text-muted mb-0"><?php echo e($lang->whatWeOfferDescr); ?></p>
+    
+    <?php if($products2->count()): ?>
+        <section class="section pt-0 pb-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title text-center mb-4 pb-2">
+                            <h4 class="title fw-semibold mb-3"><?php echo e($lang->products); ?></h4>
+                            <p class="text-muted para-desc mx-auto mb-0"><?php echo e($lang->productsDescr); ?></p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div>
+        </section>
+        <?php $__currentLoopData = $products2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prodKey => $product2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <section class="section pt-2 pb-5">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-6 <?php echo e($prodKey%2 == 0 ? ' order-md-1' : ''); ?> order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
+                            <div class="app-feature-shape position-relative">
+                                <div class="tiny-single-item tiny-single-item--multiple">
+                                    <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
+                                        <img src="<?php echo e($product2->lang->imgurl); ?>" class="img-fluid" alt="" style="max-height: 550px;">
+                                    </div>
+                                    <?php if($product2->images->count()): ?>
+                                        <?php $__currentLoopData = $product2->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prod2Image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
+                                                <img src="<?php echo e($prod2Image->lang->imgurl); ?>" class="img-fluid" alt="" style="max-height: 550px;">
+                                            </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div><!--end col-->
-                        <?php $__currentLoopData = $products1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $product1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-md-6 col-12 mt-4 pt-2 <?php echo e($key === 0 ? 'pt-sm-0 mt-sm-0' : ''); ?> picture-item">
-                                <div class="card portfolio portfolio-modern portfolio-primary rounded overflow-hidden shadow rounded text-center style="min-height: 200px;">
-                                    <a href="<?php echo e(fullUrl('detail/'.$product1->slug)); ?>" style="min-height: 200px;">
-                                        <img src="<?php echo e($product1->lang->imgurl); ?>" class="img-fluid" alt="" height="280" style="max-height: 280px;">
-                                    </a>
-                                    <div class="content text-center p-3">
-                                        <a href="<?php echo e(fullUrl('detail/'.$product1->slug)); ?>" class="text-white h6 mb-0 d-block title"><?php echo e($product1->lang->name); ?></a>
+
+                        <div class="col-lg-7 col-md-6 <?php echo e($prodKey%2 == 0 ? ' order-md-2' : ''); ?> order-1">
+                            <div class="ms-lg-5">
+                                <div class="section-title section-title-analitics">
+                                    
+                                    <h4 class="title mb-4"><?php echo e($product2->lang->name); ?></h4>
+                                    <p class="text-muted para-desc mb-0"><?php echo $product2->lang->body; ?></p>
+                                    
+                                    <div class="mt-4">
+                                        <a href="<?php echo e(fullUrl('detail/'.$product2->slug)); ?>" class="btn btn-soft-primary"><?php echo e($lang->readMore); ?> <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                                     </div>
                                 </div>
-                            </div><!--end col-->
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-md-6 col-12 mt-4 pt-2 picture-item">
-                        <div class="section-title text-center text-md-start">
-                            <h4 class="mb-3"><?php echo e($lang->exploreMoreTitle); ?></h4>
-                            <p class="para-desc mx-auto text-muted mb-4"><?php echo e($lang->exploreMoreDescr); ?></p>
-                            <a href="<?php echo e(fullUrl('list/'.$product1_menu->parentItem->slug."/".$product1_menu->slug)); ?>" class="btn btn-primary"><?php echo e($lang->exploreMore); ?> <i class="uil uil-arrow-right align-middle"></i></a>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end col-->
-        </div><!--end row-->
-        </div><!--end container-->
-    </section><!--end section-->
-    <?php if($products2->count()): ?>
-        <section class="section pt-2 pb-10">
-
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
-                        <div class="app-feature-shape position-relative">
-                            <div class="tiny-single-item">
-                                <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                    <img src="<?php echo e($products2[0]->lang->imgurl); ?>" class="img-fluid" alt="" style="max-height: 550px;">
-                                </div>
-                                <?php if($products2[0]->images->count()): ?>
-                                    <?php $__currentLoopData = $products2[0]->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prod2Image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                            <img src="<?php echo e($prod2Image->lang->imgurl); ?>" class="img-fluid" alt="" style="max-height: 550px;">
-                                        </div>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <?php endif; ?>
                             </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-7 col-md-6 order-md-2 order-1">
-                        <div class="ms-lg-5">
-                            <div class="section-title section-title-analitics">
-                                <h6 class="text-primary"><?php echo e($lang->offer); ?></h6>
-                                <h4 class="title mb-4"><?php echo e($products2[0]->lang->name); ?></h4>
-                                <p class="text-muted para-desc mb-0"><?php echo $products2[0]->lang->body; ?></p>
-                                
-                                <div class="mt-4">
-                                    <a href="<?php echo e(fullUrl('detail/'.$products2[0]->slug)); ?>" class="btn btn-soft-primary"><?php echo e($lang->readMore); ?> <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end container-->
+            </section>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endif; ?>
 
-    <section class="section pt-2">
+    <section class="section<?php echo e($products2->count() ? ' pt-5' : ' pt-2'); ?>">
         <div class="container">
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
@@ -230,6 +211,32 @@
     <!-- End -->
     <?php $__env->startPush('js'); ?>
         <script src="/assets/js/swiper.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var sliders = document.getElementsByClassName('tiny-single-item--multiple');
+                
+                if (sliders.length > 0) {
+                    Array.from(sliders).forEach(function (slider) {
+                        tns({
+                            container: slider,
+                            items: 1,
+                            controls: true,
+                            mouseDrag: true,
+                            loop: true,
+                            rewind: true,
+                            autoplay: true,
+                            autoplayButtonOutput: false,
+                            autoplayTimeout: 5000,
+                            navPosition: "bottom",
+                            controlsText: ['<i class="mdi mdi-chevron-left "></i>', '<i class="mdi mdi-chevron-right"></i>'],
+                            nav: false,
+                            speed: 500,
+                            gutter: 0,
+                        });
+                    });
+                }
+            });
+        </script>
     <?php $__env->stopPush(); ?>
 
 <?php $__env->stopSection(); ?>

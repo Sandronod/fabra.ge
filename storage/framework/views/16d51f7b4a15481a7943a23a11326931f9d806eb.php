@@ -35,7 +35,7 @@
                             <img src="<?php echo e($item->lang->imgurl); ?>" class="img-fluid" style="height: 305px; object-fit: contain;" alt="">
 
                             <div class="blog-tag">
-                                <a href="javascript:void(0)" class="badge text-bg-light"><?php echo e($category->lang->name); ?></a>
+                                <a href="javascript:void(0)" class="badge text-bg-light product-list-badge"><?php echo e($category->lang->name); ?></a>
                             </div>
                         </a>
 

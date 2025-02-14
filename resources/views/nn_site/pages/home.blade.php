@@ -30,7 +30,7 @@
     <!-- Start services -->
 
     <!-- Hero Start -->
-    <section class="swiper-slider-hero position-relative d-block vh-100">
+    <section class="swiper-slider-hero home-main-slider position-relative d-block vh-100">
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 @if (count($slider))
@@ -60,6 +60,9 @@
             </div>
             <!-- end swiper-wrapper -->
 
+            <!-- Swiper Pagination (Bullets) -->
+            <div class="swiper-pagination"></div>
+
             <!-- swipper controls -->
             <!-- <div class="swiper-pagination"></div> -->
             <div class="swiper-button-next border rounded-circle text-center"></div>
@@ -86,7 +89,7 @@
                             </div>
                             <div class="content mt-3">
                                 @if($bullet->lang->embed)
-                                    <a href="{{$bullet->lang->embed}}" class="title h5 text-dark">{{$bullet->lang->name}}</a>
+                                    <a href="{{$bullet->lang->embed}}" class="title h5 text-dark" target="_blank">{{$bullet->lang->name}}</a>
                                 @else
                                     <span class="title h5 text-dark">{{$bullet->lang->name}}</span>
                                 @endif
@@ -99,7 +102,7 @@
         </div><!--end container-->
     </section>
     <!-- Hero End -->
-    <section class="section pt-2 pb-10">
+    {{-- <section class="section pt-2 pb-10">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -134,52 +137,65 @@
             </div><!--end col-->
         </div><!--end row-->
         </div><!--end container-->
-    </section><!--end section-->
+    </section><!--end section--> --}}
     @if ($products2->count())
-        <section class="section pt-2 pb-10">
-
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 col-md-6 order-md-1 order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
-                        <div class="app-feature-shape position-relative">
-                            <div class="tiny-single-item">
-                                <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                    <img src="{{$products2[0]->lang->imgurl}}" class="img-fluid" alt="" style="max-height: 550px;">
-                                </div>
-                                @if ($products2[0]->images->count())
-                                    @foreach ($products2[0]->images as $prod2Image)
-                                        <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
-                                            <img src="{{$prod2Image->lang->imgurl}}" class="img-fluid" alt="" style="max-height: 550px;">
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-7 col-md-6 order-md-2 order-1">
-                        <div class="ms-lg-5">
-                            <div class="section-title section-title-analitics">
-                                <h6 class="text-primary">{{$lang->offer}}</h6>
-                                <h4 class="title mb-4">{{$products2[0]->lang->name}}</h4>
-                                <p class="text-muted para-desc mb-0">{!!$products2[0]->lang->body!!}</p>
-                                {{-- <ul class="list-unstyled text-muted mt-3">
-                                    <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem1}}</li>
-                                    <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem2}}</li>
-                                    <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem3}}</li>
-                                </ul> --}}
-                                <div class="mt-4">
-                                    <a href="{{fullUrl('detail/'.$products2[0]->slug)}}" class="btn btn-soft-primary">{{$lang->readMore}} <i data-feather="arrow-right" class="fea icon-sm"></i></a>
-                                </div>
-                            </div>
+        <section class="section pt-0 pb-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title text-center mb-4 pb-2">
+                            <h4 class="title fw-semibold mb-3">{{$lang->products}}</h4>
+                            <p class="text-muted para-desc mx-auto mb-0">{{$lang->productsDescr}}</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
-            </div><!--end container-->
+            </div>
         </section>
+        @foreach ($products2 as $prodKey => $product2)
+            <section class="section pt-2 pb-5">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-6 {{$prodKey%2 == 0 ? ' order-md-1' : ''}} order-2 mt-4 mt-am-0 pt-2 pt-sm-0">
+                            <div class="app-feature-shape position-relative">
+                                <div class="tiny-single-item tiny-single-item--multiple">
+                                    <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
+                                        <img src="{{$product2->lang->imgurl}}" class="img-fluid" alt="" style="max-height: 550px;">
+                                    </div>
+                                    @if ($product2->images->count())
+                                        @foreach ($product2->images as $prod2Image)
+                                            <div class="tiny-slide" style="vertical-align: middle !important;text-align: center;">
+                                                <img src="{{$prod2Image->lang->imgurl}}" class="img-fluid" alt="" style="max-height: 550px;">
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div><!--end col-->
+
+                        <div class="col-lg-7 col-md-6 {{$prodKey%2 == 0 ? ' order-md-2' : ''}} order-1">
+                            <div class="ms-lg-5">
+                                <div class="section-title section-title-analitics">
+                                    {{-- <h6 class="text-primary">{{$lang->offer}}</h6> --}}
+                                    <h4 class="title mb-4">{{$product2->lang->name}}</h4>
+                                    <p class="text-muted para-desc mb-0">{!!$product2->lang->body!!}</p>
+                                    {{-- <ul class="list-unstyled text-muted mt-3">
+                                        <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem1}}</li>
+                                        <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem2}}</li>
+                                        <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{$lang->exploreListItem3}}</li>
+                                    </ul> --}}
+                                    <div class="mt-4">
+                                        <a href="{{fullUrl('detail/'.$product2->slug)}}" class="btn btn-soft-primary">{{$lang->readMore}} <i data-feather="arrow-right" class="fea icon-sm"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end container-->
+            </section>
+        @endforeach
     @endif
 
-    <section class="section pt-2">
+    <section class="section{{$products2->count() ? ' pt-5' : ' pt-2'}}">
         <div class="container">
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-buying" role="tabpanel" aria-labelledby="pills-buying-tab">
@@ -252,6 +268,32 @@
     <!-- End -->
     @push('js')
         <script src="/assets/js/swiper.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var sliders = document.getElementsByClassName('tiny-single-item--multiple');
+                
+                if (sliders.length > 0) {
+                    Array.from(sliders).forEach(function (slider) {
+                        tns({
+                            container: slider,
+                            items: 1,
+                            controls: true,
+                            mouseDrag: true,
+                            loop: true,
+                            rewind: true,
+                            autoplay: true,
+                            autoplayButtonOutput: false,
+                            autoplayTimeout: 5000,
+                            navPosition: "bottom",
+                            controlsText: ['<i class="mdi mdi-chevron-left "></i>', '<i class="mdi mdi-chevron-right"></i>'],
+                            nav: false,
+                            speed: 500,
+                            gutter: 0,
+                        });
+                    });
+                }
+            });
+        </script>
     @endpush
 
 @endsection

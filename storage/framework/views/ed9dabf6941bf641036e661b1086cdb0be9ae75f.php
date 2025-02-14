@@ -29,7 +29,7 @@
 <section class="section<?php echo e(isset($relatedItems) && $relatedItems->count() ? ' pb-0' : ''); ?>">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5 col-md-6">
+            <div class="col-md-6">
 
                     <div class="row">
                         <div class="col-12">
@@ -42,13 +42,31 @@
 
                                 
                             </div>
+                            <?php if($detail->images->count() > 0): ?>
+                                <div id="grid" class="row product-details-photo-grid">
+                                    <?php $__currentLoopData = $detail->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <div class="col-md-3 col-12 spacing picture-item" data-groups='["branding"]'>
+                                            <div class="card portfolio portfolio-classic portfolio-primary rounded overflow-hidden">
+                                                <div class="card-img position-relative text-center">
+                                                    <img src="<?php echo e($img->lang->imgurl); ?>" class="img-fluid" alt="" style="object-fit:cover; height: 120px;">
+                                                    <div class="card-overlay"></div>
+                    
+                                                    <div class="pop-icon">
+                                                        <a href="<?php echo e($img->lang->imgurl); ?>" class="btn btn-pills btn-icon lightbox"><i class="uil uil-search"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div><!--end row-->
+                            <?php endif; ?>
                         </div><!--end col-->
                     </div><!--end row-->
 
 
             </div><!--end col-->
 
-            <div class="col-lg-7 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+            <div class="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
                 <div class="section-title ms-lg-5">
                     <h4 class="title mb-3"><?php echo e($detail->lang->name); ?></h4>
                     <p class="text-muted">
@@ -110,50 +128,10 @@
             </div><!--end row-->
         </div><!--end container-->
     <?php endif; ?>
-<?php if($detail->images->count() > 0): ?>
-    <section class="section pt-4">
-        <div class="container">
-            <div class="container mt-5 mb-5">
-                <div class="row">
-                    <div class="col-12">
-                        <span class="divider-main divider"></span>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
 
-            <div class="container mt-30 mt-20">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="section-title">
-                            <h4 class="title mb-5"><?php echo e($lang->photos); ?></h4>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
+    
 
-            <div id="grid" class="row">
 
-                <?php $__currentLoopData = $detail->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                    <div class="col-md-3 col-12 spacing picture-item" data-groups='["branding"]'>
-                        <div class="card portfolio portfolio-classic portfolio-primary rounded overflow-hidden">
-                            <div class="card-img position-relative text-center">
-                                <img src="<?php echo e($img->lang->imgurl); ?>" class="img-fluid" alt="" style="object-fit:cover; max-height: 120px;">
-                                <div class="card-overlay"></div>
-
-                                <div class="pop-icon">
-                                    <a href="<?php echo e($img->lang->imgurl); ?>" class="btn btn-pills btn-icon lightbox"><i class="uil uil-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-            </div><!--end row-->
-        </div><!--end container-->
-        </div>
-    </section>
-
-<?php endif; ?>
     <?php if(isset($relatedItems) && count($relatedItems) > 0): ?>
         <section class="section pt-4">
         <div class="container mt-5 mb-5">

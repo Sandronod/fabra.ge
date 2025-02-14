@@ -44,19 +44,19 @@ class SiteHomePage extends SiteController
 
 
      // $data["products1"] = nn_menu_item::orderBy('position', 'asc')->where('category_id', '>', 0)->orderByRaw('RAND()')->get()->take(4);
-         $catalog = nn_catalog::find(66);
-         if(isset($catalog->category_id)){
-             $category_id = $catalog->category_id;
-         }else{
-                $category = nn_category::orderByRaw('RAND()')->get()->first();
-                $category_id = $category->category_id;
-         }
-        $catalogs = nn_catalog::where('category_id', $category_id)->where('show_home', 0)->
-            where('id', '!=', 66)->orderByRaw('RAND()')->get()->take(4);
-        $data["product1_menu"] = nn_menu_item::where('category_id', $category_id)->orderBy('position', 'asc')->first();
-        $data["products1"] = $catalogs;
+        //  $catalog = nn_catalog::find(66);
+        //  if(isset($catalog->category_id)){
+        //      $category_id = $catalog->category_id;
+        //  }else{
+        //         $category = nn_category::orderByRaw('RAND()')->get()->first();
+        //         $category_id = $category->category_id;
+        //  }
+        // $catalogs = nn_catalog::where('category_id', $category_id)->where('show_home', 0)->
+        //     where('id', '!=', 66)->orderByRaw('RAND()')->get()->take(4);
+        // $data["product1_menu"] = nn_menu_item::where('category_id', $category_id)->orderBy('position', 'asc')->first();
+        // $data["products1"] = $catalogs;
 
-        $catalogs2 = nn_catalog::where('show_home', 1)->orderByRaw('RAND()')->get()->take(1);
+        $catalogs2 = nn_catalog::where('show_home', 1)->orderBy('position', 'asc')->get();
         $data["products2"] = $catalogs2;
 
       return view('nn_site.pages.home', $data);

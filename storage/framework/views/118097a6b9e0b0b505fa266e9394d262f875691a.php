@@ -1,5 +1,5 @@
-<div class="tagline bg-white">
-    <div class="container">
+<div class="tagline bg-white header-container-fluid-wrapper">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-between">
@@ -47,8 +47,8 @@
 <!-- TAGLINE END-->
 
 <!-- Navbar STart -->
-<header id="topnav" class="defaultscroll sticky tagline-height">
-    <div class="container">
+<header id="topnav" class="defaultscroll sticky tagline-height header-container-fluid-wrapper">
+    <div class="container-fluid">
         <div class="topnav-container-inner">
             <!-- Logo container-->
             <a class="logo" href="<?php echo e(fullUrl()); ?>">

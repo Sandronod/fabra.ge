@@ -29,7 +29,7 @@
 <section class="section{{isset($relatedItems) && $relatedItems->count() ? ' pb-0' : ''}}">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5 col-md-6">
+            <div class="col-md-6">
 
                     <div class="row">
                         <div class="col-12">
@@ -46,13 +46,31 @@
                                     </div>
                                 @endif --}}
                             </div>
+                            @if($detail->images->count() > 0)
+                                <div id="grid" class="row product-details-photo-grid">
+                                    @foreach($detail->images as $img)
+                                        <div class="col-md-3 col-12 spacing picture-item" data-groups='["branding"]'>
+                                            <div class="card portfolio portfolio-classic portfolio-primary rounded overflow-hidden">
+                                                <div class="card-img position-relative text-center">
+                                                    <img src="{{$img->lang->imgurl}}" class="img-fluid" alt="" style="object-fit:cover; height: 120px;">
+                                                    <div class="card-overlay"></div>
+                    
+                                                    <div class="pop-icon">
+                                                        <a href="{{$img->lang->imgurl}}" class="btn btn-pills btn-icon lightbox"><i class="uil uil-search"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                    @endforeach
+                                </div><!--end row-->
+                            @endif
                         </div><!--end col-->
                     </div><!--end row-->
 
 {{--                <img src="{{$detail->lang->imgurl}}" style="max-height:500px; max-width:500px;"  class="img-fluid rounded shadow" alt="">--}}
             </div><!--end col-->
 
-            <div class="col-lg-7 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+            <div class="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
                 <div class="section-title ms-lg-5">
                     <h4 class="title mb-3">{{$detail->lang->name}}</h4>
                     <p class="text-muted">
@@ -110,8 +128,8 @@
             </div><!--end row-->
         </div><!--end container-->
     @endif
-@if($detail->images->count() > 0)
-    <section class="section pt-4">
+{{-- @if($detail->images->count() > 0) --}}
+    {{-- <section class="section pt-4">
         <div class="container">
             <div class="container mt-5 mb-5">
                 <div class="row">
@@ -151,9 +169,9 @@
             </div><!--end row-->
         </div><!--end container-->
         </div>
-    </section>
+    </section> --}}
 
-@endif
+{{-- @endif --}}
     @if(isset($relatedItems) && count($relatedItems) > 0)
         <section class="section pt-4">
         <div class="container mt-5 mb-5">
